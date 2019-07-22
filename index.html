@@ -9,11 +9,12 @@
 </style>
 
 <svg width = "300" height = "300"></svg>
-
+<p> svg ok </p>
 <script> 
 var svg = d3.select("svg"), 
 	width = +svg.attr("width")
 	height = +svg.attr("height")
+
 
 var simulation = d3.forceSimulation()
 	.force("link", d3.forceLink().distance(75)
@@ -41,13 +42,15 @@ var links = [
 	{"source": 42, "target": 23}
 ];
 
-simulation.force("link").link(links)
+simulation.force("link").link(links);
+
 
 var linkse1 = svg.append("g")
 	.attr("class", "link")
 	.selectAll("line").data(links).enter().append("line")
 
-	
+
+
 </script>
 
 
