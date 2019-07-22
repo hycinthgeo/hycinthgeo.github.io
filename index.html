@@ -10,45 +10,21 @@
 
 <svg width = "300" height = "300"></svg>
 <p> svg ok </p>
-<script> 
+<script>
+
+d3.select("svg").selectAll("rect").data([0])
+	.enter().append("rect")
+	.attr("width", 20)
+	.attr("height", 20)
+
 var svg = d3.select("svg"), 
 	width = +svg.attr("width")
 	height = +svg.attr("height")
 
-
-var simulation = d3.forceSimulation()
-	.force("link", d3.forceLink().distance(75)
-		.id(function(d) {return d.value;}))
-	.force("charge", d3.forceManyBody())
-	.force("center", d3.forceCenter(width / 2, height / 2));
-
-var nodes = [{"value": 4}, 
-	{"value": 8},
-	{"value": 15},
-	{"value": 16},
-	{"value": 23},
-	{"value": 42}];	
-
-simulation.nodes(nodes)
-
-var links = [
-	{"source": 8, "target": 4},
-	{"source": 16, "target": 4},
-	{"source": 16, "target": 8},
-	{"source": 23, "target": 8},
-	{"source": 23, "target": 15},
-	{"source": 42, "target": 4},
-	{"source": 42, "target": 15},
-	{"source": 42, "target": 23}
-];
-
-simulation.force("link").link(links);
-
-
-var linkse1 = svg.append("g")
-	.attr("class", "link")
-	.selectAll("line").data(links).enter().append("line")
-
+d3.select("svg").selectAll("rect").data([0])
+	.enter().append("rect")
+	.attr("width", 50)
+	.attr("height", 50)
 
 
 </script>
