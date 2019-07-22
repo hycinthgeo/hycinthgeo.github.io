@@ -1,13 +1,13 @@
 
 <!DOCTYPE html>
-<title> Introduction to USA counties (under development) </title>
+<h> Introduction to USA counties (under development) </h>
 <p> Reference: https://bl.ocks.org/mbostock/4122298 </p>
 
 <style>
 
 .counties :hover {
   fill: red;
-  
+
 }
 
 .county-borders {
@@ -17,6 +17,16 @@
   stroke-linejoin: round;
   stroke-linecap: round;
   pointer-events: none;
+}
+
+.state-boarders {
+  fill: none;
+  stroke: #aaa;
+  stroke-width: 2.0px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  pointer-events: none;
+
 }
 
 </style>
@@ -41,6 +51,10 @@ d3.json("https://d3js.org/us-10m.v1.json", function(error, us) {
 
   svg.append("path")
       .attr("class", "county-borders")
+      .attr("d", path(topojson.mesh(us, us.objects.counties, function(a, b) { return a !== b; })));
+
+  svg.append("path")
+      .attr("class", "state-boarders")
       .attr("d", path(topojson.mesh(us, us.objects.counties, function(a, b) { return a !== b; })));
 });
 
