@@ -21,16 +21,33 @@ var simulation = d3.forceSimulation()
 	.force("charge", d3.forceManyBody())
 	.force("center", d3.forceCenter(width / 2, height / 2));
 
-var nodes = {
-	{"value": 4}, 
+var nodes = [{"value": 4}, 
 	{"value": 8},
 	{"value": 15},
 	{"value": 16},
 	{"value": 23},
-	{"value": 42}
-};	
+	{"value": 42}];	
 
 simulation.nodes(nodes)
+
+var links = [
+	{"source": 8, "target": 4},
+	{"source": 16, "target": 4},
+	{"source": 16, "target": 8},
+	{"source": 23, "target": 8},
+	{"source": 23, "target": 15},
+	{"source": 42, "target": 4},
+	{"source": 42, "target": 15},
+	{"source": 42, "target": 23}
+];
+
+simulation.force("link").link(links)
+
+var linkse1 = svg.append("g")
+	.attr("class", "link")
+	.selectAll("line").data(links).enter().append("line")
+
+	
 </script>
 
 
