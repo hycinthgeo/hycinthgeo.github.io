@@ -1,26 +1,37 @@
+<!DOCTYPE html>
 <html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
-<style> path {stroke: black;}</style>
-<body>
-<svg width=300 height=300>
-<p> SVG OK </p>
-</svg>
-<script>
-var data = [4,8,15,16,23,42];
-var color = ['pink','lightyellow','lightgreen','lightcyan','lightblue','violet'];
-var pie = d3.pie();
-var arc = d3.arc().innerRadius(0).outerRadius(100);
 
-d3.select("svg").
-append("g").attr("transform", "translate(150,150)")
-.selectAll("path")
-.data(pie(data))
-.enter()
-.append("path")
-.attr("d", arc)
-.attr("fill", function(d, i) {return color[i];});
+<style>
+.link line {stroke: black;}
+.node circle {stroke: black; fill: white;}
+.node text {text-anchor: middle; font-size: 20px;}
+</style>
 
+<svg width = "300" height = "300"></svg>
 
+<script> 
+var svg = d3.select("svg"), 
+	width = +svg.attr("width")
+	height = +svg.attr("height")
+
+var simulation = d3.forceSimulation()
+	.force("link", d3.forceLink().distance(75)
+		.id(function(d) {return d.value;}))
+	.force("charge", d3.forceManyBody())
+	.force("center", d3.forceCenter(width / 2, height / 2));
+
+var nodes = {
+	{"value": 4}, 
+	{"value": 8},
+	{"value": 15},
+	{"value": 16},
+	{"value": 23},
+	{"value": 42}
+};	
+
+simulation.nodes(nodes)
 </script>
-</body>
+
+
 </html>
