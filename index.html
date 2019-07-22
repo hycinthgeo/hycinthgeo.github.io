@@ -21,12 +21,17 @@ var svg = d3.select("svg"),
 	width = +svg.attr("width")
 	height = +svg.attr("height")
 
-d3.select("svg").selectAll("circle").data([0])
+var colors = ["red", "orange", "yellow", "green", "blue", "lightblue", "purple"]
+d3.select("svg").selectAll("circle").data([0, 1, 2, 3, 4, 5, 6])
 	.enter().append("circle")
-	.attr("cx", 100).attr("cy", 100)
+	.attr("cx", function(d, i){ return 100 + i * 50;})
+	.attr("cy", 100)
 	.attr("r", 20)
-	.attr("fill", "blue")
+	.attr("fill", function(d, i){ return colors[i];})
 	.attr("text", "10")
+
+//click blue circle to print "hello Tianhao"
+
 
 
 </script>
