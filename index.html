@@ -23,8 +23,10 @@ var svg = d3.select("svg"),
 
 d3.select("svg").selectAll("rect").data([0])
 	.enter().append("rect")
+	.attr("x", 50).attr("y", 50)
 	.attr("width", 50)
 	.attr("height", 50)
+	.attr("fill", red)
 
 
 </script>
