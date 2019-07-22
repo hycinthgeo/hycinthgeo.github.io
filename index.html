@@ -5,6 +5,7 @@
 
 <style>
 
+
 .counties :hover {
   fill: red;
 
@@ -38,6 +39,8 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/topojson.v2.min.js"></script>
 <script>
+  
+const county_id2name = d3.csv("https://github.com/hycinthgeo/hycinthgeo.github.io/blob/master/county_id2name.csv");
 
 var svg = d3.select("svg");
 
@@ -68,7 +71,7 @@ d3.json("https://d3js.org/us-10m.v1.json", function(error, us) {
   svg.append("path")
       .attr("class", "state-boarders")
       .attr("d", path(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; })))
-      .attr("text", "20");
+  
 
 
 
