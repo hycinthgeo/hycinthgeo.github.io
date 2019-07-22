@@ -8,8 +8,7 @@
 .node text {text-anchor: middle; font-size: 20px;}
 </style>
 
-<svg width = "300" height = "300"></svg>
-<p> svg ok </p>
+<svg width = "500" height = "500"></svg>
 <script>
 
 d3.select("svg").selectAll("rect").data([0])
@@ -22,6 +21,7 @@ var svg = d3.select("svg"),
 	height = +svg.attr("height")
 
 var colors = ["red", "orange", "yellow", "green", "blue", "lightblue", "purple"]
+
 d3.select("svg").selectAll("circle").data([0, 1, 2, 3, 4, 5, 6])
 	.enter().append("circle")
 	.attr("cx", function(d, i){ return 100 + i * 50;})
@@ -29,8 +29,41 @@ d3.select("svg").selectAll("circle").data([0, 1, 2, 3, 4, 5, 6])
 	.attr("r", 20)
 	.attr("fill", function(d, i){ return colors[i];})
 	.attr("text", "10")
+	.on("mouseover", handleMouseOver)
+	.on("mouseout", handleMouseOut)
 
-//click blue circle to print "hello Tianhao"
+//click on different circles to trigger different words 
+      // Create Event Handlers for mouse
+function handleMouseOver(d, i) {  // Add interactivity
+
+    // Use D3 to select element, change color and size
+    d3.select(this).attr({
+      fill: "orange",
+      r: radius * 2
+    });
+
+    // Specify where to put label of text
+    svg.append("text").attr({
+       id: "t" + d.x + "-" + d.y + "-" + i,  // Create an id for text so we can select it later for removing on mouseout
+        x: function() { return xScale(d.x) - 30; },
+        y: function() { return yScale(d.y) - 15; }
+    })
+    .text(function() {
+      return [d.x, d.y];  // Value of the text
+    });
+  }
+
+function handleMouseOut(d, i) {
+    // Use D3 to select element, change color back to normal
+    d3.select(this).attr({
+      fill: "black",
+      r: radius
+    });
+
+    // Select text by id and then remove
+    d3.select("#t" + d.x + "-" + d.y + "-" + i).remove();  // Remove text location
+  }
+
 
 
 
