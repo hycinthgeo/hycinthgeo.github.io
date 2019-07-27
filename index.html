@@ -39,7 +39,7 @@
 
             d3.csv('query.csv', function loadCallback(error, data) {
                 data.forEach(function(d) { // convert strings to numbers
-                    d.logitude = +d.logitude;
+                    d.longitude = +d.longitude;
                     d.latitude = +d.latitude;
                 });
                 makeVis(data);
@@ -67,8 +67,8 @@
                   .range([0, width]);
 
               var yScale = d3.scale.linear()
-                  .domain([ d3.min(data, function(d) { return d.logitude; }) - 1,
-                            d3.max(data, function(d) { return d.logitude; }) + 1 ])
+                  .domain([ d3.min(data, function(d) { return d.longitude; }) - 1,
+                            d3.max(data, function(d) { return d.longitude; }) + 1 ])
                   .range([height, 0]); // flip order because y-axis origin is upper LEFT
 
               // Define our axes
@@ -101,7 +101,7 @@
                   .attr("transform", "rotate(-90)") // although axis is rotated, text is not
                   .attr("y", 15) // y-offset from yAxis, moves text to the RIGHT because it's rotated, and positive y is DOWN
                   .style("text-anchor", "end")
-                  .text("logitude");
+                  .text("longitude");
 
               // Add the tooltip container to the vis container
               // it's invisible and its position/contents are defined during mouseover
@@ -114,7 +114,7 @@
                   var color = colorScale(d.mag);
                   var html  = d.time + "<br/>" +
                               "<span style='color:" + color + ";'>" + d.mag + "</span><br/>" +
-                              "<b>" + d.latitude + "</b> latitude, <b/>" + d.logitude + "</b> logitude";
+                              "<b>" + d.latitude + "</b> latitude, <b/>" + d.longitude + "</b> longitude";
 
                   tooltip.html(html)
                       .style("left", (d3.event.pageX + 15) + "px")
@@ -138,7 +138,7 @@
                 .attr("class", "dot")
                 .attr("r", 5.5) // radius size, could map to another data dimension
                 .attr("cx", function(d) { return xScale( d.latitude ); })     // x position
-                .attr("cy", function(d) { return yScale( d.logitude ); })  // y position
+                .attr("cy", function(d) { return yScale( d.longitude ); })  // y position
                 .style("fill", function(d) { return colorScale(d.mag); })
                 .on("mouseover", tipMouseover)
                 .on("mouseout", tipMouseout);
