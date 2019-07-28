@@ -177,8 +177,7 @@
 
 
       bars.append("rect")
-      .attr("x", 300).attr("y", function(d, i){return 10 + i * 20;}). attr("width", 50).attr("height", 10).attr("fill", "lightblue")
-
+      .attr("x", 300).attr("y", function(d, i){return barHeight - 1;}). attr("width", 50).attr("height", 10).attr("fill", "lightblue")
 
       //.attr("height", barHeight - 1);
       bars.append("text")
