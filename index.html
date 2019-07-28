@@ -82,8 +82,10 @@
         .attr("height", h);
 
       //map boundary
-      svg.select("rect").data().enter().append("rect")
-        .attr("x", 25).attr("y", 10).attr("width", 150).attr("height", 140)
+      var canvas = svg.select("rect").data([0]).enter().append("g")
+        .attr("transform", (25, 10))
+      canvas.append("rect")
+        .attr("width", 150).attr("height", 140)
 
 
       //Load in GeoJSON data
