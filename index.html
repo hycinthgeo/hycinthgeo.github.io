@@ -104,7 +104,7 @@
       });*/
 
       //add box, add x, y axis for latitude, longitude
-      svg.append("rect").attr("transform", "translate(25, 10)")
+      svg.append("rect").attr("transform", "translate(25, 5)")
       .attr("width", 150).attr("height", 190).attr("fill", "none").attr("stroke", "blue")
 
       var xScale = d3.scale.linear()
@@ -119,7 +119,7 @@
               // Add x-axis to the canvas
       svg.append("g")
           .attr("class", "x axis")
-          .attr("transform", "translate(0," + 200 + ")") // move axis to the bottom of the canvas
+          .attr("transform", "translate(0," + 195 + ")") // move axis to the bottom of the canvas
           .call(xAxis.ticks(3))
         .append("text")
           .attr("class", "label")
@@ -128,6 +128,23 @@
           .style("text-anchor", "end") // right-justify text
           .style("font-size", "6px")
           .text("longitude").style("font-size", "6px");
+
+      var yScale = d3.scale.linear()
+          .domain([ 49.875, 26.125])
+          .range([5, 195]);
+      var yAxis = d3.svg.axis()
+          .scale(yScale)
+          .orient('left');
+              // Add y-axis to the canvas
+      svg.append("g")
+          .attr("class", "y axis") // .orient('left') took care of axis positioning for us
+          .call(yAxis.ticks(5))
+        .append("text")
+          .attr("class", "label")
+          .attr("transform", "rotate(-90)") // although axis is rotated, text is not
+          .attr("y", 5) // y-offset from yAxis, moves text to the RIGHT because it's rotated, & positive y is DOWN
+          .style("text-anchor", "end").style("font-size", "6px")
+          .text("latitude").style("font-size", "6px");
 
       //load and visualize surrounding state - Oregon
       d3.json("data_geojson/states2017_or.geojson", function(json) {
