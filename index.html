@@ -1,25 +1,53 @@
-<script>
-        //Width and height
-        var w = 500;
-        var h = 300;
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mercator projection</title>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <style>
+      body {
+        background-color: gray;
+        margin: 1em auto;
+        width: 500px;
+      }
+      svg {
+        background-color: white;
+      }
+      g path {
+        fill: none;
+        stroke: #2E9C32;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      //Width and height
+      var w = 500;
+      var h = 300;
 
-        //Define path generator
-        var path = d3.geo.path();
+      //Define map projections
+      var mercator = d3.geo.mercator()
+        .center([ -73.6, 45.5 ])
+        .translate([ w * 0.5, h * 0.6 ])
+        .scale([ w * 128 ]);
+      
+      //Define path generators
+      var generator = d3.geo.path().projection(mercator);
 
-        //Create SVG element
-        var svg = d3.select("body").append("svg").attr({width:w, height: h});
+      //Create SVG
+      var svg = d3.select("body")
+        .append("svg")
+        .attr("width", w)
+        .attr("height", h);
 
-        //Load in GeoJSON data
-        d3.json("county2017_ca.json", function(json) {
-
-            //Bind data and create one path per GeoJSON feature
-            svg.selectAll("path")
-               .data(json.features)
-               .enter()
-               .append("path")
-               .attr("d", path)
-               .attr("fill","#666666");
-
-        });
-
+      //Load in GeoJSON data
+      d3.json("montreal-polygon.geojson", function(json) {
+        svg.append("g").selectAll("path")
+          .data(json.features)
+          .enter()
+          .append("path")
+          .attr("d", generator);
+      });
     </script>
+  </body>
+</html>
