@@ -119,7 +119,7 @@
               // Add x-axis to the canvas
       svg.append("g")
           .attr("class", "x axis")
-          .attr("transform", "translate(25," + 200 + ")") // move axis to the bottom of the canvas
+          .attr("transform", "translate(0," + 200 + ")") // move axis to the bottom of the canvas
           .call(xAxis.ticks(3))
         .append("text")
           .attr("class", "label")
