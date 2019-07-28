@@ -57,7 +57,7 @@
       var mercator = d3.geo.mercator()
         .center([ -120, 38 ])
         .translate([ w * 0.5, h * 0.5 ])
-        .scale([ w * 2 ]);
+        .scale([ w * 3 ]);
       
       //Define path generators
       var generator = d3.geo.path().projection(mercator);
@@ -130,7 +130,7 @@
       text_or.append("textPath")
           .attr("stroke","black")
           .attr("xlink:href","#path_or")
-          .text("abc");
+          .text("X");
 
 
       //load and visualize faults in plot area 
@@ -144,9 +144,10 @@
       });
 
 
-      //place holder for project earthquake points
+      //place holder for project earthquake points - 1906 San Francisco earthquake
       svg.append("g").selectAll("circle").data([0])
-      .enter().append("circle").attr("x", -120).attr("y", 40).attr("r", 2)
+      .enter().append("circle")
+      .attr("x", --122.5500).attr("y", 37.7500).attr("r", 2).attr("fill", "orange")
 
     </script>
   </body>
