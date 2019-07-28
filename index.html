@@ -81,13 +81,6 @@
         .attr("width", w)
         .attr("height", h);
 
-      //map boundary
-      var canvas = svg.select("rect").data([0]).enter().append("g")
-        .attr("transform", (25, 10))
-      canvas.append("rect")
-        .attr("width", 150).attr("height", 140)
-
-
       //Load in GeoJSON data
       d3.json("data_geojson/county2017_ca.geojson", function(json) {
         svg.append("g").selectAll("path")
@@ -96,7 +89,7 @@
           .append("path").attr("stroke", "blue").attr("fill", "none")
           .attr("d", generator);
       });
-        /*.on("mouseover", function(d) {    
+              /*.on("mouseover", function(d) {    
           div.transition()    
               .duration(200)    
               .style("opacity", .9);    
@@ -109,6 +102,9 @@
               .duration(500)    
               .style("opacity", 0); 
       });*/
+
+      svg.append("rect")
+      .attr("width", 150).attr("height", 140).attr("fill", "none").attr("stroke", "blue")
 
 
 
