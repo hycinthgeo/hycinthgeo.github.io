@@ -10,7 +10,7 @@
         var svg = d3.select("body").append("svg").attr({width:w, height: h});
 
         //Load in GeoJSON data
-        d3.json("us.json", function(json) {
+        d3.json("county2017_ca.json", function(json) {
 
             //Bind data and create one path per GeoJSON feature
             svg.selectAll("path")
