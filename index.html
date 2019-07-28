@@ -138,6 +138,7 @@
               // Add y-axis to the canvas
       svg.append("g")
           .attr("class", "y axis") // .orient('left') took care of axis positioning for us
+          .attr("transform", "translate(" + 25 + ",0)") // move axis to the bottom of the canvas
           .call(yAxis.ticks(5))
         .append("text")
           .attr("class", "label")
