@@ -82,7 +82,7 @@
         .attr("height", h);
 
       //Load in GeoJSON data
-      d3.json("replace.geojson", function(json) {
+      d3.json("data_geojson/counties2017_ca.geojson", function(json) {
         svg.append("g").selectAll("path")
           .data(json.features)
           .enter()
@@ -106,7 +106,7 @@
 
 
       //load and visualize surrounding state - Oregon
-      d3.json("states2017_or.geojson", function(json) {
+      d3.json("data_geojson/states2017_or.geojson", function(json) {
         svg.append("g").selectAll("path")
           .data(json.features)
           .enter()
@@ -115,7 +115,7 @@
       });
 
       //load and visualize surrounding state - Nevada
-      d3.json("states2017_nv.geojson", function(json) {
+      d3.json("data_geojson/states2017_nv.geojson", function(json) {
         svg.append("g").selectAll("path")
           .data(json.features)
           .enter()
@@ -134,7 +134,7 @@
 
 
       //load and visualize faults in plot area 
-      d3.json("faults_earthquake_active.geojson", function(json) {
+      d3.json("data_geojson/faults_earthquake_active.geojson", function(json) {
         svg.append("g").selectAll("path")
           .data(json.features)
           .enter()
@@ -159,7 +159,7 @@
 
 
       var pins = svg.append("g");
-      d3.json("usgs_earthquake_since1900_mag7plus.geojson", function(zipPoints) {
+      d3.json("data_geojson/usgs_earthquake_since1900_mag7plus.geojson", function(zipPoints) {
           pins.selectAll("circle")
               .data(zipPoints.features)
               .enter()

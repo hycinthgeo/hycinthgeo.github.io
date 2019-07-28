@@ -1,3 +1,4 @@
 ref_*.html
-cb_2017_us_county_5m/
+other_data/*
+other_refcodes/*
 county_id2name.csv
