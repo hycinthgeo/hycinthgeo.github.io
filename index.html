@@ -50,14 +50,14 @@
   <body>
     <script>
       //Width and height
-      var w = 200;
+      var w = 500;
       var h = 250;
 
       //Define map projections
       var mercator = d3.geo.mercator()
         .center([ -120, 38 ])
-        .translate([ w * 0.5, h * 0.5 ])
-        .scale([ w * 3 ]);
+        .translate([ 100, h * 0.5 ])
+        .scale([ 600 ]);
       
       //Define path generators
       var generator = d3.geo.path().projection(mercator);
@@ -171,8 +171,8 @@
       });
 
       svg.append("g")
-      .selectAll("rect").data([0]).enter().append("rect")
-      .attr("x", 0).attr("y", 0). attr("width", 50).attr("height", 10)
+      .selectAll("rect").data([0, 1, 2, 3, 4, 5]).enter().append("rect")
+      .attr("x", 300).attr("y", function(d, i){return 10 + i * 20;}). attr("width", 50).attr("height", 10).attr("fill", "lightblue")
 
       /*svg.append("g").selectAll("circle").data([0])
       .enter().append("circle").attr("transform", "translate(100,100)")
