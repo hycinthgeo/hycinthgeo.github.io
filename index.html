@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p> test geojson2 </p>
+  <p> Earthquake-Active Faults (California and Nearby States) </p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
@@ -46,34 +46,30 @@
         svg.append("g").selectAll("path")
           .data(json.features)
           .enter()
-          .append("path")
-          .attr("d", generator)
-          .attr("stroke", "blue");
+          .append("path").attr("stroke", "blue")
+          .attr("d", generator);
       });
       d3.json("states2017_or.geojson", function(json) {
         svg.append("g").selectAll("path")
           .data(json.features)
           .enter()
-          .append("path")
-          .attr("d", generator)
-          .attr("stroke", "blue");
+          .append("path").attr("stroke", "blue")
+          .attr("d", generator);
       });
       d3.json("states2017_nv.geojson", function(json) {
         svg.append("g").selectAll("path")
           .data(json.features)
           .enter()
-          .append("path")
-          .attr("d", generator)
-          .attr("stroke", "blue");
+          .append("path").attr("stroke", "blue")
+          .attr("d", generator);
       });
 
       d3.json("faults_earthquake_active.geojson", function(json) {
         svg.append("g").selectAll("path")
           .data(json.features)
           .enter()
-          .append("path")
-          .attr("d", generator)
-          .attr("stroke", "red");
+          .append("path").attr("stroke", "red")
+          .attr("d", generator);
 
       });
 
