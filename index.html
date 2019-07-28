@@ -154,8 +154,12 @@
           .attr("d", generator);
       }); */
 
+      //geojson for big earthquake 
+
+
+
       var pins = svg.append("g");
-      d3.json("earthquake.geojson", function(zipPoints) {
+      d3.json("usgs_earthquake_since1900_mag7plus.geojson", function(zipPoints) {
           pins.selectAll("circle")
               .data(zipPoints.features)
               .enter()
