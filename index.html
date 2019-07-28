@@ -7,12 +7,12 @@
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <style>
       body {
-        background-color: white;
+        background-color: gray;
         margin: 1em auto;
         width: 500px;
       }
       svg {
-        background-color: gray;
+        background-color: white;
       }
       /*g path {
         fill: none;
@@ -48,7 +48,23 @@
           .enter()
           .append("path").attr("stroke", "blue")
           .attr("d", generator);
-      });
+      //});
+          .on("mouseover", function(d) {    
+            div.transition()    
+                .duration(200)    
+                .style("opacity", .9);    
+            div .html(d.name + "<br/>"  + d.STATEFP)  
+                .style("left", (d3.event.pageX) + "px")   
+                .style("top", (d3.event.pageY - 28) + "px");  
+            })          
+          .on("mouseout", function(d) {   
+            div.transition()    
+                .duration(500)    
+                .style("opacity", 0); 
+        });
+
+
+
       d3.json("states2017_or.geojson", function(json) {
         svg.append("g").selectAll("path")
           .data(json.features)
