@@ -7,7 +7,7 @@
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <style>
       body {
-        background-color: gray;
+        background-color: white;
         margin: 1em auto;
         width: 500px;
       }
@@ -28,9 +28,9 @@
 
       //Define map projections
       var mercator = d3.geo.mercator()
-        .center([ -120, 40 ])
+        .center([ -120, 38 ])
         .translate([ w * 0.5, h * 0.6 ])
-        .scale([ w * 1 ]);
+        .scale([ w * 2 ]);
       
       //Define path generators
       var generator = d3.geo.path().projection(mercator);
