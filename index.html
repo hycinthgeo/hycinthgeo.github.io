@@ -146,7 +146,7 @@
 
       //place holder for project earthquake points - 1906 San Francisco earthquake
       svg.append("g").selectAll("circle").data([0])
-      .enter().append("circle")
+      .enter().append("circle")..attr("transform", "translate(body.margin,body.margin)")
       .attr("cx", -122.5500).attr("cy", 37.7500).attr("r", 2).attr("fill", "orange")
 
     </script>
