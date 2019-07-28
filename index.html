@@ -64,6 +64,16 @@
           .attr("d", generator);
       });
 
+      d3.json("faults_nearby.geojson", function(json) {
+        svg.append("g").selectAll("path")
+          .data(json.features)
+          .enter()
+          .append("path")
+          .attr("d", generator)
+          .attr("fill", "red");
+
+      });
+
 
       //project earthquake points
 
