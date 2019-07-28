@@ -82,7 +82,7 @@
         .attr("height", h);
 
       //Load in GeoJSON data
-      d3.json("data_geojson/replace.geojson", function(json) {
+      d3.json("data_geojson/county2017_ca.geojson", function(json) {
         svg.append("g").selectAll("path")
           .data(json.features)
           .enter()
