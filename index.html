@@ -157,7 +157,7 @@
       //geojson for big earthquake 
 
 
-
+      //temporary geojson for earthquake, still working on a better list
       var pins = svg.append("g");
       d3.json("data_geojson/usgs_earthquake_since1900_mag7plus.geojson", function(zipPoints) {
           pins.selectAll("circle")
@@ -176,7 +176,7 @@
 
 
       //add text box 
-      <text x="500" y="100" font-family="sans-serif" font-size="20px" fill="red">Earthquake Filter!</text>
+      //<text x="500" y="100" font-family="sans-serif" font-size="20px" fill="red">Earthquake Filter!</text>
 
     </script>
   </body>
