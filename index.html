@@ -47,21 +47,24 @@
           .data(json.features)
           .enter()
           .append("path")
-          .attr("d", generator);
+          .attr("d", generator)
+          .attr("stroke", "stroke");
       });
       d3.json("states2017_or.geojson", function(json) {
         svg.append("g").selectAll("path")
           .data(json.features)
           .enter()
           .append("path")
-          .attr("d", generator);
+          .attr("d", generator)
+          .attr("stroke", "black");
       });
       d3.json("states2017_nv.geojson", function(json) {
         svg.append("g").selectAll("path")
           .data(json.features)
           .enter()
           .append("path")
-          .attr("d", generator);
+          .attr("d", generator)
+          .attr("stroke", "black");
       });
 
       d3.json("faults_earthquake_active.geojson", function(json) {
@@ -69,7 +72,8 @@
           .data(json.features)
           .enter()
           .append("path")
-          .attr("d", generator);
+          .attr("d", generator)
+          .attr("stroke", "red");
 
       });
 
