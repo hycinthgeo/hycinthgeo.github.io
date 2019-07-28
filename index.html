@@ -30,7 +30,7 @@
       var mercator = d3.geo.mercator()
         .center([ -120, 40 ])
         .translate([ w * 0.5, h * 0.6 ])
-        .scale([ w * 128 ]);
+        .scale([ w * 1 ]);
       
       //Define path generators
       var generator = d3.geo.path().projection(mercator);
