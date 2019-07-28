@@ -145,8 +145,17 @@
 
 
       //place holder for project earthquake points - 1906 San Francisco earthquake
+      d3.json("earthquake.geojson", function(json) {
+        svg.append("g").selectAll("circle")
+          .data(json.features)
+          .enter()
+          .append("circle").attr("fill", "green")
+          .attr("d", generator);
+      });
+
+
       svg.append("g").selectAll("circle").data([0])
-      .enter().append("circle")..attr("transform", "translate(body.margin,body.margin)")
+      .enter().append("circle").attr("transform", "translate(100,100)")
       .attr("cx", -122.5500).attr("cy", 37.7500).attr("r", 2).attr("fill", "orange")
 
     </script>
