@@ -145,18 +145,30 @@
 
 
       //place holder for project earthquake points - 1906 San Francisco earthquake
-      d3.json("earthquake.geojson", function(json) {
+      /*d3.json("earthquake.geojson", function(json) {
         svg.append("g").selectAll("circle")
           .data(json.features)
           .enter()
-          .append("circle").attr("fill", "green")
+          .append("circle")
+          .attr("cx").attr().attr("r", 2).attr("fill", "green")
           .attr("d", generator);
+      }); */
+
+      var pins = svg.append("g");
+      d3.json("earthquake.geojson", function(zipPoints) {
+          pins.selectAll("circle")
+              .data(zipPoints.features)
+              .enter()
+              .append("circle")
+              .attr("r", 5)
+              .style("fill", "red")
+              .classed("pin", true);
       });
 
 
-      svg.append("g").selectAll("circle").data([0])
+      /*svg.append("g").selectAll("circle").data([0])
       .enter().append("circle").attr("transform", "translate(100,100)")
-      .attr("cx", -122.5500).attr("cy", 37.7500).attr("r", 2).attr("fill", "orange")
+      .attr("cx", -122.5500).attr("cy", 37.7500).attr("r", 2).attr("fill", "orange")*/
 
     </script>
   </body>
