@@ -50,13 +50,13 @@
   <body>
     <script>
       //Width and height
-      var w = 300;
-      var h = 300;
+      var w = 200;
+      var h = 250;
 
       //Define map projections
       var mercator = d3.geo.mercator()
         .center([ -120, 38 ])
-        .translate([ w * 0.5, h * 0.6 ])
+        .translate([ w * 0.5, h * 0.5 ])
         .scale([ w * 2 ]);
       
       //Define path generators
@@ -72,9 +72,9 @@
       })); */
 
       // Define the div for the tooltip
-      var div = d3.select("body").append("div") 
+      /*var div = d3.select("body").append("div") 
           .attr("class", "tooltip")       
-          .style("opacity", 0);
+          .style("opacity", 0);*/
 
       var svg = d3.select("body")
         .append("svg")
@@ -88,6 +88,7 @@
           .enter()
           .append("path").attr("stroke", "blue").attr("fill", "none")
           .attr("d", generator);
+      });
         /*.on("mouseover", function(d) {    
           div.transition()    
               .duration(200)    
@@ -99,8 +100,8 @@
         .on("mouseout", function(d) {   
           div.transition()    
               .duration(500)    
-              .style("opacity", 0); */
-      });
+              .style("opacity", 0); 
+      });*/
 
 
 
@@ -144,6 +145,8 @@
 
 
       //place holder for project earthquake points
+      svg.append("g").selectAll("circle").data([0])
+      .enter().append("circle").attr("x", -120).attr("y", 40).attr("r", 2)
 
     </script>
   </body>
