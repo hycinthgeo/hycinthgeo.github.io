@@ -116,6 +116,17 @@
           .scale(xScale)
           .orient('bottom');
 
+              // Add x-axis to the canvas
+      svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(10," + 200 + ")") // move axis to the bottom of the canvas
+          .call(xAxis)
+        .append("text")
+          .attr("class", "label")
+          .attr("x", 150) // x-offset from the xAxis, move label all the way to the right
+          .attr("y", -6)    // y-offset from the xAxis, moves text UPWARD!
+          .style("text-anchor", "end") // right-justify text
+          .text("longitude");
 
       //load and visualize surrounding state - Oregon
       d3.json("data_geojson/states2017_or.geojson", function(json) {
