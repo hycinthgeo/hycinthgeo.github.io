@@ -151,16 +151,17 @@
 
       //geojson for big earthquake 
       var selected_earthquakes = [
-          [-116.07, 33.08, "Borrego Mountain Earthquake", 6.5, "1968-04-09 02:28:59", "https://pubs.usgs.gov/pp/0787/report.pdf"],
-          [-117.49, 38.32, "Cedar Mountain Earthquake", 7.2, "1932-12-20", "https://en.wikipedia.org/wiki/Cedar_Mountains_(Nevada)"]];
+        [-116.07, 33.08, "Borrego Mountain Earthquake", 6.5, "1968-04-09 02:28:59", "https://pubs.usgs.gov/pp/0787/report.pdf"],
+        [-117.49, 38.32, "Cedar Mountain Earthquake", 7.2, "1932-12-20", "https://en.wikipedia.org/wiki/Cedar_Mountains_(Nevada)"]]
+        [-120.32, 36.22, "Coalinga Earthquake", 6.2, "1983-05-02 23:42:37", "https://en.wikipedia.org/wiki/1983_Coalinga_earthquake"];
 
       svg.selectAll("circle")
       .data(selected_earthquakes).enter()
       .append("circle")
       .attr("cx", function (d) { console.log(projection(d)); return projection(d)[0]; })
       .attr("cy", function (d) { return projection(d)[1]; })
-      .attr("r", "8px")
-      .attr("fill", "green")
+      .attr("r", "6px")
+      .attr("fill", "blue")
 
 
       d3.json("data_geojson/temp.geojson", function(zipPoints) {
