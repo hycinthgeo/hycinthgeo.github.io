@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p style="font-size:160%; color:white;"> Earthquake-Active Faults (California and Nearby States) temp-more earthquake</p>
+  <p style="font-size:160%; color:white;"> Earthquake-Active Faults (California and Nearby States) temp-more earthquake2</p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
@@ -169,7 +169,7 @@
       [-119.78, 38.69, "Double Springs Flat Earthquake", 6.0, "1994-09-12 05:23", "www.nbmg.unr.edu/_docs/Newsletters/nl25a.htm"],
       [-115.29, 32.26, "El Mayor Cucapah (Baja California) Earthquake", 7.2, "https://www.eeri.org/site/images/eeri_newsletter/2010_pdf/Baja_CA_EQRpt.pdf"]];
 
-      var names = ["Borrego Mountain Earthquake", "Cedar Mountain Earthquake", "Coalinga Earthquake", "Double Springs Flat Earthquake", "El Mayor Cucapah (Baja California) Earthquake" ]
+
 
 
 
@@ -218,11 +218,13 @@
       .attr("width", function(d){return 100;}).attr("height", 10).attr("fill", "lightblue")
 
       //.attr("height", barHeight - 1);
+      var earthquake_names = ["Borrego Mountain Earthquake", "Cedar Mountain Earthquake", "Coalinga Earthquake", "Double Springs Flat Earthquake", "El Mayor Cucapah (Baja California) Earthquake" ]
+
       bars.append("text")
           .attr("x", function(d) { return eathquake_bar_pos + i * 20 ; })
           .attr("y", 50 + barHeight - 2 + barHeight / 2)
           .attr("dy", ".35em")
-          .text(function(d, i) { return names[2]; }).style("font-size", "8px");
+          .text(function(d, i) { return earthquake_names[i]; }).style("font-size", "8px");
 
       /*svg.append("g").selectAll("circle").data([0])
       .enter().append("circle").attr("transform", "translate(100,100)")
