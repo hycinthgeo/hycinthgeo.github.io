@@ -1,0 +1,10 @@
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.55, 37.75]
+  },
+  "properties": {
+    "name": "San Francisco Earthquake"
+  }
+}
