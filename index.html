@@ -162,12 +162,12 @@
 
 
       var selected_earthquakes = [
-      [-116.07, 33.08, "Borrego Mountain Earthquake", 6.5, "1968-04-09 02:28:59", "https://pubs.usgs.gov/pp/0787/report.pdf"],
-      [-117.49, 38.32, "Cedar Mountain Earthquake", 7.2, "1932-12-20", "https://en.wikipedia.org/wiki/Cedar_Mountains_(Nevada)"],
-      [-120.32, 36.22, "Coalinga Earthquake", 6.2, "1983-05-02 23:42:37", "https://en.wikipedia.org/wiki/1983_Coalinga_earthquake"],
-      [-118.07, 39.71, "Dixie Valley Earthquake", 7.3, "1954-12-16 ", "https://en.wikipedia.org/wiki/Dixie_Valley,_Nevada"],
-      [-119.78, 38.69, "Double Springs Flat Earthquake", 6.0, "1994-09-12 05:23", "www.nbmg.unr.edu/_docs/Newsletters/nl25a.htm"],
-      [-115.29, 32.26, "El Mayor Cucapah (Baja California) Earthquake", 7.2, "https://www.eeri.org/site/images/eeri_newsletter/2010_pdf/Baja_CA_EQRpt.pdf"]];
+      [-116.07, 33.08, "Borrego Mountain Earthquake", 6.5, 1968, "1968-04-09 02:28:59", "https://pubs.usgs.gov/pp/0787/report.pdf"],
+      [-117.49, 38.32, "Cedar Mountain Earthquake", 7.2, 1932, "1932-12-20", "https://en.wikipedia.org/wiki/Cedar_Mountains_(Nevada)"],
+      [-120.32, 36.22, "Coalinga Earthquake", 6.2, 1983, "1983-05-02 23:42:37", "https://en.wikipedia.org/wiki/1983_Coalinga_earthquake"],
+      [-118.07, 39.71, "Dixie Valley Earthquake", 7.3, 1954, "1954-12-16 ", "https://en.wikipedia.org/wiki/Dixie_Valley,_Nevada"],
+      [-119.78, 38.69, "Double Springs Flat Earthquake", 6.0, 1994, "1994-09-12 05:23", "www.nbmg.unr.edu/_docs/Newsletters/nl25a.htm"],
+      [-115.29, 32.26, "El Mayor Cucapah (Baja California) Earthquake", 7.2, 2010, "xxx", "https://www.eeri.org/site/images/eeri_newsletter/2010_pdf/Baja_CA_EQRpt.pdf"]];
 
 
 
@@ -222,17 +222,35 @@
 
       bars.append("text")
           .attr("x", eathquake_bar_pos)
-          .attr("y", 50 + barHeight - 4 + barHeight / 2)
+          .attr("y", 50 + barHeight - 6 + barHeight / 2)
           .attr("dy", ".35em")
           .text(function(d, i) { return d[2]; }).style("font-size", "8px");
 
-      /*svg.append("g").selectAll("circle").data([0])
-      .enter().append("circle").attr("transform", "translate(100,100)")
-      .attr("cx", -122.5500).attr("cy", 37.7500).attr("r", 2).attr("fill", "orange")*/
+
+      //y scale for years
+      var yScale = d3.scale.linear()
+          .domain([ 1932, 2019])
+          .range([50, 450]);
+      var yAxis = d3.svg.axis()
+          .scale(yScale)
+          .orient('left');
+              // Add y-axis to the canvas
+      svg.append("g")
+          .attr("class", "y axis") // .orient('left') took care of axis positioning for us
+          .attr("transform", "translate(" + 450 + ",50)") // move axis to the bottom of the canvas
+          .call(yAxis.ticks(5))
+        .append("text")
+          .attr("class", "label")
+          .attr("transform", "rotate(90)") // although axis is rotated, text is not
+          .attr("y", 50) // y-offset from yAxis, moves text to the RIGHT because it's rotated, & positive y is DOWN
+          .style("text-anchor", "end").style("font-size", "6px")
+          .text("Year").style("font-size", "6px");
 
 
-      //add text box 
-      //<text x="500" y="100" font-family="sans-serif" font-size="20px" fill="red">Earthquake Filter!</text>
+
+
+
+
 
     </script>
   </body>
