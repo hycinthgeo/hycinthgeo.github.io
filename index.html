@@ -222,8 +222,10 @@
               .enter()
               .append("circle")
               .classed("pin", true).attr("d", generator)              
+              .attr("cx", function(d){return d.longitude;})
+              .attr("cx", function(d){return d.latitude;})
               .attr("r", 5)
-              .style("fill", "red");
+              .style("fill", "green");
       });
 
       var barHeight = 15;
