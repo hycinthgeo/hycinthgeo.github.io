@@ -55,13 +55,13 @@
       var eathquake_bar_pos = 220
 
       //Define map projections
-      var mercator = d3.geo.mercator()
+      var projection = d3.geo.mercator()
         .center([ -120, 38 ])
         .translate([ 100, h * 0.5 ])
         .scale([ 600 ]);
       
       //Define path generators
-      var generator = d3.geo.path().projection(mercator);
+      var generator = d3.geo.path().projection(projection);
 
       //Very ugly place holder for Zoom in 
       /*d3.select("body")
@@ -214,7 +214,7 @@
 
 
       //temporary geojson for earthquake, still working on a better list
-      var pins = svg.append("g");
+      /*var pins = svg.append("g");
       d3.json("data_geojson/usgs_earthquake_since1900_mag7plus.geojson", function(zipPoints) {
           pins.selectAll("circle")
               .data(zipPoints.features)
@@ -225,7 +225,7 @@
               .attr("cx", function(d){return mercator(+d.coordinates[1]);})
               .attr("r", 5)
               .style("fill", "green");
-      });
+      });*/
 
       var barHeight = 15;
       var bars = svg.append("g")
