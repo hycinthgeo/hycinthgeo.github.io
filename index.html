@@ -222,8 +222,8 @@
               .enter()
               .append("circle")
               .classed("pin", true).attr("d", generator)              
-              .attr("cx", function(d){return mercator(+d.longitude);})
-              .attr("cx", function(d){return mercator(+d.latitude);})
+              .attr("cx", function(d){return mercator(+d.coordinates[0]);})
+              .attr("cx", function(d){return mercator(+d.coordinates[1]);})
               .attr("r", 5)
               .style("fill", "green");
       });
