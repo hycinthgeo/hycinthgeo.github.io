@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p> Earthquake-Active Faults (California and Nearby States) temp26 </p>
+  <p> Earthquake-Active Faults (California and Nearby States) temp27 </p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
@@ -83,9 +83,9 @@
         .attr("height", h);
 
       //Load in GeoJSON data
-      var tooltip = d3.select("body").append("div") 
+      /*var tooltip = d3.select("body").append("div") 
         .attr("class", "tooltip")       
-        .style("opacity", 0);
+        .style("opacity", 0);*/
 
 
       d3.json("data_geojson/county2017_ca.geojson", function(json) {
@@ -94,6 +94,7 @@
           .enter()
           .append("path").attr("stroke", "blue").attr("fill", "none")
           .attr("d", generator);
+      });
           /*.on("mouseover", function(d) {    
             tooltip.transition()    
             .duration(200)    
@@ -106,8 +107,8 @@
             tooltip.transition()    
             .duration(500)    
             .style("opacity", 0); 
-          });*/
-      });
+          });
+      });*/
 
 
       //add box, add x, y axis for latitude, longitude
