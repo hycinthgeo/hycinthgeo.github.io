@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p> Earthquake-Active Faults (California and Nearby States) temp-real earthquake</p>
+  <p style="font-size:160%; color:white;"> Earthquake-Active Faults (California and Nearby States) temp-real earthquake</p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
@@ -52,12 +52,12 @@
       //Width and height
       var w = 1000;
       var h = 500;
-      var eathquake_bar_pos = 220
+      var eathquake_bar_pos = 420
 
       //Define map projections
       var projection = d3.geo.mercator()
         .center([ -120, 38 ])
-        .translate([ 100, h * 0.5 ])
+        .translate([ 200, h * 0.5 ])
         .scale([ 2000 ]);
       
       //Define path generators
@@ -105,8 +105,8 @@
       });*/
 
       //add box, add x, y axis for latitude, longitude
-      svg.append("rect").attr("transform", "translate(25, 5)")
-      .attr("width", 150).attr("height", 190).attr("fill", "none").attr("stroke", "blue")
+      svg.append("rect").attr("transform", "translate(25, 50)")
+      .attr("width", 300).attr("height", 400).attr("fill", "none").attr("stroke", "blue")
 
 
       //load and visualize surrounding state - Nevada
