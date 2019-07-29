@@ -93,8 +93,8 @@
           .data(json.features)
           .enter()
           .append("path").attr("stroke", "blue").attr("fill", "none")
-          .attr("d", generator)
-          .on("mouseover", function(d) {    
+          .attr("d", generator);
+          /*.on("mouseover", function(d) {    
             tooltip.transition()    
             .duration(200)    
             .style("opacity", .9);    
@@ -106,7 +106,7 @@
             tooltip.transition()    
             .duration(500)    
             .style("opacity", 0); 
-          });
+          });*/
       });
 
 
