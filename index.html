@@ -257,15 +257,16 @@
       
       var idx = 2; //assuming selected the 2nd earthquake
       infobox.append("rect")
-      .attr("x", eathquake_bar_pos + 300).attr("y", function(d, i){return 150;})
-      .attr("width", function(d){return 300;}).attr("height", 80).attr("fill", "blue")
+      .attr("x", eathquake_bar_pos + 150).attr("y", function(d, i){return 50;})
+      .attr("width", function(d){return 300;}).attr("height", 80).attr("fill", "lightblue")
 
        bars.append("text")
-          .attr("x", eathquake_bar_pos + 300)
-          .attr("y", function(d) {return 150;})//yScale(d[4]) + 2;})//50 + barHeight - 6 + barHeight / 2)
+          .attr("x", eathquake_bar_pos + 150)
+          .attr("y", function(d) {return 50;})//yScale(d[4]) + 2;})//50 + barHeight - 6 + barHeight / 2)
           .attr("dy", ".35em")
-          .text(function(d, i) { return "Mag = " + selected_earthquakes[idx][3] + "\n" 
-            + "URL = " + selected_earthquakes[idx][6];}).style("font-size", "8px");
+          .text(function(d, i) { return "More Info for Your Selected Earthquake: \n" + \
+                                        "    Mag = " + "\n" + \
+                                        "    URL = ";}).style("font-size", "8px");
 
      
 
