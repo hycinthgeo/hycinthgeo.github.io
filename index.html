@@ -212,6 +212,18 @@
       .attr("r", "8px")
       .attr("fill", "red")
 
+      d3.json("data_geojson/usgs_earthquake_since1900_mag7plus.geojson", function(zipPoints) {
+        svg.selectAll("circle")
+        .data(zipPoints.features.coordinates)
+        .enter()
+        .append("circle")
+        .attr("cx", function (d) { console.log(projection(d)); return projection(d)[0]; })
+        .attr("cy", function (d) { return projection(d)[1]; })
+        .attr("r", "8px")
+        .attr("fill", "green")
+        
+      }
+
 
       //temporary geojson for earthquake, still working on a better list
       /*var pins = svg.append("g");
