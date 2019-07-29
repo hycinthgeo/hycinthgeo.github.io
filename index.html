@@ -264,8 +264,17 @@
           .attr("x", eathquake_bar_pos + 250)
           .attr("y", function(d) {return 50;})//yScale(d[4]) + 2;})//50 + barHeight - 6 + barHeight / 2)
           .attr("dy", ".35em")
-          .text(function(d, i) { return "More Info for Your Selected Earthquake: \n" + "  Mag = \n" + "    URL = ";})
-          .style("font-size", "8px");
+          .text(function(d, i) { return "More Info for Your Selected Earthquake: \n"}).style("font-size", "14px");
+       infobox.append("text")
+          .attr("x", eathquake_bar_pos + 250)
+          .attr("y", function(d) {return 60;})//yScale(d[4]) + 2;})//50 + barHeight - 6 + barHeight / 2)
+          .attr("dy", ".35em")
+          .text(function(d, i) { return "   Magnitude: \n"}).style("font-size", "10px");
+       infobox.append("text")
+          .attr("x", eathquake_bar_pos + 250)
+          .attr("y", function(d) {return 70;})//yScale(d[4]) + 2;})//50 + barHeight - 6 + barHeight / 2)
+          .attr("dy", ".35em")
+          .text(function(d, i) { return "   Reference URL: \n"}).style("font-size", "10px");
 
      
 
