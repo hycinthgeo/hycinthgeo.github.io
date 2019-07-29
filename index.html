@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p> Earthquake-Active Faults (California and Nearby States) temp22 </p>
+  <p> Earthquake-Active Faults (California and Nearby States) temp23 </p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
@@ -209,7 +209,7 @@
       .append("circle")
       .attr("cx", function (d) { console.log(projection(d)); return projection(d)[0]; })
       .attr("cy", function (d) { return projection(d)[1]; })
-      .attr("r", "4px")
+      .attr("r", "8px")
       .attr("fill", "red")
 
       d3.json("data_geojson/usgs_earthquake_since1900_mag7plus.geojson", function(zipPoints) {
@@ -219,7 +219,7 @@
         .append("circle")
         .attr("cx", function (d) { console.log(projection(d)); return projection(d)[0]; })
         .attr("cy", function (d) { return projection(d)[1]; })
-        .attr("r", "4px")
+        .attr("r", "8px")
         .attr("fill", "green");
       });
 
