@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p style="font-size:160%; color:white;"> Earthquake-Active Faults (California and Nearby States) temp-real earthquake</p>
+  <p style="font-size:160%; color:white;"> Earthquake-Active Faults (California and Nearby States) temp-more earthquake</p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
@@ -150,7 +150,7 @@
       }); */
 
       //geojson for big earthquake 
-      var corner_points = [[-125, 43], [-125, 31], [-113, 43], [-113, 31]]
+      /*var corner_points = [[-125, 43], [-125, 31], [-113, 43], [-113, 31]]
       svg.selectAll("rect")
       .data(selected_earthquakes).enter()
       .append("rect")
@@ -158,7 +158,7 @@
       .attr("cy", function (d) { return projection(d)[1]; })
       .attr("width", "6px")
       .attr("height", "6px")
-      .attr("fill", "blue")
+      .attr("fill", "blue") */
 
 
       var selected_earthquakes = [
@@ -168,6 +168,9 @@
       [-118.07, 39.71, "Dixie Valley Earthquake", 7.3, "1954-12-16 ", "https://en.wikipedia.org/wiki/Dixie_Valley,_Nevada"],
       [-119.78, 38.69, "Double Springs Flat Earthquake", 6.0, "1994-09-12 05:23", "www.nbmg.unr.edu/_docs/Newsletters/nl25a.htm"],
       [-115.29, 32.26, "El Mayor Cucapah (Baja California) Earthquake", 7.2, "https://www.eeri.org/site/images/eeri_newsletter/2010_pdf/Baja_CA_EQRpt.pdf"]];
+
+      var names = ["Borrego Mountain Earthquake", "Cedar Mountain Earthquake", "Coalinga Earthquake", "Double Springs Flat Earthquake", "El Mayor Cucapah (Baja California) Earthquake" ]
+
 
 
       svg.selectAll("circle")
@@ -219,7 +222,7 @@
           .attr("x", function(d) { return eathquake_bar_pos + i * 20 ; })
           .attr("y", 50 + barHeight - 2 + barHeight / 2)
           .attr("dy", ".35em")
-          .text(function(d, i) { return d[2]; }).style("font-size", "8px");
+          .text(function(d, i) { return names[2]; }).style("font-size", "8px");
 
       /*svg.append("g").selectAll("circle").data([0])
       .enter().append("circle").attr("transform", "translate(100,100)")
