@@ -214,7 +214,7 @@
 
       d3.json("data_geojson/usgs_earthquake_since1900_mag7plus.geojson", function(zipPoints) {
         svg.selectAll("circle")
-        .data(zipPoints.features.coordinates)
+        .data(zipPoints.geometry.coordinates)
         .enter()
         .append("circle")
         .attr("cx", function (d) { console.log(projection(d)); return projection(d)[0]; })
