@@ -51,14 +51,14 @@
     <script>
       //Width and height
       var w = 1000;
-      var h = 600;
+      var h = 500;
       var eathquake_bar_pos = 220
 
       //Define map projections
       var projection = d3.geo.mercator()
         .center([ -120, 38 ])
         .translate([ 100, h * 0.5 ])
-        .scale([ 1000 ]);
+        .scale([ 2000 ]);
       
       //Define path generators
       var generator = d3.geo.path().projection(projection);
