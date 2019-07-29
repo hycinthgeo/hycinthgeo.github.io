@@ -258,7 +258,7 @@
       var idx = 2; //assuming selected the 2nd earthquake
       infobox.append("rect")
       .attr("x", eathquake_bar_pos + 150).attr("y", function(d, i){return 50;})
-      .attr("width", function(d){return 300;}).attr("height", 80).attr("fill", "lightblue")
+      .attr("width", function(d){return 300;}).attr("height", 80).attr("fill", "lightblue").attr("stroke", "black")
 
        bars.append("text")
           .attr("x", eathquake_bar_pos + 150)
