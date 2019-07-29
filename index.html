@@ -215,16 +215,16 @@
 
       bars.append("rect")
       .attr("x", eathquake_bar_pos).attr("y", function(d, i){return 50 + barHeight - 1;})
-      .attr("width", function(d){return 100;}).attr("height", 10).attr("fill", "lightblue")
+      .attr("width", function(d){return 200 * (d[3] / 10.0);}).attr("height", 10).attr("fill", "lightblue")
 
       //.attr("height", barHeight - 1);
       /*var earthquake_names = ["Borrego Mountain Earthquake", "Cedar Mountain Earthquake", "Coalinga Earthquake", "Double Springs Flat Earthquake", "El Mayor Cucapah (Baja California) Earthquake" ];*/
 
       bars.append("text")
           .attr("x", eathquake_bar_pos)
-          .attr("y", 50 + barHeight - 2 + barHeight / 2)
+          .attr("y", 50 + barHeight - 4 + barHeight / 2)
           .attr("dy", ".35em")
-          .text(function(d, i) { return d[2]; }).style("font-size", "8px");
+          .text(function(d, i) { return d[4][:4] + " " + d[2]; }).style("font-size", "8px");
 
       /*svg.append("g").selectAll("circle").data([0])
       .enter().append("circle").attr("transform", "translate(100,100)")
