@@ -207,10 +207,9 @@
               .data(zipPoints.features)
               .enter()
               .append("circle")
-              .attr("cx", 100).attr("cy", 125)
+              .classed("pin", true).attr("d", generator)              
               .attr("r", 5)
-              .style("fill", "red")
-              .classed("pin", true).attr("d", generator);
+              .style("fill", "red");
       });
 
       var barHeight = 15;
