@@ -87,7 +87,7 @@
         svg.append("g").selectAll("path")
           .data(json.features)
           .enter()
-          .append("path").attr("stroke", "blue").attr("fill", "none")
+          .append("path").attr("stroke", "gray").attr("fill", "none")
           .attr("d", generator);
       });
               /*.on("mouseover", function(d) {    
@@ -106,7 +106,7 @@
 
       //add box, add x, y axis for latitude, longitude
       svg.append("rect").attr("transform", "translate(25, 50)")
-      .attr("width", 350).attr("height", 420).attr("fill", "none").attr("stroke", "blue")
+      .attr("width", 400).attr("height", 450).attr("fill", "none").attr("stroke", "gray")
 
 
       //load and visualize surrounding state - Nevada
@@ -114,7 +114,7 @@
         svg.append("g").selectAll("path")
           .data(json.features)
           .enter()
-          .append("path").attr("stroke", "blue").attr("fill", "gray").attr("id", "path_or")
+          .append("path").attr("stroke", "gray").attr("fill", "gray").attr("id", "path_or")
           .attr("d", generator).attr("opacity", 0.5);
       });
 // Add a text label.
@@ -152,8 +152,7 @@
       //geojson for big earthquake 
       var selected_earthquakes = [
           [-116.07, 33.08, "Borrego Mountain Earthquake", 6.5, "1968-04-09 02:28:59", "https://pubs.usgs.gov/pp/0787/report.pdf"],
-          [-117.49, 38.32, "Cedar Mountain Earthquake", 7.2, "1932-12-20", "https://en.wikipedia.org/wiki/Cedar_Mountains_(Nevada)"]
-        ];
+          [-117.49, 38.32, "Cedar Mountain Earthquake", 7.2, "1932-12-20", "https://en.wikipedia.org/wiki/Cedar_Mountains_(Nevada)"]];
 
       svg.selectAll("circle")
       .data(selected_earthquakes).enter()
@@ -171,7 +170,7 @@
         .append("circle")
         .attr("cx", function (d) { console.log(projection(d.geometry.coordinates)); return projection(d.geometry.coordinates)[0]; })
         .attr("cy", function (d) { return projection(d.geometry.coordinates)[1]; })
-        .attr("r", "2px")
+        .attr("r", "4px")
         .attr("fill", "green");
       });
 
@@ -192,7 +191,7 @@
 
       var barHeight = 15;
       var bars = svg.append("g")
-      .selectAll("rect").data([selected_earthquakes]).enter().append("g")
+      .selectAll("rect").data(selected_earthquakes).enter().append("g")
       .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; })
 
       bars.append("rect")
