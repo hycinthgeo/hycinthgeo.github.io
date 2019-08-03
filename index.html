@@ -48,6 +48,9 @@
           .attr("width", width)
           .attr("height", height);    
 
+
+
+      //basemap of counties and tooltip
       var tooltip = d3.select("body").append("div") 
           .attr("class", "tooltip")       
           .style("opacity", 0);
@@ -81,6 +84,15 @@
       };
       vis_counties(local_path_ca);
       vis_counties(local_path_nv);
+
+      //annotate earthquakes
+      d3.json("data_geojson/faults_earthquake_active_v2.geojson", function(json) {
+        svg.append("g").selectAll("path")
+          .data(json.features)
+          .enter()
+          .append("path").attr("stroke", "red")
+          .attr("d", generator);
+      });
 
     </script>
 </body>
