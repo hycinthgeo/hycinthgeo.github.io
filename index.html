@@ -54,7 +54,8 @@
 
       
       var url_counties = "https://github.com/hycinthgeo/hycinthgeo.github.io/blob/master/data_geojson/county2017_ca.geojson"
-      d3.json("data_geojson/county2017_ca.geojson", function(json) {
+      var local_path = "data_geojson/county2017_ca.geojson"
+      d3.json(local_path, function(json) {
         svg.append("g").selectAll("path")
           .data(json.features)
           .enter()
