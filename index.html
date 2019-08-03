@@ -81,11 +81,11 @@
     //overlay states polygon
     url_states = "https://github.com/hycinthgeo/hycinthgeo.github.io/blob/master/data_geojson/states2017_ca.geojson"
     d3.json(url_states, function(json) {
-      svg.append("g").selectAll("path")
+      svg.append("g").selectAll("rect")
         .data(json.features)
         .enter()
         .append("path").attr("stroke", "gray").attr("fill", "none").attr("id", "path_ca")
-        .attr("d", generator).attr("opacity", 0.5);
+        .attr("d", generator)
     });
     </script>
 </body>
