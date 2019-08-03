@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p style="font-size:160%; color:black;"> Earthquake-Active Faults (California and Nearby States) temp-more earthquake6</p>
+  <p style="font-size:160%; color:black;"> Historic Large (M6+) & July Earthquakes (California and Nevada) </p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <style>
-    path {
+    /*path {
       fill: #ccc;
       stroke: #fff;
       stroke-width: .5px;
-    }
+    }*/
     path:hover {
       fill: orange;
     }
@@ -63,7 +63,7 @@
           svg.append("g").selectAll("path")
             .data(json.features)
             .enter()
-            .append("path").attr("stroke", "gray").attr("fill", "none")
+            .append("path").attr("stroke", "#fff").attr("fill", "#ccc").attr("stroke-width", ".5px")      
             .attr("d", generator)
             .on("mouseover", function(d) {    
               tooltip.transition()    
