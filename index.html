@@ -7,12 +7,12 @@
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <style>
     
-    counties.path {
+    .county-borders {
       fill: #ccc;
       stroke: #fff;
       stroke-width: .5px;
     }
-    path:hover {
+    .counties:hover {
       fill: orange;
     }
     body {
@@ -63,10 +63,11 @@
 
       function vis_counties(local_path){
         d3.json(local_path, function(json) {
-          svg.append("g").selectAll("path")
+          svg.append("g").attr("class", "counties")
+            .selectAll("path")
             .data(json.features)
             .enter()
-            .append("path").attr("stroke", "gray").attr("fill", "none").attr("class", "counties")
+            .append("path").attr("stroke", "gray").attr("fill", "none").attr("class", "county-borders")
             .attr("d", generator)
             .on("mouseover", function(d) {    
               tooltip.transition()    
