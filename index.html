@@ -63,7 +63,7 @@
           svg.append("g").selectAll("path")
             .data(json.features)
             .enter()
-            .append("path").attr("stroke", "#fff").attr("fill", "#ccc").attr("stroke-width", ".5px")      
+            .append("path").attr("stroke", "#fff").attr("fill", "none").attr("stroke-width", ".5px")      
             .attr("d", generator)
             .on("mouseover", function(d) {    
               tooltip.transition()    
