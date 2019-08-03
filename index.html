@@ -35,7 +35,7 @@
 <body>
     <script src="//d3js.org/topojson.v1.min.js"></script>
     <script>
-      var width = 600,
+      var width = 1000,
           height = 500;
 
       var projection = d3.geo.mercator()
@@ -63,7 +63,7 @@
           svg.append("g").selectAll("path")
             .data(json.features)
             .enter()
-            .append("path").attr("stroke", "#fff").attr("fill", "none").attr("stroke-width", ".5px")      
+            .append("path").attr("stroke", "gray").attr("fill", "none").attr("stroke-width", ".5px")      
             .attr("d", generator)
             .on("mouseover", function(d) {    
               tooltip.transition()    
@@ -89,7 +89,7 @@
             .data(json.features)
             .enter()
             .append("path").attr("class", "states")
-            .attr("stroke", "#fff").attr("fill", "none").attr("stroke-width", "2px")      
+            .attr("stroke", "gray").attr("fill", "none").attr("stroke-width", "2px")      
             .attr("d", generator)
         });      
       };
