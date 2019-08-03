@@ -11,7 +11,7 @@
       stroke: #fff;
       stroke-width: .5px;
     }*/
-    path:hover {
+    .counties:hover {
       fill: orange;
     }
     body {
@@ -63,7 +63,8 @@
           svg.append("g").selectAll("path")
             .data(json.features)
             .enter()
-            .append("path").attr("stroke", "gray").attr("fill", "none").attr("stroke-width", ".5px")      
+            .append("path").attr("class", "counties")
+            .attr("stroke", "gray").attr("fill", "none").attr("stroke-width", ".5px")      
             .attr("d", generator)
             .on("mouseover", function(d) {    
               tooltip.transition()    
