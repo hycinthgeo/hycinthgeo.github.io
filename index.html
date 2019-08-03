@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p style="font-size:160%; color:black;"> Historic & July Earthquakes (California and Nevada) </p>
+  <p style="font-size:160%; color:black;"> Earthquake-Active Faults (California and Nearby States) temp-more earthquake6</p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <style>
-    
-    /*
     path {
       fill: #ccc;
       stroke: #fff;
       stroke-width: .5px;
-    }*/
-    path: hover {
+    }
+    path:hover {
       fill: orange;
     }
     body {
@@ -50,8 +48,6 @@
           .attr("width", width)
           .attr("height", height);    
 
-
-
       //basemap of counties and tooltip
       var tooltip = d3.select("body").append("div") 
           .attr("class", "tooltip")       
@@ -64,8 +60,7 @@
 
       function vis_counties(local_path){
         d3.json(local_path, function(json) {
-          svg.append("g")
-            .selectAll("path")
+          svg.append("g").selectAll("path")
             .data(json.features)
             .enter()
             .append("path").attr("stroke", "gray").attr("fill", "none")
@@ -87,17 +82,6 @@
       };
       vis_counties(local_path_ca);
       vis_counties(local_path_nv);
-
-      //visu
-
-      //annotate earthquake-active faults
-      d3.json("data_geojson/faults_earthquake_active_v2.geojson", function(json) {
-        svg.append("g").selectAll("path")
-          .data(json.features)
-          .enter()
-          .append("path").attr("stroke", "red")
-          .attr("d", generator);
-      });
 
     </script>
 </body>
