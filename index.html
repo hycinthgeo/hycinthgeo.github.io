@@ -52,7 +52,9 @@
           .attr("class", "tooltip")       
           .style("opacity", 0);
 
-      var url_counties = "https://github.com/hycinthgeo/hycinthgeo.github.io/blob/master/data_geojson/county2017_ca.geojson"    
+      var url_counties_ca = "https://github.com/hycinthgeo/hycinthgeo.github.io/blob/master/data_geojson/county2017_ca.geojson"  
+      var url_counties_nv = "https://github.com/hycinthgeo/hycinthgeo.github.io/blob/master/data_geojson/county2017_nv.geojson" 
+
       function plot_counties(url_counties){
 
         d3.json(url_counties, function(json) {
@@ -77,7 +79,8 @@
         });
       };
 
-      plot_counties(url_counties);
+      plot_counties(url_counties_ca);
+      plot_counties(url_counties_nv);
 
 
     </script>
