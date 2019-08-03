@@ -85,7 +85,7 @@
       vis_counties(local_path_ca);
       vis_counties(local_path_nv);
 
-      //annotate earthquakes
+      //annotate earthquake-active faults
       d3.json("data_geojson/faults_earthquake_active_v2.geojson", function(json) {
         svg.append("g").selectAll("path")
           .data(json.features)
