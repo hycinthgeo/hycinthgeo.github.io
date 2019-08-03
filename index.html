@@ -114,7 +114,7 @@
       [-119.78, 38.69, "Double Springs Flat Earthquake", 6.0, 1994, "1994-09-12 05:23", "www.nbmg.unr.edu/_docs/Newsletters/nl25a.htm"],
       [-115.29, 32.26, "El Mayor Cucapah (Baja California) Earthquake", 7.2, 2010, "xxx", "https://www.eeri.org/site/images/eeri_newsletter/2010_pdf/Baja_CA_EQRpt.pdf"]];
 
-      svg.selectAll("circle")
+      svg..append("g").selectAll("circle")
       .data(selected_earthquakes).enter()
       .append("circle")
       .attr("cx", function (d) { console.log(projection(d)); return projection(d)[0]; })
