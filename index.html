@@ -54,7 +54,9 @@
 
       
       var url_counties = "https://github.com/hycinthgeo/hycinthgeo.github.io/blob/master/data_geojson/county2017_ca.geojson"
-      var local_path = "data_geojson/county2017_ca.geojson"
+      var local_path_ca = "data_geojson/county2017_ca.geojson"
+      var local_path_nv = "data_geojson/county2017_nv.geojson"
+
       function vis_counties(local_path){
         d3.json(local_path, function(json) {
           svg.append("g").selectAll("path")
@@ -77,7 +79,8 @@
             });
         });
       };
-      vis_counties(local_path);
+      vis_counties(local_path_ca);
+      vis_counties(local_path_nv);
 
     </script>
 </body>
