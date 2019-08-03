@@ -96,6 +96,18 @@
       vis_states("data_geojson/states2017_ca.geojson");
       vis_states("data_geojson/states2017_nv.geojson");
 
+      //visualize earthquake active faults
+      d3.json("data_geojson/faults_earthquake_active_v2.geojson", function(json) {
+        svg.append("g").selectAll("path")
+          .data(json.features)
+          .enter()
+          .append("path").attr("class", "faults").attr("stroke", "red")
+          .attr("d", generator);
+      });
+
+
+
+
     </script>
 </body>
 
