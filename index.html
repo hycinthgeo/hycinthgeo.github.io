@@ -90,7 +90,8 @@
             .enter()
             .append("path").attr("class", "states")
             .attr("stroke", "#fff").attr("fill", "none").attr("stroke-width", "2px")      
-            .attr("d", generator);        
+            .attr("d", generator)
+        });      
       };
       vis_states("data_geojson/states2017_ca.geojson");
       vis_states("data_geojson/states2017_nv.geojson");
