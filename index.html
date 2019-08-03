@@ -58,20 +58,20 @@
 
     d3.json(url, function(geojson) {
       if (error) throw error;
-
       //var geojson = topojson.feature(topology, topology.objects.cb_2015_pennsylvania_county_20m);
 
-      var b = path.bounds(geojson),
-          s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
-          t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+      //var b = path.bounds(geojson),
+      //    s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
+      //    t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
 
-      projection
-          .scale(s)
-          .translate(t);
+
+      //projection
+      //    .scale(s)
+      //    .translate(t);
 
       svg.selectAll("path")
           .data(geojson.features)
-        .enter().append("path")
+          .enter().append("path")
           .attr("d", path)
           .on("mouseover", function(d) {    
             tooltip.transition()    
