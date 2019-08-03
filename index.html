@@ -84,6 +84,7 @@
       vis_counties(local_path_nv);
 
       function vis_states(local_path){
+        d3.json(local_path, function(json) {
           svg.append("g").selectAll("path")
             .data(json.features)
             .enter()
