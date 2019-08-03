@@ -63,7 +63,7 @@
 
       function vis_counties(local_path){
         d3.json(local_path, function(json) {
-          svg.append("g").attr("class", "counties")
+          svg.append("g")
             .selectAll("path")
             .data(json.features)
             .enter()
@@ -86,6 +86,15 @@
       };
       vis_counties(local_path_ca);
       vis_counties(local_path_nv);
+
+      //visulize state boundary 
+      /*d3.json("data_geojson/states2017_ca.geojson", function(json) {
+        svg.append("g").selectAll("path")
+          .data(json.features)
+          .enter()
+          .append("path").attr("stroke", "gray")
+          .attr("d", generator);
+      });      */
 
       //annotate earthquake-active faults
       d3.json("data_geojson/faults_earthquake_active_v2.geojson", function(json) {
