@@ -83,6 +83,17 @@
       vis_counties(local_path_ca);
       vis_counties(local_path_nv);
 
+      function vis_states(local_path){
+          svg.append("g").selectAll("path")
+            .data(json.features)
+            .enter()
+            .append("path").attr("class", "states")
+            .attr("stroke", "#fff").attr("fill", "none").attr("stroke-width", "2px")      
+            .attr("d", generator);        
+      };
+      vis_states("data_geojson/states2017_ca.geojson");
+      vis_states("data_geojson/states2017_nv.geojson");
+
     </script>
 </body>
 
