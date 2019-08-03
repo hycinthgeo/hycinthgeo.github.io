@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p style="font-size:160%; color:black;"> Earthquake-Active Faults (California and Nearby States) temp-more earthquake6</p>
+  <p style="font-size:160%; color:black;"> Historic & July Earthquakes (California and Nevada) </p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
@@ -12,7 +12,7 @@
       stroke: #fff;
       stroke-width: .5px;
     }
-    path : hover {
+    .county-borders: hover {
       fill: orange;
     }
     body {
@@ -87,14 +87,7 @@
       vis_counties(local_path_ca);
       vis_counties(local_path_nv);
 
-      //visulize state boundary 
-      /*d3.json("data_geojson/states2017_ca.geojson", function(json) {
-        svg.append("g").selectAll("path")
-          .data(json.features)
-          .enter()
-          .append("path").attr("stroke", "gray")
-          .attr("d", generator);
-      });      */
+      //visu
 
       //annotate earthquake-active faults
       d3.json("data_geojson/faults_earthquake_active_v2.geojson", function(json) {
