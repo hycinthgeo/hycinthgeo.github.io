@@ -6,7 +6,8 @@
     <title>Mercator projection</title>
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <style>
-    path {
+    
+    counties.path {
       fill: #ccc;
       stroke: #fff;
       stroke-width: .5px;
@@ -65,7 +66,7 @@
           svg.append("g").selectAll("path")
             .data(json.features)
             .enter()
-            .append("path").attr("stroke", "gray").attr("fill", "none")
+            .append("path").attr("stroke", "gray").attr("fill", "none").attr("class", "counties")
             .attr("d", generator)
             .on("mouseover", function(d) {    
               tooltip.transition()    
