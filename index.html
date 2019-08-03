@@ -6,282 +6,77 @@
     <title>Mercator projection</title>
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <style>
-      body {
-        background-color: gray;
-        margin: 1em auto;
-        width: 1000px;
-        font: 15px sans-serif;
-      }
-      svg {
-        background-color: white;
-      }
-      /*g path {
-        fill: none;
-        stroke: #2E9C32;
-      }*/
-
-      <!-- Styles for our vis  -->
-
-      body {
-          font: 15px sans-serif;
-      }
-
-      .axis path,
-      .axis line {
-          fill: none;
-          stroke: #000;
-          shape-rendering: crispEdges;
-      }
-
-      .dot {
-          stroke: none;
-      }
-      .tooltip {
-          position: absolute;
-          font-size: 12px;
-          width:  auto;
-          height: auto;
-          pointer-events: none;
-          background-color: white;
-      }
-
-    </style>
+		div.tooltip { 
+			position: absolute;     
+			text-align: center;     
+			width: 80px;          
+			height: 14px;         
+			padding: 2px;       
+			font: 12px sans-serif;    
+			background: #fff; 
+			border: 0px;        
+			pointer-events: none;     
+		}
+	</style>
   </head>
-  <body>
+
+
+<body>
+    <script src="//d3js.org/topojson.v1.min.js"></script>
     <script>
-      //Width and height
-      var w = 1000;
-      var h = 530;
-      var eathquake_bar_pos = 500
+    var width = 600,
+        height = 500;
 
-      //Define map projections
-      var projection = d3.geo.mercator()
-        .center([ -120, 38 ])
-        .translate([ 200, h * 0.5 ])
-        .scale([ 2000 ]);
-      
-      //Define path generators
-      var generator = d3.geo.path().projection(projection);
+    var projection = d3.geo.mercator()
+        .scale(1)
+        .translate([0, 0]);
 
-      //Very ugly place holder for Zoom in 
-      /*d3.select("body")
-      .append("svg")
-      .attr("width", "100%")
-      .attr("height", "100%")
-      .call(d3.behavior.zoom().on("zoom", function () {
-        svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
-      })); */
+    var path = d3.geo.path()
+        .projection(projection);
 
-      // Define the div for the tooltip
-      /*var div = d3.select("body").append("div") 
-          .attr("class", "tooltip")       
-          .style("opacity", 0);*/
+    var svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
 
-      var svg = d3.select("body")
-        .append("svg")
-        .attr("width", w)
-        .attr("height", h);
+    var url = "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/us-states/PA-42-pennsylvania-counties.json";
 
-      //Load in GeoJSON data
-      d3.json("data_geojson/county2017_ca.geojson", function(json) {
-        svg.append("g").selectAll("path")
-          .data(json.features)
-          .enter()
-          .append("path").attr("stroke", "gray").attr("fill", "none")
-          .attr("d", generator);
-      });
-              /*.on("mouseover", function(d) {    
-          div.transition()    
-              .duration(200)    
-              .style("opacity", .9);    
-          div .html(d.name + "<br/>"  + d.STATEFP)  
-              .style("left", (d3.event.pageX) + "px")   
-              .style("top", (d3.event.pageY - 28) + "px");  
+    var tooltip = d3.select("body").append("div") 
+        .attr("class", "tooltip")       
+        .style("opacity", 0);
+
+    d3.json(url, function(error, topology) {
+      if (error) throw error;
+
+      var geojson = topojson.feature(topology, topology.objects.cb_2015_pennsylvania_county_20m);
+
+      var b = path.bounds(geojson),
+          s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
+          t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+
+      projection
+          .scale(s)
+          .translate(t);
+
+      svg.selectAll("path")
+          .data(geojson.features)
+        .enter().append("path")
+          .attr("d", path)
+          .on("mouseover", function(d) {    
+            tooltip.transition()    
+            .duration(200)    
+            .style("opacity", .9);    
+            tooltip.html(d.properties.NAME)  
+            .style("left", (d3.event.pageX) + "px")   
+            .style("top", (d3.event.pageY - 28) + "px");  
           })          
-        .on("mouseout", function(d) {   
-          div.transition()    
-              .duration(500)    
-              .style("opacity", 0); 
-      });*/
+          .on("mouseout", function(d) {   
+            tooltip.transition()    
+            .duration(500)    
+            .style("opacity", 0); 
+          });
 
-      //add box, add x, y axis for latitude, longitude
-      svg.append("rect").attr("transform", "translate(25, 50)")
-      .attr("width", 400).attr("height", 450).attr("fill", "none").attr("stroke", "gray")
-
-
-      //load and visualize surrounding state - Nevada
-      d3.json("data_geojson/states2017_nv.geojson", function(json) {
-        svg.append("g").selectAll("path")
-          .data(json.features)
-          .enter()
-          .append("path").attr("stroke", "gray").attr("fill", "gray").attr("id", "path_or")
-          .attr("d", generator).attr("opacity", 0.5);
-      });
-// Add a text label.
-      var text_or = svg.append("text")
-          .attr("x", 30)
-          .attr("dy", 15);
-
-      text_or.append("textPath")
-          .attr("stroke","black")
-          .attr("xlink:href","#path_or")
-          .text("Nevada");
-
-
-      //load and visualize faults in plot area 
-      d3.json("data_geojson/faults_earthquake_active_v2.geojson", function(json) {
-        svg.append("g").selectAll("path")
-          .data(json.features)
-          .enter()
-          .append("path").attr("stroke", "red")
-          .attr("d", generator);
-
-      });
-
-
-      //place holder for project earthquake points - 1906 San Francisco earthquake
-      /*d3.json("earthquake.geojson", function(json) {
-        svg.append("g").selectAll("circle")
-          .data(json.features)
-          .enter()
-          .append("circle")
-          .attr("cx").attr().attr("r", 2).attr("fill", "green")
-          .attr("d", generator);
-      }); */
-
-      //geojson for big earthquake 
-      /*var corner_points = [[-125, 43], [-125, 31], [-113, 43], [-113, 31]]
-      svg.selectAll("rect")
-      .data(selected_earthquakes).enter()
-      .append("rect")
-      .attr("cx", function (d) { console.log(projection(d)); return projection(d)[0]; })
-      .attr("cy", function (d) { return projection(d)[1]; })
-      .attr("width", "6px")
-      .attr("height", "6px")
-      .attr("fill", "blue") */
-
-
-      var selected_earthquakes = [
-      [-116.07, 33.08, "Borrego Mountain Earthquake", 6.5, 1968, "1968-04-09 02:28:59", "https://pubs.usgs.gov/pp/0787/report.pdf"],
-      [-117.49, 38.32, "Cedar Mountain Earthquake", 7.2, 1932, "1932-12-20", "https://en.wikipedia.org/wiki/Cedar_Mountains_(Nevada)"],
-      [-120.32, 36.22, "Coalinga Earthquake", 6.2, 1983, "1983-05-02 23:42:37", "https://en.wikipedia.org/wiki/1983_Coalinga_earthquake"],
-      [-118.07, 39.71, "Dixie Valley Earthquake", 7.3, 1954, "1954-12-16 ", "https://en.wikipedia.org/wiki/Dixie_Valley,_Nevada"],
-      [-119.78, 38.69, "Double Springs Flat Earthquake", 6.0, 1994, "1994-09-12 05:23", "www.nbmg.unr.edu/_docs/Newsletters/nl25a.htm"],
-      [-115.29, 32.26, "El Mayor Cucapah (Baja California) Earthquake", 7.2, 2010, "xxx", "https://www.eeri.org/site/images/eeri_newsletter/2010_pdf/Baja_CA_EQRpt.pdf"]];
-
-
-
-
-
-      svg.selectAll("circle")
-      .data(selected_earthquakes).enter()
-      .append("circle")
-      .attr("cx", function (d) { console.log(projection(d)); return projection(d)[0]; })
-      .attr("cy", function (d) { return projection(d)[1]; })
-      .attr("r", "6px")
-      .attr("fill", "lightblue")
-
-
-      d3.json("data_geojson/temp.geojson", function(zipPoints) {
-        svg.selectAll("circle")
-        .data(zipPoints.features)
-        .enter()
-        .append("circle")
-        .attr("cx", function (d) { console.log(projection(d.geometry.coordinates)); return projection(d.geometry.coordinates)[0]; })
-        .attr("cy", function (d) { return projection(d.geometry.coordinates)[1]; })
-        .attr("r", d[3] + "px")
-        .attr("fill", "lightblue");
-      });
-
-
-      //temporary geojson for earthquake, still working on a better list
-      /*var pins = svg.append("g");
-      d3.json("data_geojson/usgs_earthquake_since1900_mag7plus.geojson", function(zipPoints) {
-          pins.selectAll("circle")
-              .data(zipPoints.features)
-              .enter()
-              .append("circle")
-              .classed("pin", true).attr("d", generator)              
-              .attr("cx", function(d){return mercator(+d.coordinates[0]);})
-              .attr("cx", function(d){return mercator(+d.coordinates[1]);})
-              .attr("r", 5)
-              .style("fill", "green");
-      });*/
-
-
-
-      //y scale for years
-      var yScale = d3.scale.linear()
-          .domain([ 1920, 2020])
-          .range([50, 500]);
-      var yAxis = d3.svg.axis()
-          .scale(yScale)
-          .orient('left');
-              // Add y-axis to the canvas
-      svg.append("g")
-          .attr("class", "y axis") // .orient('left') took care of axis positioning for us
-          .attr("transform", "translate(" + eathquake_bar_pos + ",0)") // move axis to the bottom of the canvas
-          .call(yAxis.ticks(5))
-        .append("text")
-          .attr("class", "label")
-          .attr("transform", "rotate(90)") // although axis is rotated, text is not
-          .attr("y", 50) // y-offset from yAxis, moves text to the RIGHT because it's rotated, & positive y is DOWN
-          .style("text-anchor", "end").style("font-size", "6px")
-          .text("Year").style("font-size", "6px");
-
-
-      var barHeight = 25;
-      var bars = svg.append("g")
-      .selectAll("rect").data(selected_earthquakes).enter().append("g")
-      .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; })
-
-      bars.append("rect")
-      .attr("x", eathquake_bar_pos).attr("y", function(d, i){return 50 + (d[4] - 1920)/100 * 450;})//yScale(d[4]);})//return 50 + barHeight - 1;})
-      .attr("width", function(d){return 250 * (d[3] / 10.0);}).attr("height", 10).attr("fill", "lightblue")
-
-      //.attr("height", barHeight - 1);
-      /*var earthquake_names = ["Borrego Mountain Earthquake", "Cedar Mountain Earthquake", "Coalinga Earthquake", "Double Springs Flat Earthquake", "El Mayor Cucapah (Baja California) Earthquake" ];*/
-
-      bars.append("text")
-          .attr("x", eathquake_bar_pos)
-          .attr("y", function(d) {return 50 + (d[4] - 1920)/100 * 450 + 2;})//yScale(d[4]) + 2;})//50 + barHeight - 6 + barHeight / 2)
-          .attr("dy", ".35em")
-          .text(function(d, i) { return d[4] + " " + d[2]; }).style("font-size", "8px");
-
-
-
-      //info box 
-
-      var infobox = svg.append("g")
-      .selectAll("rect").data([0]).enter().append("g")
-      
-      var idx = 2; //assuming selected the 2nd earthquake
-      infobox.append("rect")
-      .attr("x", eathquake_bar_pos + 250).attr("y", function(d, i){return 50;})
-      .attr("width", function(d){return 300;}).attr("height", 80).attr("fill", "lightblue").attr("stroke", "black")
-
-       infobox.append("text")
-          .attr("x", eathquake_bar_pos + 250)
-          .attr("y", function(d) {return 60;})//yScale(d[4]) + 2;})//50 + barHeight - 6 + barHeight / 2)
-          .attr("dy", ".35em")
-          .text(function(d, i) { return "Click an earthquake for more info: \n"}).style("font-size", "14px");
-       infobox.append("text")
-          .attr("x", eathquake_bar_pos + 250)
-          .attr("y", function(d) {return 75;})//yScale(d[4]) + 2;})//50 + barHeight - 6 + barHeight / 2)
-          .attr("dy", ".35em")
-          .text(function(d, i) { return " *   Magnitude: \n"}).style("font-size", "10px");
-       infobox.append("text")
-          .attr("x", eathquake_bar_pos + 250)
-          .attr("y", function(d) {return 90;})//yScale(d[4]) + 2;})//50 + barHeight - 6 + barHeight / 2)
-          .attr("dy", ".35em")
-          .text(function(d, i) { return " *  Reference URL: \n"}).style("font-size", "10px");
-
-     
-
-
-
-
-
+    });
     </script>
-  </body>
+</body>
+
 </html>
