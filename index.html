@@ -42,7 +42,7 @@
                value="Show earthquake-active faults" 
                onclick="loadFaults()" />
     </div>-->
-    <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)_v10</p>
+    <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)_v11</p>
     <form name="myform_historic" onSubmit="return handleClick()">
         <input name="Submit"  type="submit" value="Historic: Magnitude Treshold" />
         <input type="text" id="histMag" maxlength="" />
@@ -354,7 +354,7 @@
             }) 
             .on("mouseout", function(d) {   
               tooltip_recent.transition()    
-              .duration(500)    
+              .duration(500) 
               .style("opacity", 0); 
             })
         });
@@ -371,6 +371,11 @@
             .attr("cy", function (d) { return projection(d.geometry.coordinates)[1]; })
             .attr("r", "9px")
             .attr("fill", "orange");
+
+          g1.append("text").
+            .attr("x", function (d) { return projection(d.geometry.coordinates)[0]; })
+            .attr("y", function (d) { return projection(d.geometry.coordinates)[1]; })
+            .text("TEST CITY")
 
           var barHeight = 20;
             var bars = svg.append("g")
