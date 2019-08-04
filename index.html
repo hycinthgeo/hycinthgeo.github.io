@@ -190,9 +190,9 @@
               // Update whether or not the elements are active
               faults.active = active;
             })
-            bars.append("rect")
+            /*bars.append("rect")
             .attr("x", 0).attr("y", 0)
-            .attr("width", text_box_width).attr("height", barHeight).attr("fill", "#ccc")      
+            .attr("width", text_box_width).attr("height", barHeight).attr("fill", "#ccc")      */
             bars.append("text")
               .attr("x", 0)             
               .attr("y", barHeight/2)    
@@ -380,9 +380,9 @@
               // Update whether or not the elements are active
               cities.active = active;
             })
-            bars.append("rect")
+            /*bars.append("rect")
             .attr("x", 0).attr("y", 0)
-            .attr("width", text_box_width).attr("height", barHeight).attr("fill", "#ccc")      
+            .attr("width", text_box_width).attr("height", barHeight).attr("fill", "#ccc")    */  
             bars.append("text")
               .attr("x", 0)             
               .attr("y", barHeight/2)    
@@ -398,7 +398,7 @@
             .text("Hint: Click the legend box to hide/show").attr("font-size", 12);
 
           svg.append("circle")
-          .attr("cx", text_hor_align2 - 10).attr("cy", 260)   
+          .attr("cx", text_hor_align2 - 10).attr("cy", 80)   
           .attr("r", "6px")  
           .attr("fill", "orange")
 
