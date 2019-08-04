@@ -112,7 +112,7 @@
           .attr("y", 80)    
           .attr("class", "legend")
           .style("fill", "Black")
-          .text("Show/Hide More Details").attr("font-size", 14);  
+          .text("Click to show/hide more details").attr("font-size", 14).attr("font-weight", "bold");  
 
 
       d3.json("data_geojson/faults_earthquake_active_v2.geojson", function(json) {
@@ -124,7 +124,19 @@
           .attr("d", generator);
 
               // Add the blue line title
-        svg.append("text")
+          var barHeight = 25;
+          var bars = svg.append("g")
+          .selectAll("rect").data([0]).enter().append("g")
+          .attr("transform", function(d, i) { return "translate(400, 100)";})
+
+          bars.append("rect")
+          .attr("x", 400).attr("y", 100)
+          .attr("width", 100).attr("height", 20).attr("fill", "lightblue")        
+
+
+
+        //svg.append("text")
+        bars.append("text")
           .attr("x", 400)             
           .attr("y", 100)    
           .attr("class", "legend")
