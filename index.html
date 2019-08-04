@@ -55,7 +55,8 @@
     <script>
         function handleClick(event){
             console.log(document.getElementById("myRadius").value, document.getElementById("myColor").value)
-            draw(document.getElementById("myRadius").value, document.getElementById("myColor").value)
+            //draw(document.getElementById("myRadius").value, document.getElementById("myColor").value)
+            vis_historic_earthquake(document.getElementById("myRadius").value, "2010-01-01", "2019-07-01");
             return false;
         }
 
@@ -239,7 +240,7 @@
         });
       };
 
-      vis_historic_earthquake(user_hist_mag_thre, user_hist_start, user_hist_end);
+      //vis_historic_earthquake(user_hist_mag_thre, user_hist_start, user_hist_end);
       //add tooltip
 
       //add recent earthquakes 
