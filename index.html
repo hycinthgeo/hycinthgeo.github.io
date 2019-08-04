@@ -520,7 +520,7 @@
              var icon2 = svg.append("g")
               .on("click", function(){
                 // Determine if current line is visible
-                var active   = faults.active ? false : true,
+                var active   = cities.active ? false : true,
                   newOpacity = active ? 0 : 1;
                 // Hide or show the elements
                 d3.select("#cities").style("opacity", newOpacity);
@@ -586,7 +586,30 @@
             myexample.active = active;
           });*/
 
-          place_hide_show_icon(hint_hor_align, vert_example + vert_text_space, myexample, "#myexample");
+        var icon3 = svg.append("g")
+        .on("click", function(){
+          // Determine if current line is visible
+          var active   = myexample.active ? false : true,
+            newOpacity = active ? 0 : 1;
+          // Hide or show the elements
+          d3.select("#myexample").style("opacity", newOpacity);
+          // Update whether or not the elements are active
+          myexample.active = active;
+        });
+
+       icon3.append("rect")
+        .attr("x", hor_pos)             
+        .attr("y", vert_pos - 10)    
+        .attr("height", 10).attr("width", 70)
+        .style("fill", "yellow");
+
+       icon3.append("text")
+        .attr("x", hor_pos)             
+        .attr("y", vert_pos)    
+        .attr("class", "legend")
+        .style("fill", "black")
+        .text("Hide / Show").attr("font-size", 10).attr("font-weight", "bold");   
+
 
 
         var bars = example.append("g")
