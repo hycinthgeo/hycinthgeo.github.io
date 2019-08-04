@@ -201,14 +201,14 @@
 
 
       //show or hide faults      
-      function place_hide_show_icon(hor_pos, vert_pos){
+      function place_hide_show_icon(hor_pos, vert_pos, faults, id_tag){
        var icon1 = svg.append("g")
         .on("click", function(){
           // Determine if current line is visible
           var active   = faults.active ? false : true,
             newOpacity = active ? 0 : 1;
           // Hide or show the elements
-          d3.select("#faults").style("opacity", newOpacity);
+          d3.select(id_tag).style("opacity", newOpacity);
           // Update whether or not the elements are active
           faults.active = active;
         });
@@ -217,7 +217,7 @@
         .attr("x", hor_pos)             
         .attr("y", vert_pos - 10)    
         .attr("height", 10).attr("width", 70)
-        .style("fill", "lightyellow");
+        .style("fill", "yellow");
 
        icon1.append("text")
         .attr("x", hor_pos)             
@@ -252,7 +252,7 @@
               .text("Earthquake-active Faults (2018)").attr("font-size", 12);
            
 
-            place_hide_show_icon(hint_hor_align, vert_datum1 + vert_text_space);  
+            place_hide_show_icon(hint_hor_align, vert_datum1 + vert_text_space, faults, "#faults");  
         });
       };
       basemap_show_or_hide_faults();
@@ -515,7 +515,33 @@
                 cities.active = active;
                 cities_annotations = active;
               })*/
-              place_hide_show_icon(hint_hor_align, vert_datum1 + vert_text_space * 2);  
+             var hor_pos = hint_hor_align;
+             var vert_pos = vert_datum1 + vert_text_space * 2;
+             var icon2 = svg.append("g")
+              .on("click", function(){
+                // Determine if current line is visible
+                var active   = faults.active ? false : true,
+                  newOpacity = active ? 0 : 1;
+                // Hide or show the elements
+                d3.select("#cities").style("opacity", newOpacity);
+                d3.select("#cities_annotations").style("opacity", newOpacity);
+                // Update whether or not the elements are active
+                cities.active = active;
+                cities_annotations = active;
+              });
+
+             icon2.append("rect")
+              .attr("x", hor_pos)             
+              .attr("y", vert_pos - 10)    
+              .attr("height", 10).attr("width", 70)
+              .style("fill", "yellow");
+
+             icon2.append("text")
+              .attr("x", hor_pos)             
+              .attr("y", vert_pos)    
+              .attr("class", "legend")
+              .style("fill", "black")
+              .text("Hide / Show").attr("font-size", 10).attr("font-weight", "bold");  
 
 
           });
@@ -560,7 +586,7 @@
             myexample.active = active;
           });*/
 
-          place_hide_show_icon(hint_hor_align, vert_example + vert_text_space);
+          place_hide_show_icon(hint_hor_align, vert_example + vert_text_space, myexample, "#myexample");
 
 
         var bars = example.append("g")
