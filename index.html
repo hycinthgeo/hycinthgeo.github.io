@@ -212,7 +212,7 @@
 
        svg.append("text")
         .attr("x", hint_hor_align)             
-        .attr("y", 90)    
+        .attr("y", 100)    
         .attr("class", "legend")
         .style("fill", "gray")
         .text("Hint: Hover your mouse on the map for an interested county").attr("font-size", 12);
@@ -246,7 +246,7 @@
             .text("E.x.: 6.0    1900-01-01    2000-01-01").attr("font-size", 12);
 
       svg.append("circle")
-          .attr("cx", text_hor_align2 + 300).attr("cy", 160)   
+          .attr("cx", text_hor_align2 - 10).attr("cy", 160)   
           .attr("r", "6px")  
           .attr("fill", "gray")
 
@@ -316,7 +316,7 @@
             .text("E.x.: 6.0    2000-01-01    2019-08-04").attr("font-size", 12);
 
       svg.append("circle")
-          .attr("cx", text_hor_align2 + 300).attr("cy", 260)   
+          .attr("cx", text_hor_align2 - 10).attr("cy", 260)   
           .attr("r", "6px")  
           .attr("fill", "green")
 
@@ -396,6 +396,12 @@
             .attr("class", "legend")
             .style("fill", "gray")
             .text("Hint: Click the legend box to hide/show").attr("font-size", 12);
+
+          svg.append("circle")
+          .attr("cx", text_hor_align2 - 10).attr("cy", 260)   
+          .attr("r", "6px")  
+          .attr("fill", "orange")
+
         });
 
  
