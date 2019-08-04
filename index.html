@@ -42,7 +42,7 @@
                value="Show earthquake-active faults" 
                onclick="loadFaults()" />
     </div>-->
-    <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)_datum</p>
+    <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)_datum1</p>
     <form name="myform_historic" onSubmit="return handleClick()">
         <input name="Submit"  type="submit" value="Historic: Magnitude Treshold" />
         <input type="text" id="histMag" maxlength="" />
@@ -109,6 +109,8 @@
 
       const hint_hor_align = 700;
 
+      const vert_datum1 = 50;
+
 
       //basemap of counties and tooltip
       var tooltip = d3.select("body").append("div") 
@@ -168,7 +170,7 @@
           .attr("y", vert_datum1)    
           .attr("class", "legend")
           .style("fill", "Black")
-          .text("Step 1: Base Map legends (Click to hide/show)").attr("font-size", 14).attr("font-weight", "bold");  
+          .text("Step 1: Base Map - View Geographic References").attr("font-size", 14).attr("font-weight", "bold");  
 
       //fault legends
       var lineData = [ { "x": text_hor_align2 - 13,   "y": vert_datum1 + 10},  { "x": text_hor_align2 - 9,  "y": 22}];
