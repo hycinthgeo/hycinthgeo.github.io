@@ -288,11 +288,17 @@
             .style("fill", "gray")
             .text("Hint: Fill the above form for the 1st row, and press ENTER").attr("font-size", 12);
       svg.append("text")
-            .attr("x", hint_hor_align)             
+            .attr("x", hint_hor_align + 20)             
             .attr("y", vert_datum2 + vert_text_space * 2)    
             .attr("class", "legend")
             .style("fill", "gray")
-            .text("     Example: 6.0    1900-01-01    2000-01-01").attr("font-size", 12);
+            .text("Example: 6.0    1900-01-01    2000-01-01").attr("font-size", 12);
+      svg.append("text")
+            .attr("x", hint_hor_align)             
+            .attr("y", vert_datum2 + vert_text_space * 3)    
+            .attr("class", "legend")
+            .style("fill", "gray")
+            .text("Hint: Hover on points for more details").attr("font-size", 12);
 
       svg.append("circle")
           .attr("cx", text_hor_align2 - 10).attr("cy", vert_datum2 + vert_text_space - 5)   
@@ -364,11 +370,17 @@
             .style("fill", "gray")
             .text("Hint: Fill the above form for the 2nd row, and press ENTER").attr("font-size", 12);
       svg.append("text")
-            .attr("x", hint_hor_align)             
+            .attr("x", hint_hor_align + 20)             
             .attr("y", vert_datum3 + vert_text_space * 2)    
             .attr("class", "legend")
             .style("fill", "gray")
-            .text("      Example: 6.0    2000-01-01    2019-08-04").attr("font-size", 12);
+            .text("Example: 6.0    2000-01-01    2019-08-04").attr("font-size", 12);
+      svg.append("text")
+            .attr("x", hint_hor_align)             
+            .attr("y", vert_datum3 + vert_text_space * 3)    
+            .attr("class", "legend")
+            .style("fill", "gray")
+            .text("Hint: Hover on points for more details").attr("font-size", 12);
 
       svg.append("circle")
           .attr("cx", text_hor_align2 - 10).attr("cy", vert_datum3 + vert_text_space - 5)   
@@ -432,7 +444,7 @@
                   .append('text')
                  .attr("x", function (d) { return projection(d.geometry.coordinates)[0]; })
                   .attr("y", function (d) { return projection(d.geometry.coordinates)[1]; })
-                  .text(function(d) { return d.properties.place; })
+                  .text(function(d) { return d.place; })
                   .attr('font-size', 12)
                   .attr('text-anchor', 'end');
             /*g1.append("text").
