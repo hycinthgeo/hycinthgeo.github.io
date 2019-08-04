@@ -546,9 +546,9 @@
 
         var bars = example.append("g")
         .selectAll("rect").data([0]).enter().append("g")
-        .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", " + (vert_example + vert_text_space * 3).toString() +")";})
+        .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", " + (vert_example + vert_text_space * 4).toString() +")";})
         .attr("width", width - text_hor_align2)
-        .attr("height", height - vert_example - vert_text_space * 2);
+        .attr("height", height - vert_example - vert_text_space * 4);
 
           bars.append("text")
             .attr("x", 0)             
