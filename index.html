@@ -34,7 +34,7 @@
   </head>
 
   <form name="myform" onSubmit="return handleClick()">
-      <input name="Submit"  type="submit" value="Radius" />
+      <input name="Submit"  type="submit" value="testRadius" />
       <input type="text" id="myRadius" maxlength="" />
   </form>
 
@@ -273,6 +273,21 @@
           .attr("r", "20px")
           .attr("fill", "red");
       });
+
+      function handleClick(event){
+            console.log(document.getElementById("myRadius").value)
+            draw(document.getElementById("myRadius").value)
+            return false;
+        }
+
+        function draw(rad){
+            mySVG.append("svg:circle")
+            .style("fill", "red")
+            .attr("opacity", 0.4)
+            .attr("r", rad)
+            .attr("cx", Math.round(Math.random()*500))
+            .attr("cy", Math.round(Math.random()*300))
+        }
 
 
     </script>
