@@ -120,12 +120,12 @@
           .attr("y", 400)    
           .attr("class", "legend")
           .style("fill", "steelblue")         
-          .on("click", function(){
+          .on("click", function(json){
             // Determine if current line is visible
             var active   = blueLine.active ? false : true,
               newOpacity = active ? 0 : 1;
             // Hide or show the elements
-            d3.select("#blueLine").style("opacity", newOpacity);
+            d3.select(json.features).style("opacity", newOpacity);
             // Update whether or not the elements are active
             blueLine.active = active;
           })
