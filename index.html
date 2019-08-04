@@ -165,7 +165,7 @@
           .attr("y", 50)    
           .attr("class", "legend")
           .style("fill", "Black")
-          .text("Base Map legends (Click to hide/show)").attr("font-size", 14).attr("font-weight", "bold");  
+          .text("Step 1: Base Map legends (Click to hide/show)").attr("font-size", 14).attr("font-weight", "bold");  
 
       //show or hide earthquake 
       d3.json("data_geojson/faults_earthquake_active_v2.geojson", function(json) {
@@ -207,9 +207,9 @@
           .attr("y", 150)    
           .attr("class", "legend")
           .style("fill", "Black")
-          .text("Set Your Interested Historic Earthquake").attr("font-size", 14).attr("font-weight", "bold");  
+          .text("Step 2: Show Your Interested Historic Earthquakes (Fill the Above Form & Press Enter)").attr("font-size", 14).attr("font-weight", "bold");  
       svg.append("circle")
-          .attr("cx", text_hor_align1 + 300).attr("cy", 145)   
+          .attr("cx", text_hor_align1 + 600).attr("cy", 145)   
           .attr("r", "6px")  
           .attr("fill", "gray")
 
@@ -264,9 +264,9 @@
           .attr("y", 250)    
           .attr("class", "legend")
           .style("fill", "Black")
-          .text("Set Your Interested Recent Earthquake").attr("font-size", 14).attr("font-weight", "bold");     
+          .text("Step 3: Show Your Interested Recent Earthquakes (Fill the Above Form & Press Enter)").attr("font-size", 14).attr("font-weight", "bold");     
       svg.append("circle")
-          .attr("cx", text_hor_align1 + 300).attr("cy", 245)   
+          .attr("cx", text_hor_align1 + 600).attr("cy", 245)   
           .attr("r", "6px")  
           .attr("fill", "green")
 
