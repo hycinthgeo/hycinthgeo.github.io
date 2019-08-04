@@ -229,7 +229,7 @@
             .attr("x", hint_hor_align + 0.5 * vert_text_space)             
             .attr("y", vert_datum1)    
             .attr("height", 10).attr("width", 100)
-            .style("fill", "#fff")
+            .style("fill", "lightgray")
             .on("click", function(){
               // Determine if current line is visible
               var active   = faults.active ? false : true,
@@ -342,7 +342,7 @@
       //visualize historic earthquake 
       var tooltip_scatter = d3.select("body").append("div") 
           .attr("class", "tooltip").style("color", "white").style("background-color", "blue")       
-          .style("opacity", 0.9).style("font-size", "10px")
+          .style("opacity", 0).style("font-size", "10px")
           .style("padding", "8px 8px").style("border", "2px solid #444")
           .style("width", 120).style("height", 30);
 
