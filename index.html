@@ -49,14 +49,14 @@
 
     <script src="//d3js.org/topojson.v1.min.js"></script>
     <script>
-            function handleClick(event){
+        function handleClick(event){
             console.log(document.getElementById("myRadius").value)
             draw(document.getElementById("myRadius").value)
             return false;
         }
 
         function draw(rad){
-            mySVG.append("svg:circle")
+            svg.append("circle")
             .style("fill", "red")
             .attr("opacity", 0.4)
             .attr("r", rad)
