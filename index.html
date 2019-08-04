@@ -358,14 +358,14 @@
 
 
       d3.json("data_geojson/citypopulation2018_wiki.geojson", function(json) {
-        svg.append("g").selectAll("triangle")
-          .data(json.features)
-          .enter()
-          .append("circle")
-          .attr("cx", function (d) { return projection(d.geometry.coordinates)[0]; })
-          .attr("cy", function (d) { return projection(d.geometry.coordinates)[1]; })
-          .attr("r", "20px")
-          .attr("fill", "red");
+          svg.append("g").selectAll("rect")
+            .data(json.features)
+            .enter()
+            .append("circle")
+            .attr("cx", function (d) { return projection(d.geometry.coordinates)[0]; })
+            .attr("cy", function (d) { return projection(d.geometry.coordinates)[1]; })
+            .attr("r", "9px")
+            .attr("fill", "orange");
       });
 
 
