@@ -176,14 +176,14 @@
 
       //add recent earthquakes 
       d3.json("data/usgs_query_july_m45p.geojson", function(json) {
-      svg.append("g").selectAll("rect")
-        .data(json.features)
-        .enter()
-        .append("circle")
-        .attr("cx", function (d) { console.log(projection(d)); return projection(d)[0]; })
-        .attr("cy", function (d) { return projection(d)[1]; })
-        .attr("r", "6px")
-        .attr("fill", "lightblue")
+        svg.append("g").selectAll("rect")
+          .data(json.features)
+          .enter()
+          .append("circle")
+          .attr('cx', function(d) {return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];})
+          .attr('cy', function(d) {return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];})
+          .attr("r", "6px")
+          .attr("fill", "green")
       });
 
 
