@@ -34,11 +34,14 @@
   </head>
 
   <form name="myform" onSubmit="return handleClick()">
-      <input name="Submit"  type="submit" value="testRadius" />
-      <input type="text" id="myRadius" maxlength="" />
+      <input name="Submit"  type="submit" value="Historic: Magnitude Treshold" />
+      <input type="text" id="histMag" maxlength="" />
 
-      <input name="Submit"  type="submit" value="testColor" />
-      <input type="text" id="myColor" maxlength="" />
+      <input name="Submit"  type="submit" value="Start Date" />
+      <input type="text" id="histStart" maxlength="" />
+
+      <input name="Submit"  type="submit" value="End Date" />
+      <input type="text" id="histEnd" maxlength="" />
 
   </form>
 
@@ -54,9 +57,9 @@
     <script src="//d3js.org/topojson.v1.min.js"></script>
     <script>
         function handleClick(event){
-            console.log(document.getElementById("myRadius").value, document.getElementById("myColor").value)
+            console.log(document.getElementById("histMag").value, document.getElementById("histStart").value, document.getElementById("histEnd").value)
             //draw(document.getElementById("myRadius").value, document.getElementById("myColor").value)
-            vis_historic_earthquake(document.getElementById("myRadius").value, "2010-01-01", "2019-07-01");
+            vis_historic_earthquake(document.getElementById("histMag").value, document.getElementById("histStart").value, document.getElementById("histEnd").value);
             return false;
         }
 
