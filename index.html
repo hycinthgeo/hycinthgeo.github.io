@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p style="font-size:100%; color:black;"> Historic Large (M6+) & July Earthquakes (California and Nevada)_city3</p>
+  <p style="font-size:100%; color:black;"> Historic Large (M6+) & July Earthquakes (California and Nevada)_city4</p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
@@ -148,17 +148,7 @@
             .text("Earthquake-active Faults (2018）").attr("font-size", 12);
       });
 
-      //show or hide highly-populated cities > 0.5M
-      d3.json("data_geojson/citypopulation2018_wiki.geojson", function(json) {
-        svg.append("g").selectAll("rect")
-          .data(json.features)
-          .enter()
-          .append("circle")
-          .attr("cx", function (d) { return projection(d.geometry.coordinates)[0]; })
-          .attr("cy", function (d) { return projection(d.geometry.coordinates)[1]; })
-          .attr("r", "10px")
-          .attr("fill", "orange");
-      });     
+   
 
 
 
@@ -229,6 +219,18 @@
             .duration(500)    
             .style("opacity", 0); 
           })
+      });
+
+
+      d3.json("data_geojson/citypopulation2018_wiki.geojson", function(json) {
+        svg.append("g").selectAll("rect")
+          .data(json.features)
+          .enter()
+          .append("circle")
+          .attr("cx", function (d) { return projection(d.geometry.coordinates)[0]; })
+          .attr("cy", function (d) { return projection(d.geometry.coordinates)[1]; })
+          .attr("r", "9px")
+          .attr("fill", "red")
       });
 
 
