@@ -118,8 +118,8 @@
 
       // Add the blue line title
       svg.append("text")
-        .attr("x", 100)             
-        .attr("y", 200)    
+        .attr("x", 50)             
+        .attr("y", 400)    
         .attr("class", "legend")
         .style("fill", "steelblue")         
         .on("click", function(){
@@ -131,7 +131,7 @@
           // Update whether or not the elements are active
           blueLine.active = active;
         })
-        .text("Blue Line");
+        .text("Earthquake-active Faults");
 
       //visualize historic earthquake 
       var selected_earthquakes = [
