@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p style="font-size:100%; color:black;"> Historic Large (M6+) & July Earthquakes (California and Nevada)_city12</p>
+  <p style="font-size:100%; color:black;"> Historic Large (M6+) & July Earthquakes (California and Nevada)_city13</p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
@@ -54,6 +54,12 @@
       var svg = d3.select("body").append("svg")
           .attr("width", width)
           .attr("height", height);    
+
+      const LAT_MIN = 32;
+      const LAT_MAX = 42;
+      const LONG_MIN = -125;
+      const LONG_MAX = -113;
+
 
       //basemap of counties and tooltip
       var tooltip = d3.select("body").append("div") 
@@ -159,15 +165,6 @@
 
 
       //visualize historic earthquake 
-      var selected_earthquakes = [
-      [-116.07, 33.08, "Borrego Mountain Earthquake", 6.5, 1968, "1968-04-09 02:28:59", "https://pubs.usgs.gov/pp/0787/report.pdf"],
-      [-117.49, 38.32, "Cedar Mountain Earthquake", 7.2, 1932, "1932-12-20", "https://en.wikipedia.org/wiki/Cedar_Mountains_(Nevada)"],
-      [-120.32, 36.22, "Coalinga Earthquake", 6.2, 1983, "1983-05-02 23:42:37", "https://en.wikipedia.org/wiki/1983_Coalinga_earthquake"],
-      [-118.07, 39.71, "Dixie Valley Earthquake", 7.3, 1954, "1954-12-16 ", "https://en.wikipedia.org/wiki/Dixie_Valley,_Nevada"],
-      [-119.78, 38.69, "Double Springs Flat Earthquake", 6.0, 1994, "1994-09-12 05:23", "www.nbmg.unr.edu/_docs/Newsletters/nl25a.htm"],
-      [-115.29, 32.26, "El Mayor Cucapah (Baja California) Earthquake", 7.2, 2010, "xxx", "https://www.eeri.org/site/images/eeri_newsletter/2010_pdf/Baja_CA_EQRpt.pdf"]];
-
-
       var tooltip_scatter = d3.select("body").append("div") 
           .attr("class", "tooltip").attr("fill", "lightblue")       
           .style("opacity", 0);
@@ -177,7 +174,7 @@
       var user_hist_start = "2010-07-01"
       var user_hist_end = "2011-07-01"
       //var usgs_url_historic = "https://earthquake.usgs.gov/fdsnws/event/1/query.geojson?starttime=" + "2008-07-01" +"%2000:00:00&endtime=" + "2010-07-31" + "%2023:59:59&maxlatitude=42&minlatitude=32&maxlongitude=-113&minlongitude=-125&minmagnitude=" + user_hist_mag_thre.toString() + "&orderby=time"
-      var usgs_url_historic = "https://earthquake.usgs.gov/fdsnws/event/1/query.geojson?starttime=" + user_hist_start + "%2000:00:00&endtime=" + user_hist_end + "%2023:59:59&maxlatitude=42&minlatitude=32&maxlongitude=-113&minlongitude=-125&minmagnitude=" + user_hist_mag_thre.toString() + "&orderby=time"
+      var usgs_url_historic = "https://earthquake.usgs.gov/fdsnws/event/1/query.geojson?starttime=" + user_hist_start + "%2000:00:00&endtime=" + user_hist_end + "%2023:59:59&maxlatitude=" + LAT_MAX.toString() + "&minlatitude=" + LAT_MIN.toString() + "&maxlongitude=" + LONG_MAX.toString() + "&minlongitude=" + LONG_MIN.toString() + "&minmagnitude=" + user_hist_mag_thre.toString() + "&orderby=time"
       //console.log(usgs_url_historic)
       //d3.json("data_geojson/usgs_query_july_m45p.geojson", function(json) {
       d3.json(usgs_url_historic, function(json) {
