@@ -42,7 +42,7 @@
                value="Show earthquake-active faults" 
                onclick="loadFaults()" />
     </div>-->
-    <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)_v11</p>
+    <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)_v12</p>
     <form name="myform_historic" onSubmit="return handleClick()">
         <input name="Submit"  type="submit" value="Historic: Magnitude Treshold" />
         <input type="text" id="histMag" maxlength="" />
@@ -375,7 +375,7 @@
           g1.append("text").
             .attr("x", function (d) { return projection(d.geometry.coordinates)[0]; })
             .attr("y", function (d) { return projection(d.geometry.coordinates)[1]; })
-            .text("TEST CITY")
+            .text(function (d) {return "TEST CITY";});
 
           var barHeight = 20;
             var bars = svg.append("g")
