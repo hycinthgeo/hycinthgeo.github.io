@@ -42,7 +42,7 @@
                value="Show earthquake-active faults" 
                onclick="loadFaults()" />
     </div>-->
-    <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)_v9</p>
+    <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)_v10</p>
     <form name="myform_historic" onSubmit="return handleClick()">
         <input name="Submit"  type="submit" value="Historic: Magnitude Treshold" />
         <input type="text" id="histMag" maxlength="" />
@@ -362,10 +362,11 @@
 
 
       d3.json("data_geojson/citypopulation2018_wiki.geojson", function(json) {
-          svg.append("g").attr("id", "cities").selectAll("rect")
+          var g1 = svg.append("g").attr("id", "cities").selectAll("rect")
             .data(json.features)
             .enter()
-            .append("circle").attr("class", "cities")
+            
+          g1.append("circle").attr("class", "cities")
             .attr("cx", function (d) { return projection(d.geometry.coordinates)[0]; })
             .attr("cy", function (d) { return projection(d.geometry.coordinates)[1]; })
             .attr("r", "9px")
