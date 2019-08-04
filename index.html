@@ -139,17 +139,48 @@
           })
           bars.append("rect")
           .attr("x", 0).attr("y", 0)
-          .attr("width", 150).attr("height", barHeight).attr("fill", "gray")      
+          .attr("width", 150).attr("height", barHeight).attr("fill", "#ccc")      
           bars.append("text")
             .attr("x", 0)             
             .attr("y", barHeight/2)    
             .attr("class", "legend")
             .style("fill", "red")         
             .text("Earthquake-active Faults (2018）").attr("font-size", 12);
-
-
       });
-      //};
+
+      //show or hide highly-populated cities > 0.5M
+      d3.json("citypopulation2018_wiki.geojson", function(json) {
+        svg.append("g").attr("id", "city").selectAll("path")
+          .data(json.features)
+          .enter()
+          .append("path").attr("class", "city")
+          .attr("stroke", "red")
+          .attr("d", generator);
+
+              // Add the blue line title
+          var barHeight = 20;
+          var bars = svg.append("g")
+          .selectAll("rect").data([0]).enter().append("g")
+          .attr("transform", function(d, i) { return "translate(420, 95)";})
+          .on("click", function(){
+            // Determine if current line is visible
+            var active   = city.active ? false : true,
+              newOpacity = active ? 0 : 1;
+            // Hide or show the elements
+            d3.select("#city").style("opacity", newOpacity);
+            // Update whether or not the elements are active
+            faults.active = active;
+          })
+          bars.append("rect")
+          .attr("x", 0).attr("y", 0)
+          .attr("width", 150).attr("height", barHeight).attr("fill", "#ccc")      
+          bars.append("text")
+            .attr("x", 0)             
+            .attr("y", barHeight/2)    
+            .attr("class", "legend")
+            .style("fill", "red")         
+            .text("highly-populated cities > 0.5M (2018）").attr("font-size", 12);
+      });      
 
 
 
