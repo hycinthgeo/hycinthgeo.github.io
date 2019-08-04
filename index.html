@@ -187,6 +187,19 @@
           .attr("cy", function (d) { return projection(d.geometry.coordinates)[1]; })
           .attr("r", "4px")
           .attr("fill", "green")
+          .on("mouseover", function(d) {    
+            tooltip_recent.transition()    
+            .duration(200)    
+            .style("opacity", .5);    
+            tooltip_recent.html(d.properties.place + ", mag = " + d.properties.mag)  
+            .style("left", (d3.event.pageX) + "px")   
+            .style("top", (d3.event.pageY - 28) + "px");  
+          }) 
+          .on("mouseout", function(d) {   
+            tooltip_recent.transition()    
+            .duration(500)    
+            .style("opacity", 0); 
+          })
       });
 
 
