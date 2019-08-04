@@ -174,9 +174,9 @@
 
 
       var hist_mag_thre = 3.0
-      var hist_mag_start = "2010-07-01"
-      var hist_mag_end = "2011-07-01"
-      var usgs_url_historic = "https://earthquake.usgs.gov/fdsnws/event/1/query.geojson?starttime="+ hist_mag_start + "%2000:00:00&endtime=" + hist_mag_end + "%2023:59:59&maxlatitude=42&minlatitude=32&maxlongitude=-113&minlongitude=-125&minmagnitude=" + hist_mag_thre.toString() + "&orderby=time"
+      var hist_mag_start = '2010-07-01'
+      var hist_mag_end = '2011-07-01'
+      var usgs_url_historic = "https://earthquake.usgs.gov/fdsnws/event/1/query.geojson?starttime="+ hist_mag_start.toString() + "%2000:00:00&endtime=" + hist_mag_end.toString() + "%2023:59:59&maxlatitude=42&minlatitude=32&maxlongitude=-113&minlongitude=-125&minmagnitude=" + hist_mag_thre.toString() + "&orderby=time"
       console.log(usgs_url_historic)
       //d3.json("data_geojson/usgs_query_july_m45p.geojson", function(json) {
       d3.json(usgs_url_historic, function(json) {
