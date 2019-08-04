@@ -47,7 +47,7 @@
 
       var projection = d3.geo.mercator()
           .center([ -120, 38 ])
-          .translate([ 170, height * 0.35 ])
+          .translate([ 170, height * 0.4 ])
           .scale([ 2000 ]);
       var generator = d3.geo.path().projection(projection);
 
@@ -110,7 +110,7 @@
         svg.append("g").selectAll("path")
           .data(json.features)
           .enter()
-          .append("path").attr("class", "faults").attr("id", "faults")
+          .append("path").attr("class", "faults").attr("id", "blueLine")
           .attr("stroke", "red")
           .attr("d", generator);
       });
@@ -118,21 +118,20 @@
 
       // Add the blue line title
       svg.append("text")
-        .attr("x", 0)             
-        .attr("y", height + margin.top + 10)    
+        .attr("x", 100)             
+        .attr("y", 200)    
         .attr("class", "legend")
         .style("fill", "steelblue")         
         .on("click", function(){
           // Determine if current line is visible
-          var active   = faults.active ? false : true,
+          var active   = blueLine.active ? false : true,
             newOpacity = active ? 0 : 1;
           // Hide or show the elements
-          d3.select("#faults").style("opacity", newOpacity);
-          //d3.select("#blueAxis").style("opacity", newOpacity);
+          d3.select("#blueLine").style("opacity", newOpacity);
           // Update whether or not the elements are active
-          faults.active = active;
+          blueLine.active = active;
         })
-        .text("Faults");
+        .text("Blue Line");
 
       //visualize historic earthquake 
       var selected_earthquakes = [
