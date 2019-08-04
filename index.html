@@ -412,7 +412,7 @@
             var barHeight = 20;
               var bars = svg.append("g")
               .selectAll("rect").data([0]).enter().append("g")
-              .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + "," + (vert_datum1 + vert_text_space * 2).toString() +" 80)";})
+              .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + "," + (vert_datum1 + vert_text_space * 2).toString() +" )";})
               /*bars.append("rect")
               .attr("x", 0).attr("y", 0)
               .attr("width", text_box_width).attr("height", barHeight).attr("fill", "#ccc")    */  
@@ -420,8 +420,8 @@
                 .attr("x", 0)             
                 .attr("y", 0)//barHeight/2)    
                 .attr("class", "legend")
-                .style("fill", "red")         
-                .text("Large cities with >0.5M population (2018").attr("font-size", 12);
+                .style("fill", "black")         
+                .text("Large cities with >0.5M population (2018)").attr("font-size", 12);
              svg.append("rect")
               .attr("x", text_hor_align2 - 10).attr("y", vert_datum1 + vert_text_space * 2)   
               .attr("width", "8px").attr("height", "8px")  
