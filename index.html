@@ -21,12 +21,12 @@
 		div.tooltip { 
 			position: absolute;     
 			text-align: center;     
-			width: 80px;          
-			height: 14px;         
+			width: 120px;          
+			height: 30px;         
 			padding: 2px;       
-			font: 12px sans-serif;    
+			font: 10px sans-serif;    
 			background: #fff; 
-			border: 0px;        
+			border: 1px;        
 			pointer-events: none;     
 		}
 	</style>
@@ -336,7 +336,7 @@
 
       //visualize historic earthquake 
       var tooltip_scatter = d3.select("body").append("div") 
-          .attr("class", "tooltip").style("background-color", "blue")       
+          .attr("class", "tooltip").style("color", "white").style("background-color", "blue")       
           .style("opacity", 0.9).style("font-size", "10px")
           .style("padding", "8px 8px").style("border", "2px solid #444");
 
@@ -363,7 +363,7 @@
               tooltip_scatter.transition()    
               .duration(200)    
               .style("opacity", .5);    
-              tooltip_scatter.html(d.properties.title + ", mag = " + d.properties.mag)  
+              tooltip_scatter.html(d.properties.title)// + ", mag = " + d.properties.mag)  
               .style("left", (d3.event.pageX) + "px")   
               .style("top", (d3.event.pageY - 28) + "px");  
             }) 
@@ -439,7 +439,7 @@
               tooltip_recent.transition()    
               .duration(200)    
               .style("opacity", .5);    
-              tooltip_recent.html(d.properties.title + ", mag = " + d.properties.mag)  
+              tooltip_recent.html(d.properties.title)// + ", mag = " + d.properties.mag)  
               .style("left", (d3.event.pageX) + "px")   
               .style("top", (d3.event.pageY - 28) + "px");  
             }) 
