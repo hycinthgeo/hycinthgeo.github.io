@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p style="font-size:100%; color:black;"> Historic vs. Recent Earthquakes (California and Nevada)_city26</p>
+  <p style="font-size:100%; color:black;"> Historic vs. Recent Earthquakes (California and Nevada)_city27</p>
 
 
   <head>
@@ -49,6 +49,22 @@
 
     <script src="//d3js.org/topojson.v1.min.js"></script>
     <script>
+            function handleClick(event){
+            console.log(document.getElementById("myRadius").value)
+            draw(document.getElementById("myRadius").value)
+            return false;
+        }
+
+        function draw(rad){
+            mySVG.append("svg:circle")
+            .style("fill", "red")
+            .attr("opacity", 0.4)
+            .attr("r", rad)
+            .attr("cx", 500)
+            .attr("cy", 300)
+        }
+
+
       var width = 1000,
           height = 500;
 
@@ -273,21 +289,6 @@
           .attr("r", "20px")
           .attr("fill", "red");
       });
-
-      function handleClick(event){
-            console.log(document.getElementById("myRadius").value)
-            draw(document.getElementById("myRadius").value)
-            return false;
-        }
-
-        function draw(rad){
-            mySVG.append("svg:circle")
-            .style("fill", "red")
-            .attr("opacity", 0.4)
-            .attr("r", rad)
-            .attr("cx", Math.round(Math.random()*500))
-            .attr("cy", Math.round(Math.random()*300))
-        }
 
 
     </script>
