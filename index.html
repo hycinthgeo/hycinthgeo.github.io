@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<p style="font-size:120%; color:black; font-weight: bold;"> California and Nevada: Historic vs. Recent Earthquakes5</p>
+<p style="font-size:120%; color:black; font-weight: bold;"> California and Nevada: Historic vs. Recent Earthquakes6</p>
 
   <head>
     <meta charset="utf-8">
@@ -454,7 +454,7 @@
                   .append('text')
                  .attr("x", function (d) { return projection(d.geometry.coordinates)[0]; })
                   .attr("y", function (d) { return projection(d.geometry.coordinates)[1]; })
-                  .text(function(d) { return d.place; })
+                  .text(function(d) { return d.property.place; })
                   .attr('font-size', 12)
                   .attr('text-anchor', 'end');
             /*g1.append("text").
