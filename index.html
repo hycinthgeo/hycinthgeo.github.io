@@ -171,7 +171,7 @@
           .text("Step 1: Base Map legends (Click to hide/show)").attr("font-size", 14).attr("font-weight", "bold");  
 
       //fault legends
-      var lineData = [ { "x": text_hor_align2 - 10,   "y": 60},  { "x": text_hor_align2 - 8,  "y": 62}];
+      var lineData = [ { "x": text_hor_align2 - 13,   "y": 60},  { "x": text_hor_align2 - 10,  "y": 66}];
       var lineFunction = d3.svg.line()
                           .x(function(d) { return d.x; })
                           .y(function(d) { return d.y; })
@@ -257,7 +257,7 @@
             .text("Hint: Fill the above form for the 1st row, and press ENTER").attr("font-size", 12);
       svg.append("text")
             .attr("x", hint_hor_align)             
-            .attr("y", 175)    
+            .attr("y", 180)    
             .attr("class", "legend")
             .style("fill", "gray")
             .text("E.x.: 6.0    1900-01-01    2000-01-01").attr("font-size", 12);
@@ -318,7 +318,13 @@
           .attr("y", 250)    
           .attr("class", "legend")
           .style("fill", "Black")
-          .text("Step 3: Show Your Interested Recent Earthquakes").attr("font-size", 14).attr("font-weight", "bold");     
+          .text("Step 3: Show Your Interested Recent Earthquakes").attr("font-size", 14).attr("font-weight", "bold");    
+      svg.append("text")
+        .attr("x", text_hor_align2)             
+        .attr("y", 265)    
+        .attr("class", "legend")
+        .style("fill", "Black")
+        .text("Your Selected Recent Earthquakes").attr("font-size", 12); 
       svg.append("text")
             .attr("x", hint_hor_align)             
             .attr("y", 265)    
@@ -327,7 +333,7 @@
             .text("Hint: Fill the above form for the 2nd row, and press ENTER").attr("font-size", 12);
       svg.append("text")
             .attr("x", hint_hor_align)             
-            .attr("y", 275)    
+            .attr("y", 280)    
             .attr("class", "legend")
             .style("fill", "gray")
             .text("E.x.: 6.0    2000-01-01    2019-08-04").attr("font-size", 12);
@@ -379,7 +385,7 @@
             .data(json.features)
             .enter()
             
-          g1.append("circle").attr("class", "cities")
+          g1.append("rect").attr("class", "cities")
             .attr("x", function (d) { return projection(d.geometry.coordinates)[0]; })
             .attr("y", function (d) { return projection(d.geometry.coordinates)[1]; })
             .attr("width", "5px").attr("height", "5px").attr("transform", "rotate(90)")
