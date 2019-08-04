@@ -227,10 +227,10 @@
            
            svg.append("rect")
             .attr("x", hint_hor_align)             
-            .attr("y", vert_datum1 + vert_text_space)    
+            .attr("y", vert_datum1)    
             .attr("height", 10).attr("width", 100)
             .style("fill", "gray")
-            .text("Hint: Click HERE to hide/show").attr("font-size", 12)
+            .text("Hide / Show").attr("font-size", 12)
             .on("click", function(){
               // Determine if current line is visible
               var active   = faults.active ? false : true,
