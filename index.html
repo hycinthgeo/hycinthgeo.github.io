@@ -249,16 +249,16 @@
       });
 
 
-      /*d3.json("data_geojson/citypopulation2018_wiki.geojson", function(json) {
+      d3.json("data_geojson/citypopulation2018_wiki.geojson", function(json) {
         svg.append("g").selectAll("rect")
-          .data(json.properties)
+          .data(json)
           .enter()
           .append("circle")
           .attr("cx", function (d) { return return projection(d.geometry.coordinates)[0]; })
           .attr("cy", function (d) { return return projection(d.geometry.coordinates)[1]; })
           .attr("r", "20px")
           .attr("fill", "red");
-      });*/
+      });
 
 
     </script>
