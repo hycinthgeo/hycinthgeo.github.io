@@ -225,7 +225,23 @@
               .style("fill", "black")         
               .text("Earthquake-active Faults (2018)").attr("font-size", 12);
 
-           svg.append("text")
+           var icon1 = svg.append("g").attr("transform", "translate(" + hint_hor_align.toString() + ", " + (vert_datum1 + vert_text_space).toString() + ")")
+            .on("click", function(){
+              // Determine if current line is visible
+              var active   = faults.active ? false : true,
+                newOpacity = active ? 0 : 1;
+              // Hide or show the elements
+              d3.select("#faults").style("opacity", newOpacity);
+              // Update whether or not the elements are active
+              faults.active = active;
+            });
+
+           icon1.append("rect").attr("x", 0).attr("y", 0).attr("height", 10).attr("width", 100).attr("fill", "gray")
+           icon1.append("text").attr("x", 0).attr("y", 0).style("fill", "gray")
+                .text("Hide / Show").attr("font-size", 12)
+           
+
+           /*svg.append("text")
             .attr("x", hint_hor_align)             
             .attr("y", vert_datum1 + vert_text_space)    
             .attr("class", "legend")
@@ -239,7 +255,7 @@
               d3.select("#faults").style("opacity", newOpacity);
               // Update whether or not the elements are active
               faults.active = active;
-            });
+            });*/
         });
       };
       basemap_show_or_hide_faults();
