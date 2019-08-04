@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<p style="font-size:120%; color:black; font-weight: bold;"> California and Nevada: Historic vs. Recent Earthquakes2</p>
+<p style="font-size:120%; color:black; font-weight: bold;"> California and Nevada: Historic vs. Recent Earthquakes3</p>
 
   <head>
     <meta charset="utf-8">
@@ -415,8 +415,9 @@
       //show or hide cities            
       function basemap_show_or_hide_cities(){
         d3.json("data_geojson/citypopulation2018_wiki.geojson", function(json) {
+            var data = json.features;
             var g1 = svg.append("g").attr("id", "cities").selectAll("rect")
-              .data(json.features)
+              .data(data)
               .enter()
               
             g1.append("rect").attr("class", "cities")
@@ -425,6 +426,15 @@
               .attr("width", "8px").attr("height", "8px")
               .attr("fill", "orange");
 
+            var annotations = svg.selectAll('cities')
+                  .data(data)
+                  .enter()
+                  .append('text')
+                 .attr("x", function (d) { return projection(d.geometry.coordinates)[0]; })
+                  .attr("y", function (d) { return projection(d.geometry.coordinates)[1]; })
+                  .text(function(d) { return "Hello"; })
+                  .attr('font-size', 12)
+                  .attr('text-anchor', 'end');
             /*g1.append("text").
               .attr("x", function (d) { return projection(d.geometry.coordinates)[0]; })
               .attr("y", function (d) { return projection(d.geometry.coordinates)[1]; })
@@ -447,16 +457,6 @@
               .attr("x", text_hor_align2 - 15).attr("y", vert_datum1 + vert_text_space * 1.5)   
               .attr("width", "8px").attr("height", "8px")  
               .attr("fill", "orange")
-
-            var annotations = svg.selectAll('text')
-                  .data(json.features)
-                  .enter()
-                  .append('text')
-                 .attr("x", function (d) { return projection(d.geometry.coordinates)[0]; })
-                  .attr("y", function (d) { return projection(d.geometry.coordinates)[1]; })
-                  .text(function(d) { return "Hello"; })
-                  .attr('font-size', 12)
-                  .attr('text-anchor', 'end');
 
 
              svg.append("text")
