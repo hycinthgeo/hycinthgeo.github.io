@@ -178,7 +178,7 @@
           .text("Step 1: Base Map - View Geographic References").attr("font-size", 14).attr("font-weight", "bold");  
 
       //fault legends
-      var lineData = [ { "x": text_hor_align2 - 13,   "y": vert_datum1 + 10},  { "x": text_hor_align2 - 9,  "y": vert_datum1 + 22}];
+      var lineData = [ { "x": text_hor_align2 - 13,   "y": vert_datum1 + vert_text_space * 0.8},  { "x": text_hor_align2 - 9,  "y": vert_datum1 + vert_text_space * 2.0}];
       var lineFunction = d3.svg.line()
                           .x(function(d) { return d.x; })
                           .y(function(d) { return d.y; })
@@ -240,7 +240,8 @@
       var lineData2 = [ { "x": text_hor_align2 - 13,   "y": vert_datum1 + vert_text_space * 3 - 10}, 
                         { "x": text_hor_align2 - 8,  "y": vert_datum1 + vert_text_space * 3 -8}, 
                         { "x": text_hor_align2 - 9,  "y": vert_datum1 + vert_text_space * 3 + 2},
-                        { "x": text_hor_align2 - 14,  "y": vert_datum1 + vert_text_space * 3 + 3}];
+                        { "x": text_hor_align2 - 14,  "y": vert_datum1 + vert_text_space * 3 + 3},
+                        { "x": text_hor_align2 - 13,   "y": vert_datum1 + vert_text_space * 3 - 10}];
       var lineFunction2 = d3.svg.line()
                           .x(function(d) { return d.x; })
                           .y(function(d) { return d.y; })
@@ -285,7 +286,7 @@
             .attr("y", vert_datum2 + vert_text_space * 2)    
             .attr("class", "legend")
             .style("fill", "gray")
-            .text("E.x.: 6.0    1900-01-01    2000-01-01").attr("font-size", 12);
+            .text("     Example: 6.0    1900-01-01    2000-01-01").attr("font-size", 12);
 
       svg.append("circle")
           .attr("cx", text_hor_align2 - 10).attr("cy", vert_datum2 + vert_text_space - 5)   
@@ -358,10 +359,10 @@
             .text("Hint: Fill the above form for the 2nd row, and press ENTER").attr("font-size", 12);
       svg.append("text")
             .attr("x", hint_hor_align)             
-            .attr("y", vert_datum2 + vert_text_space * 2)    
+            .attr("y", vert_datum3 + vert_text_space * 2)    
             .attr("class", "legend")
             .style("fill", "gray")
-            .text("E.x.: 6.0    2000-01-01    2019-08-04").attr("font-size", 12);
+            .text("      Example: 6.0    2000-01-01    2019-08-04").attr("font-size", 12);
 
       svg.append("circle")
           .attr("cx", text_hor_align2 - 10).attr("cy", vert_datum2 + vert_text_space - 5)   
@@ -437,7 +438,7 @@
                 .style("fill", "black")         
                 .text("Cities with >0.5M population (2018)").attr("font-size", 12);
              svg.append("rect")
-              .attr("x", text_hor_align2 - 10).attr("y", vert_datum1 + vert_text_space * 2)   
+              .attr("x", text_hor_align2 - 10).attr("y", vert_datum1 + vert_text_space * 1.5)   
               .attr("width", "8px").attr("height", "8px")  
               .attr("fill", "orange")
 
