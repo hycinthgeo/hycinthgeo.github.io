@@ -149,7 +149,7 @@
       });
 
       //show or hide highly-populated cities > 0.5M
-      d3.json("citypopulation2018_wiki.geojson", function(json) {
+      d3.json("data_geojson/citypopulation2018_wiki.geojson", function(json) {
         svg.append("g").attr("id", "city").selectAll("path")
           .data(json.features)
           .enter()
