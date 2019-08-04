@@ -91,7 +91,7 @@
 
       var projection = d3.geo.mercator()
           .center([ -120, 38 ])
-          .translate([ 170, height * 0.4 ])
+          .translate([ 170, height * 0.42 ])
           .scale([ 2000 ]);
       var generator = d3.geo.path().projection(projection);
 
@@ -108,13 +108,13 @@
 
       const hint_hor_align = 700;
 
-      const vert_datum1 = 40;
+      const vert_datum1 = 35;
       const vert_text_space = 15;
 
-      const vert_datum2 = 140;
-      const vert_datum3 = 240;
+      const vert_datum2 = 110;
+      const vert_datum3 = 210;
 
-      const vert_example = 300;
+      const vert_example = 190;
 
       //basemap of counties and tooltip
       var tooltip = d3.select("body").append("div") 
