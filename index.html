@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<p style="font-size:120%; color:black; font-weight: bold;"> California and Nevada: Historic vs. Recent Earthquakes6</p>
+<p style="font-size:120%; color:black; font-weight: bold;"> California and Nevada: Historic vs. Recent Earthquakes7</p>
 
   <head>
     <meta charset="utf-8">
@@ -451,7 +451,7 @@
             var annotations = svg.selectAll('cities')
                   .data(data)
                   .enter()
-                  .append('text').attr("id", "cities_annotations")
+                  .append('text')
                  .attr("x", function (d) { return projection(d.geometry.coordinates)[0]; })
                   .attr("y", function (d) { return projection(d.geometry.coordinates)[1]; })
                   .text(function(d) { return d.property.place; })
@@ -493,10 +493,8 @@
                   newOpacity = active ? 0 : 1;
                 // Hide or show the elements
                 d3.select("#cities").style("opacity", newOpacity);
-                d3.select("#cities_annotations").style("opacity", newOpacity);
                 // Update whether or not the elements are active
                 cities.active = active;
-                cities.annotations = active;
               })
 
 
