@@ -106,6 +106,15 @@
 
       //visualize earthquake active faults
       //function loadFaults(){
+
+      svg.append("text")
+          .attr("x", 400)             
+          .attr("y", 80)    
+          .attr("class", "legend")
+          .style("fill", "Black")
+          .text("Show/Hide More Details").attr("font-size", 14);  
+
+
       d3.json("data_geojson/faults_earthquake_active_v2.geojson", function(json) {
         svg.append("g").attr("id", "blueLine").selectAll("path")
           .data(json.features)
@@ -116,8 +125,8 @@
 
               // Add the blue line title
         svg.append("text")
-          .attr("x", 40)             
-          .attr("y", 400)    
+          .attr("x", 400)             
+          .attr("y", 100)    
           .attr("class", "legend")
           .style("fill", "steelblue")         
           .on("click", function(){
@@ -129,7 +138,7 @@
             // Update whether or not the elements are active
             blueLine.active = active;
           })
-          .text("Earthquake-active Faults (click to show/hide）").attr("font-size", 8);
+          .text("Earthquake-active Faults (2018, ref link）").attr("font-size", 12);
 
 
       });
