@@ -286,12 +286,12 @@
 
        svg.append("rect").attr("fill", "orange")
         .attr("x", hint_hor_align).attr("y", vert_datum1 + vert_text_space * 3 - 10)
-        .attr("width", 200).attr("height", 10)
+        .attr("width", 160).attr("height", 10)
        svg.append("text")
         .attr("x", hint_hor_align)             
         .attr("y", vert_datum1 + vert_text_space * 3)    
         .attr("class", "legend")
-        .style("fill", "gray")
+        .style("fill", "black")
         .text("Hover on basemap for more details").attr("font-size", 10).attr('font-weight', 'bold');
 
 
@@ -309,12 +309,16 @@
         .style("fill", "Black")
         .text("Your Selected Historic Earthquakes").attr("font-size", 12);
 
+       svg.append("rect").attr("fill", "gray")
+        .attr("x", hint_hor_align).attr("y", vert_datum2 + vert_text_space - 10)
+        .attr("width", 160).attr("height", 10)
+
       svg.append("text")
             .attr("x", hint_hor_align)             
             .attr("y", vert_datum2 + vert_text_space)    
             .attr("class", "legend")
-            .style("fill", "gray")
-            .text("Hint: Fill the above form for the 1st row, and press ENTER").attr("font-size", 12);
+            .style("fill", "black")
+            .text("Fill the above form - 1st row, and press ENTER").attr("font-size", 10).attr("font-weight", "bold");
       svg.append("text")
             .attr("x", hint_hor_align + 20)             
             .attr("y", vert_datum2 + vert_text_space * 2)    
@@ -324,12 +328,12 @@
 
        svg.append("rect").attr("fill", "orange")
         .attr("x", hint_hor_align).attr("y", vert_datum2 + vert_text_space * 3 - 10)
-        .attr("width", 200).attr("height", 10)
+        .attr("width", 160).attr("height", 10)
       svg.append("text")
             .attr("x", hint_hor_align)             
             .attr("y", vert_datum2 + vert_text_space * 3)    
             .attr("class", "legend")
-            .style("fill", "gray")
+            .style("fill", "black")
             .text("Hover on points for more details").attr("font-size", 10).attr('font-weight', 'bold');
 
       svg.append("circle")
@@ -397,12 +401,20 @@
         .attr("class", "legend")
         .style("fill", "Black")
         .text("Your Selected Recent Earthquakes").attr("font-size", 12); 
+
+
+       svg.append("rect").attr("fill", "gray")
+        .attr("x", hint_hor_align).attr("y", vert_datum3 + vert_text_space * 3 - 10)
+        .attr("width", 160).attr("height", 10)
+
       svg.append("text")
             .attr("x", hint_hor_align)             
             .attr("y", vert_datum3 + vert_text_space)    
             .attr("class", "legend")
-            .style("fill", "gray")
-            .text("Hint: Fill the above form for the 2nd row, and press ENTER").attr("font-size", 12);
+            .style("fill", "black")
+            .text("Fill the above form - 2nd row, and press ENTER").attr("font-size", 10).attr("font-weight", "bold");
+
+
       svg.append("text")
             .attr("x", hint_hor_align + 20)             
             .attr("y", vert_datum3 + vert_text_space * 2)    
@@ -412,12 +424,12 @@
 
        svg.append("rect").attr("fill", "orange")
         .attr("x", hint_hor_align).attr("y", vert_datum3 + vert_text_space * 3 - 10)
-        .attr("width", 200).attr("height", 10)
+        .attr("width", 160).attr("height", 10)
       svg.append("text")
             .attr("x", hint_hor_align)             
             .attr("y", vert_datum3 + vert_text_space * 3)    
             .attr("class", "legend")
-            .style("fill", "gray")
+            .style("fill", "black")
             .text("Hover on points for more details").attr("font-size", 10).attr('font-weight', 'bold');
 
       svg.append("circle")
