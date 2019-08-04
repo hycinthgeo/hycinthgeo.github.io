@@ -1,1 +1,1 @@
-{"type":"Feature","properties":{"population":3990456,"place":"Los Angeles","time":2008},"geometry":{"type":"Point","coordinates":[-118.243683,34.052235]},"rank":"1"}
+{"type":"Feature","properties":{"population":3990456,"place":"Los Angeles", "time":2008}, "geometry":{"type":"Point","coordinates":[-118.243683,34.052235]},"rank":"1"}
