@@ -42,7 +42,7 @@
                value="Show earthquake-active faults" 
                onclick="loadFaults()" />
     </div>-->
-    <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)_v13</p>
+    <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)_datum</p>
     <form name="myform_historic" onSubmit="return handleClick()">
         <input name="Submit"  type="submit" value="Historic: Magnitude Treshold" />
         <input type="text" id="histMag" maxlength="" />
@@ -165,13 +165,13 @@
 
       svg.append("text")
           .attr("x", text_hor_align1)             
-          .attr("y", 50)    
+          .attr("y", vert_datum1)    
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Step 1: Base Map legends (Click to hide/show)").attr("font-size", 14).attr("font-weight", "bold");  
 
       //fault legends
-      var lineData = [ { "x": text_hor_align2 - 13,   "y": 60},  { "x": text_hor_align2 - 9,  "y": 72}];
+      var lineData = [ { "x": text_hor_align2 - 13,   "y": vert_datum1 + 10},  { "x": text_hor_align2 - 9,  "y": 22}];
       var lineFunction = d3.svg.line()
                           .x(function(d) { return d.x; })
                           .y(function(d) { return d.y; })
@@ -197,7 +197,7 @@
             var barHeight = 20;
             var bars = svg.append("g")
             .selectAll("rect").data([0]).enter().append("g")
-            .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", 60)";})
+            .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", " + (vert_datum1 + 10).toString() +")";})
             /*bars.append("rect")
             .attr("x", 0).attr("y", 0)
             .attr("width", text_box_width).attr("height", barHeight).attr("fill", "#ccc")      */
@@ -210,7 +210,7 @@
 
            svg.append("text")
             .attr("x", hint_hor_align)             
-            .attr("y", 70)    
+            .attr("y", vert_datum1 + 10)    
             .attr("class", "legend")
             .style("fill", "gray")
             .text("Hint: Click HERE to hide/show").attr("font-size", 12)
