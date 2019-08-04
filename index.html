@@ -82,7 +82,7 @@
       }
 
       var width = 1000,
-          height = 420;
+          height = 435;
       var svg = d3.select("body").append("svg")
           .attr("width", width)
           .attr("height", height);    
@@ -91,7 +91,7 @@
 
       var projection = d3.geo.mercator()
           .center([ -120, 38 ])
-          .translate([ 170, 190 ])
+          .translate([ 170, 200 ])
           .scale([ 2000 ]);
       var generator = d3.geo.path().projection(projection);
 
@@ -115,6 +115,7 @@
       const vert_datum3 = 185;
 
       const vert_example = 260;
+      const vert_your_turn = 335;
 
       //basemap of counties and tooltip
       var tooltip = d3.select("body").append("div") 
@@ -546,10 +547,10 @@
 
         var bars = example.append("g")
         .selectAll("rect").data([0]).enter().append("g")
-        .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", " + (vert_example + vert_text_space * 3).toString() +")";})
+        .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", " + (vert_example + vert_text_space * 2).toString() +")";})
         bars.append("rect")
         .attr("width", width - text_hor_align2)
-        .attr("height", height - vert_example - vert_text_space * 2).attr("fill", "lightblue");
+        .attr("height", 60).attr("fill", "lightblue");
 
         bars.append("text")
           .attr("x", 0)             
@@ -562,26 +563,26 @@
           .attr("y", vert_example + vert_text_space * 3)    
           .attr("class", "legend")
           .style("fill", "Black")
-          .text("Historic: M6.0+, 2000-01-01 ~ 2018-12-30").attr("font-size", 12);  
+          .text("- Historic: M6.0+, 2000-01-01 ~ 2018-12-30").attr("font-size", 12);  
         example.append("text")
           .attr("x", text_hor_align2)             
           .attr("y", vert_example + vert_text_space * 4)    
           .attr("class", "legend")
           .style("fill", "Black")
-          .text("Recent  : M4.5+, 2019-07-01 ~ 2018-07-31").attr("font-size", 12);  
+          .text("- Recent  : M4.5+, 2019-07-01 ~ 2018-07-31").attr("font-size", 12);  
         example.append("text")
           .attr("x", text_hor_align2)             
-          .attr("y", vert_example + vert_text_space * 6)    
+          .attr("y", vert_example + vert_text_space * 6)   
+          .attr("dy", "1em") 
           .attr("class", "legend")
           .style("fill", "Black")
-          .text("Observations  : Large earthquakes in the past 2 decades are more along the Coast, near the famous San Anders Fault Zone\n" + "Recent July earthquakes are much more landward, along a relatively quieter zone\n").attr("font-size", 12);  
-        example.append("text")
-          .attr("x", text_hor_align2)             
-          .attr("y", vert_example + vert_text_space * 8)    
+          .text("- Observations  : Large earthquakes in the past 2 decades are more along the Coast, near the famous San Anders Fault Zone; " + "Recent July earthquakes are much more landward, along a previously quieter zone").attr("font-size", 12);  
+        svg.append("text")
+          .attr("x", text_hor_align1)             
+          .attr("y", vert_your_turn)    
           .attr("class", "legend")
           .style("fill", "Black")
-          .text("Your turn: Enjoy your interested comparisons").attr("font-size", 12);  
-
+          .text("Step 5: Your Turn to Refresh & Build Your Story").attr("font-size", 14).attr("font-weight", "bold"); 
 
       //});
 
