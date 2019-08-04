@@ -236,6 +236,20 @@
       basemap_show_or_hide_cities();
 
 
+      //counties legend
+      var lineData2 = [ { "x": text_hor_align2 - 13,   "y": vert_datum1 + vert_text_space * 3 - 10}, 
+                        { "x": text_hor_align2 - 8,  "y": vert_datum1 + vert_text_space * 3 -8}, 
+                        { "x": text_hor_align2 - 9,  "y": vert_datum1 + vert_text_space * 3 + 2},
+                        { "x": text_hor_align2 - 14,  "y": vert_datum1 + vert_text_space * 3 + 3}];
+      var lineFunction2 = d3.svg.line()
+                          .x(function(d) { return d.x; })
+                          .y(function(d) { return d.y; })
+                          .interpolate("linear");
+      var lineGraph = svg.append("path")
+                            .attr("d", lineFunction2(lineData2))
+                            .attr("stroke", "gray")
+                            .attr("stroke-width", 1)
+                            .attr("fill", "none");
 
 
        svg.append("text")
@@ -421,7 +435,7 @@
                 .attr("y", 0)//barHeight/2)    
                 .attr("class", "legend")
                 .style("fill", "black")         
-                .text("Large cities with >0.5M population (2018)").attr("font-size", 12);
+                .text("Cities with >0.5M population (2018)").attr("font-size", 12);
              svg.append("rect")
               .attr("x", text_hor_align2 - 10).attr("y", vert_datum1 + vert_text_space * 2)   
               .attr("width", "8px").attr("height", "8px")  
