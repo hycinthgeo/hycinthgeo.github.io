@@ -173,10 +173,10 @@
           .style("opacity", 0);
 
 
-      var hist_mag_thre = 2.5
+      var hist_mag_thre = 5.0
       var hist_mag_start = "2010-07-01"
       var hist_mag_end = "2011-07-01"
-      var usgs_url_historic = "https://earthquake.usgs.gov/fdsnws/event/1/query.geojson?starttime=2010-07-01%2000:00:00&endtime=2011-07-31%2023:59:59&maxlatitude=42&minlatitude=32&maxlongitude=-113&minlongitude=-125&minmagnitude=" + hist_mag_thre.toString() + "&orderby=time"
+      var usgs_url_historic = "https://earthquake.usgs.gov/fdsnws/event/1/query.geojson?starttime="+ hist_mag_start + "%2000:00:00&endtime=" + hist_mag_end + "%2023:59:59&maxlatitude=42&minlatitude=32&maxlongitude=-113&minlongitude=-125&minmagnitude=" + hist_mag_thre.toString() + "&orderby=time"
       //d3.json("data_geojson/usgs_query_july_m45p.geojson", function(json) {
       d3.json(usgs_url_historic, function(json) {
         svg.append("g").selectAll("rect")
@@ -185,8 +185,8 @@
           .append("circle")
           .attr("cx", function (d) { return projection(d.geometry.coordinates)[0]; })
           .attr("cy", function (d) { return projection(d.geometry.coordinates)[1]; })
-          .attr("r", "4px")
-          .attr("fill", "green")
+          .attr("r", d.properties.mag.toString() + "px")
+          .attr("fill", "gray")
           .on("mouseover", function(d) {    
             tooltip_scatter.transition()    
             .duration(200)    
