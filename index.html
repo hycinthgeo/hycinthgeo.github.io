@@ -81,10 +81,6 @@
           return false;
       }
 
-
-
-
-
       var width = 1000,
           height = 500;
 
@@ -160,6 +156,7 @@
       //visualize earthquake active faults
       //function loadFaults(){
 
+
       svg.append("text")
           .attr("x", text_hor_align1)             
           .attr("y", 50)    
@@ -167,39 +164,50 @@
           .style("fill", "Black")
           .text("Step 1: Base Map legends (Click to hide/show)").attr("font-size", 14).attr("font-weight", "bold");  
 
-      //show or hide earthquake 
-      d3.json("data_geojson/faults_earthquake_active_v2.geojson", function(json) {
-        svg.append("g").attr("id", "faults").selectAll("path")
-          .data(json.features)
-          .enter()
-          .append("path").attr("class", "faults")
-          .attr("stroke", "red")
-          .attr("d", generator);
+      //show or hide faults
+      function basemap_show_or_hide_faults(){
+        d3.json("data_geojson/faults_earthquake_active_v2.geojson", function(json) {
+          svg.append("g").attr("id", "faults").selectAll("path")
+            .data(json.features)
+            .enter()
+            .append("path").attr("class", "faults")
+            .attr("stroke", "red")
+            .attr("d", generator);
 
-              // Add the blue line title
-          var barHeight = 20;
-          var bars = svg.append("g")
-          .selectAll("rect").data([0]).enter().append("g")
-          .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", 65)";})
-          .on("click", function(){
-            // Determine if current line is visible
-            var active   = faults.active ? false : true,
-              newOpacity = active ? 0 : 1;
-            // Hide or show the elements
-            d3.select("#faults").style("opacity", newOpacity);
-            // Update whether or not the elements are active
-            faults.active = active;
-          })
-          bars.append("rect")
-          .attr("x", 0).attr("y", 0)
-          .attr("width", text_box_width).attr("height", barHeight).attr("fill", "#ccc")      
-          bars.append("text")
-            .attr("x", 0)             
-            .attr("y", barHeight/2)    
-            .attr("class", "legend")
-            .style("fill", "red")         
-            .text("Earthquake-active Faults (2018）").attr("font-size", 12);
-      });
+                // Add the blue line title
+            var barHeight = 20;
+            var bars = svg.append("g")
+            .selectAll("rect").data([0]).enter().append("g")
+            .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", 65)";})
+            .on("click", function(){
+              // Determine if current line is visible
+              var active   = faults.active ? false : true,
+                newOpacity = active ? 0 : 1;
+              // Hide or show the elements
+              d3.select("#faults").style("opacity", newOpacity);
+              // Update whether or not the elements are active
+              faults.active = active;
+            })
+            bars.append("rect")
+            .attr("x", 0).attr("y", 0)
+            .attr("width", text_box_width).attr("height", barHeight).attr("fill", "#ccc")      
+            bars.append("text")
+              .attr("x", 0)             
+              .attr("y", barHeight/2)    
+              .attr("class", "legend")
+              .style("fill", "red")         
+              .text("Earthquake-active Faults (2018）").attr("font-size", 12);
+        });
+      };
+      basemap_show_or_hide_faults();
+
+      svg.append("text")
+        .attr("x", text_hor_align2)             
+        .attr("y", 50)    
+        .attr("class", "legend")
+        .style("fill", "Black")
+        .text("Note: Hover your mouse for an interested counties").attr("font-size", 12);
+
 
 
       svg.append("text")
@@ -208,8 +216,14 @@
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Step 2: Show Your Interested Historic Earthquakes (Fill the Above Form & Press Enter)").attr("font-size", 14).attr("font-weight", "bold");  
+      svg.append("text")
+        .attr("x", text_hor_align2)             
+        .attr("y", 50)    
+        .attr("class", "legend")
+        .style("fill", "Black")
+        .text("Your Selected Historic Earthquakes").attr("font-size", 12);
       svg.append("circle")
-          .attr("cx", text_hor_align1 + 600).attr("cy", 145)   
+          .attr("cx", text_hor_align2 + 300).attr("cy", 160)   
           .attr("r", "6px")  
           .attr("fill", "gray")
 
@@ -265,8 +279,14 @@
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Step 3: Show Your Interested Recent Earthquakes (Fill the Above Form & Press Enter)").attr("font-size", 14).attr("font-weight", "bold");     
+      svg.append("text")
+        .attr("x", text_hor_align2)             
+        .attr("y", 50)    
+        .attr("class", "legend")
+        .style("fill", "Black")
+        .text("Your Selected Recent Earthquakes").attr("font-size", 12);
       svg.append("circle")
-          .attr("cx", text_hor_align1 + 600).attr("cy", 245)   
+          .attr("cx", text_hor_align2 + 300).attr("cy", 260)   
           .attr("r", "6px")  
           .attr("fill", "green")
 
