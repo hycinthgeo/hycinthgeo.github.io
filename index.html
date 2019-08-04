@@ -252,22 +252,6 @@
             };
 
             place_hide_show_icon(hint_hor_align, vert_datum1 + vert_text_space);  
-
-           /*svg.append("text")
-            .attr("x", hint_hor_align)             
-            .attr("y", vert_datum1 + vert_text_space)    
-            .attr("class", "legend")
-            .style("fill", "gray")
-            .text("Hint: Click HERE to hide/show").attr("font-size", 12)
-            .on("click", function(){
-              // Determine if current line is visible
-              var active   = faults.active ? false : true,
-                newOpacity = active ? 0 : 1;
-              // Hide or show the elements
-              d3.select("#faults").style("opacity", newOpacity);
-              // Update whether or not the elements are active
-              faults.active = active;
-            });*/
         });
       };
       basemap_show_or_hide_faults();
@@ -513,7 +497,7 @@
               .attr("fill", "orange")
 
 
-             svg.append("text")
+             /*svg.append("text")
               .attr("x", hint_hor_align)             
               .attr("y", vert_datum1 + vert_text_space * 2)    
               .attr("class", "legend")
@@ -529,7 +513,8 @@
                 // Update whether or not the elements are active
                 cities.active = active;
                 cities_annotations = active;
-              })
+              })*/
+              place_hide_show_icon(hint_hor_align, vert_datum1 + vert_text_space * 2);  
 
 
           });
@@ -558,7 +543,7 @@
           .style("fill", "black")         
           .text("Author's Example").attr("font-size", 12);
 
-        svg.append("text")
+        /*svg.append("text")
           .attr("x", hint_hor_align)             
           .attr("y", vert_example + vert_text_space * 1)    
           .attr("class", "legend")
@@ -572,7 +557,9 @@
             d3.select("#myexample").style("opacity", newOpacity);
             // Update whether or not the elements are active
             myexample.active = active;
-          });
+          });*/
+
+          place_hide_show_icon(hint_hor_align, vert_example + vert_text_space);
 
 
         var bars = example.append("g")
