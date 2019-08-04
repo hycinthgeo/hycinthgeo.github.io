@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p style="font-size:100%; color:black;"> Historic Large (M6+) & July Earthquakes (California and Nevada)_url</p>
+  <p style="font-size:100%; color:black;"> Historic Large (M6+) & July Earthquakes (California and Nevada)_urlsoft</p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
@@ -178,7 +178,9 @@
       var tooltip_recent = d3.select("body").append("div") 
           .attr("class", "tooltip").attr("fill", "lightblue")       
           .style("opacity", 0);
-      var usgs_url_july45p = "https://earthquake.usgs.gov/fdsnws/event/1/query.geojson?starttime=2019-07-01%2000:00:00&endtime=2019-07-31%2023:59:59&maxlatitude=42&minlatitude=32&maxlongitude=-113&minlongitude=-125&minmagnitude=4.5&orderby=time"
+
+      var mag_thre = 4.5
+      var usgs_url_july45p = "https://earthquake.usgs.gov/fdsnws/event/1/query.geojson?starttime=2019-07-01%2000:00:00&endtime=2019-07-31%2023:59:59&maxlatitude=42&minlatitude=32&maxlongitude=-113&minlongitude=-125&minmagnitude=" + mag_thre.toString() + "&orderby=time"
       //d3.json("data_geojson/usgs_query_july_m45p.geojson", function(json) {
       d3.json(usgs_url_july45p, function(json) {
         svg.append("g").selectAll("rect")
