@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p style="font-size:100%; color:black;"> Historic Large (M6+) & July Earthquakes (California and Nevada)_v8 </p>
+  <p style="font-size:100%; color:black;"> Historic Large (M6+) & July Earthquakes (California and Nevada)_v9 </p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
@@ -107,10 +107,10 @@
       //visualize earthquake active faults
       //function loadFaults(){
       d3.json("data_geojson/faults_earthquake_active_v2.geojson", function(json) {
-        svg.append("g").selectAll("path")
+        svg.append("g").attr("id", "blueLine").selectAll("path")
           .data(json.features)
           .enter()
-          .append("path").attr("class", "faults").attr("id", "blueLine")
+          .append("path").attr("class", "faults")
           .attr("stroke", "red")
           .attr("d", generator);
 
@@ -175,9 +175,10 @@
       //add tooltip
 
       //add recent earthquakes 
+      var new_earthquake = [[-117.7075,35.926166700000003], [-117.88683330000001,36.112666699999998]]
       d3.json("data_geojson/usgs_query_july_m45p.geojson", function(json) {
         svg.append("g").selectAll("rect")
-          .data(json.features.geometry.coordinates)
+          .data(new_earthquake)
           .enter()
           .append("circle")
           .attr("cx", function (d) { console.log(projection(d)); return projection(d)[0]; })
