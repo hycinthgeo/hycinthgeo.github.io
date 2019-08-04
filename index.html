@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p style="font-size:100%; color:black;"> Historic Large (M6+) & July Earthquakes (California and Nevada)_city14</p>
+  <p style="font-size:100%; color:black;"> Historic Large (M6+) & July Earthquakes (California and Nevada)_city15</p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
@@ -222,7 +222,7 @@
       var user_recent_mag_thre = 2.5
       var user_recent_start = "2019-07-01"
       var user_recent_end = "2019-07-31"
-      var usgs_url_recent = "https://earthquake.usgs.gov/fdsnws/event/1/query.geojson?starttime=" + user_recent_start + "%2000:00:00&endtime=" + user_recent_end + "%2023:59:59&maxlatitude=42&minlatitude=32&maxlongitude=-113&minlongitude=-125&minmagnitude=" + user_recent_mag_thre.toString() + "&orderby=time"
+      var usgs_url_recent = "https://earthquake.usgs.gov/fdsnws/event/1/query.geojson?starttime=" + user_recent_start + "%2000:00:00&endtime=" + user_recent_end + "%2023:59:59&maxlatitude=" + LAT_MAX.toString() + "&minlatitude=" + LAT_MIN.toString() + "&maxlongitude=" + LONG_MAX.toString() + "&minlongitude=" + LONG_MIN.toString() + "&minmagnitude=" + user_recent_mag_thre.toString() + "&orderby=time"
       //d3.json("data_geojson/usgs_query_july_m45p.geojson", function(json) {
       d3.json(usgs_url_recent, function(json) {
         svg.append("g").selectAll("rect")
@@ -251,7 +251,7 @@
 
       d3.json("data_geojson/citypopulation2018_wiki.geojson", function(json) {
         svg.append("g").selectAll("rect")
-          .data(json.features)
+          .data(json.properties)
           .enter()
           .append("circle")
           .attr("cx", function (d) { return 300; })
