@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p style="font-size:100%; color:black;"> Historic Large (M6+) & July Earthquakes (California and Nevada)_urlsoft2.5</p>
+  <p style="font-size:100%; color:black;"> Historic Large (M6+) & July Earthquakes (California and Nevada)_city</p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
@@ -169,7 +169,7 @@
             // Hide or show the elements
             d3.select("#city").style("opacity", newOpacity);
             // Update whether or not the elements are active
-            faults.active = active;
+            city.active = active;
           })
           bars.append("rect")
           .attr("x", 0).attr("y", 0)
