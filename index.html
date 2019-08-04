@@ -164,7 +164,11 @@
           .attr("y", 150)    
           .attr("class", "legend")
           .style("fill", "Black")
-          .text("Set Your Interested Historic Earthquake").attr("font-size", 14).attr("font-weight", "bold");     
+          .text("Set Your Interested Historic Earthquake").attr("font-size", 14).attr("font-weight", "bold");  
+      svg.append("circle")
+          .attr("x", text_hor_align1 + 200).attr("y", 150)   
+          .attr("r", "6px")  
+          .attr("fill", "gray")
 
 
 
@@ -213,7 +217,10 @@
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Set Your Interested Recent Earthquake").attr("font-size", 14).attr("font-weight", "bold");     
-
+      svg.append("circle")
+          .attr("x", text_hor_align1 + 200).attr("y", 250)   
+          .attr("r", "6px")  
+          .attr("fill", "green")
 
       var tooltip_recent = d3.select("body").append("div") 
           .attr("class", "tooltip").attr("fill", "lightblue")       
