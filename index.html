@@ -113,6 +113,7 @@
       const vert_text_space = 15;
 
       const vert_datum2 = 150;
+      const vert_datum3 = 250;
 
 
       //basemap of counties and tooltip
@@ -208,7 +209,7 @@
             .attr("width", text_box_width).attr("height", barHeight).attr("fill", "#ccc")      */
             bars.append("text")
               .attr("x", 0)             
-              .attr("y", barHeight/2)    
+              .attr("y", 0)//barHeight/2)    
               .attr("class", "legend")
               .style("fill", "black")         
               .text("Earthquake-active Faults (2018)").attr("font-size", 12);
@@ -238,7 +239,7 @@
 
        svg.append("text")
         .attr("x", hint_hor_align)             
-        .attr("y", 100)    
+        .attr("y", vert_datum1 + vert_text_space * 3)    
         .attr("class", "legend")
         .style("fill", "gray")
         .text("Hint: Hover your mouse on the map for an interested county").attr("font-size", 12);
@@ -247,32 +248,32 @@
 
       svg.append("text")
           .attr("x", text_hor_align1)             
-          .attr("y", 150)    
+          .attr("y", vert_datum2)    
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Step 2: Show Your Interested Historic Earthquakes").attr("font-size", 14).attr("font-weight", "bold");  
       svg.append("text")
         .attr("x", text_hor_align2)             
-        .attr("y", 165)    
+        .attr("y", vert_datum2 + vert_text_space)    
         .attr("class", "legend")
         .style("fill", "Black")
         .text("Your Selected Historic Earthquakes").attr("font-size", 12);
 
       svg.append("text")
             .attr("x", hint_hor_align)             
-            .attr("y", 165)    
+            .attr("y", vert_datum2 + vert_text_space)    
             .attr("class", "legend")
             .style("fill", "gray")
             .text("Hint: Fill the above form for the 1st row, and press ENTER").attr("font-size", 12);
       svg.append("text")
             .attr("x", hint_hor_align)             
-            .attr("y", 180)    
+            .attr("y", vert_datum2 + vert_text_space * 2)    
             .attr("class", "legend")
             .style("fill", "gray")
             .text("E.x.: 6.0    1900-01-01    2000-01-01").attr("font-size", 12);
 
       svg.append("circle")
-          .attr("cx", text_hor_align2 - 10).attr("cy", 160)   
+          .attr("cx", text_hor_align2 - 10).attr("cy", vert_datum2 + vert_text_space - 5)   
           .attr("r", "6px")  
           .attr("fill", "gray")
 
@@ -324,31 +325,31 @@
       //add recent earthquakes 
       svg.append("text")
           .attr("x", text_hor_align1)             
-          .attr("y", 250)    
+          .attr("y", vert_datum3)    
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Step 3: Show Your Interested Recent Earthquakes").attr("font-size", 14).attr("font-weight", "bold");    
       svg.append("text")
         .attr("x", text_hor_align2)             
-        .attr("y", 265)    
+        .attr("y", vert_datum3 + vert_text_space)    
         .attr("class", "legend")
         .style("fill", "Black")
         .text("Your Selected Recent Earthquakes").attr("font-size", 12); 
       svg.append("text")
             .attr("x", hint_hor_align)             
-            .attr("y", 265)    
+            .attr("y", vert_datum3 + vert_text_space    
             .attr("class", "legend")
             .style("fill", "gray")
             .text("Hint: Fill the above form for the 2nd row, and press ENTER").attr("font-size", 12);
       svg.append("text")
             .attr("x", hint_hor_align)             
-            .attr("y", 280)    
+            .attr("y", vert_datum2 + vert_text_space * 2)    
             .attr("class", "legend")
             .style("fill", "gray")
             .text("E.x.: 6.0    2000-01-01    2019-08-04").attr("font-size", 12);
 
       svg.append("circle")
-          .attr("cx", text_hor_align2 - 10).attr("cy", 260)   
+          .attr("cx", text_hor_align2 - 10).attr("cy", vert_datum2 + vert_text_space - 5)   
           .attr("r", "6px")  
           .attr("fill", "green")
 
@@ -427,7 +428,7 @@
 
              svg.append("text")
               .attr("x", hint_hor_align)             
-              .attr("y", 90)    
+              .attr("y", vert_datum1 + vert_text_space * 3)    
               .attr("class", "legend")
               .style("fill", "gray")
               .text("Hint: Click HERE to hide/show").attr("font-size", 12)
