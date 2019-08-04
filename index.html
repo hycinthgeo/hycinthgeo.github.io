@@ -148,7 +148,13 @@
             .text("Earthquake-active Faults (2018）").attr("font-size", 12);
       });
 
-   
+
+      svg.append("text")
+          .attr("x", 400)             
+          .attr("y", 150)    
+          .attr("class", "legend")
+          .style("fill", "Black")
+          .text("Set Your Interested Historic Earthquake").attr("font-size", 14).attr("font-weight", "bold");     
 
 
 
@@ -190,6 +196,14 @@
       //add tooltip
 
       //add recent earthquakes 
+      svg.append("text")
+          .attr("x", 400)             
+          .attr("y", 250)    
+          .attr("class", "legend")
+          .style("fill", "Black")
+          .text("Set Your Interested Recent Earthquake").attr("font-size", 14).attr("font-weight", "bold");     
+
+
       var tooltip_recent = d3.select("body").append("div") 
           .attr("class", "tooltip").attr("fill", "lightblue")       
           .style("opacity", 0);
