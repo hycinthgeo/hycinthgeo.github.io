@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<p style="font-size:120%; color:black; font-weight: bold;"> California and Nevada: Historic vs. Recent Earthquakes8</p>
+<p style="font-size:120%; color:black; font-weight: bold;"> California and Nevada: Historic vs. Recent Earthquakes9</p>
 
   <head>
     <meta charset="utf-8">
@@ -543,37 +543,38 @@
             myexample.active = active;
           });
 
-        var bars = svg.append("g")
+
+        var bars = example.append("g")
         .selectAll("rect").data([0]).enter().append("g")
         .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", " + (vert_example + vert_text_space * 3).toString() +")";})
         .attr("width", width - text_hor_align2)
         .attr("height", height - vert_example - vert_text_space * 2);
 
-        bars.append("text")
-          .attr("x", 0)             
-          .attr("y", vert_example + vert_text_space * 3) 
-          .attr("class", "legend")
-          .style("fill", "lightblue")
+          bars.append("text")
+            .attr("x", 0)             
+            .attr("y", vert_example + vert_text_space * 3) 
+            .attr("class", "legend")
+            .style("fill", "lightblue")
 
-        svg.append("text")
+        example.append("text")
           .attr("x", text_hor_align2)             
           .attr("y", vert_example + vert_text_space * 3)    
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Historic: M6.0+, 2000-01-01 ~ 2018-12-30").attr("font-size", 12);  
-        svg.append("text")
+        example.append("text")
           .attr("x", text_hor_align2)             
           .attr("y", vert_example + vert_text_space * 4)    
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Recent  : M4.5+, 2019-07-01 ~ 2018-07-31").attr("font-size", 12);  
-        svg.append("text")
+        example.append("text")
           .attr("x", text_hor_align2)             
           .attr("y", vert_example + vert_text_space * 6)    
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Observations  : Large earthquakes in the past 2 decades are more along the Coast, near the famous San Anders Fault Zone\n" + "Recent July earthquakes are much more landward, along a relatively quieter zone\n").attr("font-size", 12);  
-        svg.append("text")
+        example.append("text")
           .attr("x", text_hor_align2)             
           .attr("y", vert_example + vert_text_space * 8)    
           .attr("class", "legend")
