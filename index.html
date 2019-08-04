@@ -124,23 +124,10 @@
           .attr("d", generator);
 
               // Add the blue line title
-          var barHeight = 25;
+          var barHeight = 20;
           var bars = svg.append("g")
           .selectAll("rect").data([0]).enter().append("g")
           .attr("transform", function(d, i) { return "translate(400, 100)";})
-
-          bars.append("rect")
-          .attr("x", 400).attr("y", 100)
-          .attr("width", 100).attr("height", 20).attr("fill", "lightblue")        
-
-
-
-        //svg.append("text")
-        bars.append("text")
-          .attr("x", 400)             
-          .attr("y", 100)    
-          .attr("class", "legend")
-          .style("fill", "steelblue")         
           .on("click", function(){
             // Determine if current line is visible
             var active   = blueLine.active ? false : true,
@@ -150,6 +137,19 @@
             // Update whether or not the elements are active
             blueLine.active = active;
           })
+
+          bars.append("rect")
+          .attr("x", 0).attr("y", 0)
+          .attr("width", 150).attr("height", barHeight).attr("fill", "lightblue")        
+
+
+
+        //svg.append("text")
+        bars.append("text")
+          .attr("x", 0)             
+          .attr("y", barHeight/2)    
+          .attr("class", "legend")
+          .style("fill", "steelblue")         
           .text("Earthquake-active Faults (2018, ref link）").attr("font-size", 12);
 
 
