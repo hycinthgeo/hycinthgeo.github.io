@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)_v3</p>
+  <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)_v4</p>
 
 
   <head>
@@ -358,7 +358,8 @@
 
 
       d3.json("data_geojson/citypopulation2018_wiki.geojson", function(json) {
-          svg.append("g").selectAll("rect")
+          var g1 = svg.append("g")
+          g1.selectAll("rect")
             .data(json.features)
             .enter()
             .append("circle")
@@ -366,15 +367,11 @@
             .attr("cy", function (d) { return projection(d.geometry.coordinates)[1]; })
             .attr("r", "5px")
             .attr("fill", "orange")
-            .append("text")
+          g1.append("text")
             .attr("x", function (d) { return projection(d.geometry.coordinates)[0] + 3; })          
             .attr("y", function (d) { return projection(d.geometry.coordinates)[1] + 3; })  
-            .attr("class", "legend")
             .style("fill", "Black")
-            .text("LA"); 
-
-
-            //.text(function(d) {return d.attributes.population.toString()});
+            .text("LA");             //.text(function(d) {return d.attributes.population.toString()});
       });
 
 
