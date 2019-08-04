@@ -42,7 +42,7 @@
                value="Show earthquake-active faults" 
                onclick="loadFaults()" />
     </div>-->
-    <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)_datum1</p>
+    <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)_datum123</p>
     <form name="myform_historic" onSubmit="return handleClick()">
         <input name="Submit"  type="submit" value="Historic: Magnitude Treshold" />
         <input type="text" id="histMag" maxlength="" />
@@ -337,7 +337,7 @@
         .text("Your Selected Recent Earthquakes").attr("font-size", 12); 
       svg.append("text")
             .attr("x", hint_hor_align)             
-            .attr("y", vert_datum3 + vert_text_space    
+            .attr("y", vert_datum3 + vert_text_space)    
             .attr("class", "legend")
             .style("fill", "gray")
             .text("Hint: Fill the above form for the 2nd row, and press ENTER").attr("font-size", 12);
