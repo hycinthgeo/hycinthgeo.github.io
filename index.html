@@ -517,7 +517,7 @@
 
         var example = svg.append("g").attr("id", "myexample")
         //click to see my story 
-        svg.append("rect").attr("x", text_hor_align2).attr("y", vert_example + vert_text_space * 2)
+        svg.append("rect").attr("x", text_hor_align2 - 15).attr("y", vert_example + vert_text_space * 1.5)
           .attr("height", "8px").attr("width", "8px").attr("fill", "lightblue")
 
         svg.append("text")
@@ -546,15 +546,16 @@
 
         var bars = example.append("g")
         .selectAll("rect").data([0]).enter().append("g")
-        .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", " + (vert_example + vert_text_space * 4).toString() +")";})
+        .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", " + (vert_example + vert_text_space * 3).toString() +")";})
+        bars.append("rect")
         .attr("width", width - text_hor_align2)
-        .attr("height", height - vert_example - vert_text_space * 4);
+        .attr("height", height - vert_example - vert_text_space * 3);
 
-          bars.append("text")
-            .attr("x", 0)             
-            .attr("y", vert_example + vert_text_space * 3) 
-            .attr("class", "legend")
-            .style("fill", "lightblue")
+        bars.append("text")
+          .attr("x", 0)             
+          .attr("y", vert_example + vert_text_space * 3) 
+          .attr("class", "legend")
+          .style("fill", "lightblue")
 
         example.append("text")
           .attr("x", text_hor_align2)             
