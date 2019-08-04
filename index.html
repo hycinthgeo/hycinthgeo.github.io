@@ -107,25 +107,27 @@
       //visualize earthquake active faults
       //function loadFaults(){
       d3.json("data_geojson/faults_earthquake_active_v2.geojson", function(json) {
-        svg.append("g").selectAll("path")
+        var faults = svg.append("g").selectAll("path")
           .data(json.features)
           .enter()
-          .append("path").attr("class", "faults").attr("id", "blueLine")
+          .append("path")
           .attr("stroke", "red")
           .attr("d", generator);
+
+        faults.selectAll("path").attr("id", "blueLine");
 
               // Add the blue line title
         svg.append("text")
           .attr("x", 40)             
-          .attr("y", 400)    
+          .attr("y", 450)    
           .attr("class", "legend")
           .style("fill", "steelblue")         
-          .on("click", function(json){
+          .on("click", function(){
             // Determine if current line is visible
             var active   = blueLine.active ? false : true,
               newOpacity = active ? 0 : 1;
             // Hide or show the elements
-            d3.select(json.features).style("opacity", newOpacity);
+            d3.select("#blueLine").style("opacity", newOpacity);
             // Update whether or not the elements are active
             blueLine.active = active;
           })
