@@ -82,7 +82,7 @@
       }
 
       var width = 1000,
-          height = 500;
+          height = 450;
       var svg = d3.select("body").append("svg")
           .attr("width", width)
           .attr("height", height);    
@@ -549,11 +549,11 @@
         .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", " + (vert_example + vert_text_space * 3).toString() +")";})
         bars.append("rect")
         .attr("width", width - text_hor_align2)
-        .attr("height", height - vert_example - vert_text_space * 3);
+        .attr("height", height - vert_example - vert_text_space * 2).attr("fill", "lightblue");
 
         bars.append("text")
           .attr("x", 0)             
-          .attr("y", vert_example + vert_text_space * 3) 
+          .attr("y", vert_example + vert_text_space * 2) 
           .attr("class", "legend")
           .style("fill", "lightblue")
 
