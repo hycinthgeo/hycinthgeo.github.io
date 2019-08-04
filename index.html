@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p style="font-size:100%; color:black;"> Historic vs. Recent Earthquakes (California and Nevada)_city18</p>
+  <p style="font-size:100%; color:black;"> Historic vs. Recent Earthquakes (California and Nevada)_city19</p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
@@ -250,7 +250,7 @@
 
 
       d3.json("data_geojson/citypopulation2018_wiki.geojson", function(json) {
-        svg.append("g").selectAll("rect")
+        svg.append("g").selectAll("triangle")
           .data(json.features)
           .enter()
           .append("circle")
