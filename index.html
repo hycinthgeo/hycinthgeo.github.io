@@ -225,11 +225,7 @@
               .style("fill", "black")         
               .text("Earthquake-active Faults (2018)").attr("font-size", 12);
            
-           svg.append("rect")
-            .attr("x", hint_hor_align)             
-            .attr("y", vert_datum1  + 0.5 * vert_text_space)    
-            .attr("height", 10).attr("width", 60)
-            .style("fill", "lightgray")
+           var icon1 = svg.append("g")
             .on("click", function(){
               // Determine if current line is visible
               var active   = faults.active ? false : true,
@@ -239,7 +235,14 @@
               // Update whether or not the elements are active
               faults.active = active;
             });
-           svg.append("text")
+
+           icon1.append("rect")
+            .attr("x", hint_hor_align)             
+            .attr("y", vert_datum1  + 0.5 * vert_text_space)    
+            .attr("height", 10).attr("width", 70)
+            .style("fill", "lightgray");
+
+           icon1.append("text")
             .attr("x", hint_hor_align)             
             .attr("y", vert_datum1 + vert_text_space)    
             .attr("class", "legend")
