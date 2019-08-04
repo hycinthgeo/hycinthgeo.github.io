@@ -110,6 +110,9 @@
       const hint_hor_align = 700;
 
       const vert_datum1 = 50;
+      const vert_text_space = 15;
+
+      const vert_datum2 = 150;
 
 
       //basemap of counties and tooltip
@@ -173,7 +176,7 @@
           .text("Step 1: Base Map - View Geographic References").attr("font-size", 14).attr("font-weight", "bold");  
 
       //fault legends
-      var lineData = [ { "x": text_hor_align2 - 13,   "y": vert_datum1 + 10},  { "x": text_hor_align2 - 9,  "y": 22}];
+      var lineData = [ { "x": text_hor_align2 - 13,   "y": vert_datum1 + 10},  { "x": text_hor_align2 - 9,  "y": vert_datum1 + 22}];
       var lineFunction = d3.svg.line()
                           .x(function(d) { return d.x; })
                           .y(function(d) { return d.y; })
@@ -199,7 +202,7 @@
             var barHeight = 20;
             var bars = svg.append("g")
             .selectAll("rect").data([0]).enter().append("g")
-            .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", " + (vert_datum1 + 10).toString() +")";})
+            .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", " + (vert_datum1 + vert_text_space).toString() +")";})
             /*bars.append("rect")
             .attr("x", 0).attr("y", 0)
             .attr("width", text_box_width).attr("height", barHeight).attr("fill", "#ccc")      */
@@ -212,7 +215,7 @@
 
            svg.append("text")
             .attr("x", hint_hor_align)             
-            .attr("y", vert_datum1 + 10)    
+            .attr("y", vert_datum1 + vert_text_space)    
             .attr("class", "legend")
             .style("fill", "gray")
             .text("Hint: Click HERE to hide/show").attr("font-size", 12)
@@ -228,6 +231,10 @@
         });
       };
       basemap_show_or_hide_faults();
+      basemap_show_or_hide_cities();
+
+
+
 
        svg.append("text")
         .attr("x", hint_hor_align)             
@@ -382,59 +389,61 @@
       };
 
 
-      d3.json("data_geojson/citypopulation2018_wiki.geojson", function(json) {
-          var g1 = svg.append("g").attr("id", "cities").selectAll("rect")
-            .data(json.features)
-            .enter()
-            
-          g1.append("rect").attr("class", "cities")
-            .attr("x", function (d) { return projection(d.geometry.coordinates)[0]; })
-            .attr("y", function (d) { return projection(d.geometry.coordinates)[1]; })
-            .attr("width", "5px").attr("height", "5px")
-            .attr("fill", "orange");
+      //show or hide cities            
+      function basemap_show_or_hide_cities(){
+        d3.json("data_geojson/citypopulation2018_wiki.geojson", function(json) {
+            var g1 = svg.append("g").attr("id", "cities").selectAll("rect")
+              .data(json.features)
+              .enter()
+              
+            g1.append("rect").attr("class", "cities")
+              .attr("x", function (d) { return projection(d.geometry.coordinates)[0]; })
+              .attr("y", function (d) { return projection(d.geometry.coordinates)[1]; })
+              .attr("width", "8px").attr("height", "8px")
+              .attr("fill", "orange");
 
-          /*g1.append("text").
-            .attr("x", function (d) { return projection(d.geometry.coordinates)[0]; })
-            .attr("y", function (d) { return projection(d.geometry.coordinates)[1]; })
-            .text(function (d) {return "TEST CITY";});*/
+            /*g1.append("text").
+              .attr("x", function (d) { return projection(d.geometry.coordinates)[0]; })
+              .attr("y", function (d) { return projection(d.geometry.coordinates)[1]; })
+              .text(function (d) {return "TEST CITY";});*/
 
-          var barHeight = 20;
-            var bars = svg.append("g")
-            .selectAll("rect").data([0]).enter().append("g")
-            .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", 80)";})
-            /*bars.append("rect")
-            .attr("x", 0).attr("y", 0)
-            .attr("width", text_box_width).attr("height", barHeight).attr("fill", "#ccc")    */  
-            bars.append("text")
-              .attr("x", 0)             
-              .attr("y", barHeight/2)    
+            var barHeight = 20;
+              var bars = svg.append("g")
+              .selectAll("rect").data([0]).enter().append("g")
+              .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + "," + (vert_datum1 + vert_text_space * 2).toString() +" 80)";})
+              /*bars.append("rect")
+              .attr("x", 0).attr("y", 0)
+              .attr("width", text_box_width).attr("height", barHeight).attr("fill", "#ccc")    */  
+              bars.append("text")
+                .attr("x", 0)             
+                .attr("y", barHeight/2)    
+                .attr("class", "legend")
+                .style("fill", "red")         
+                .text("Large cities with >0.5M population (2018").attr("font-size", 12);
+             svg.append("rect")
+              .attr("x", text_hor_align2 - 10).attr("y", vert_datum1 + vert_text_space * 2)   
+              .attr("width", "8px").attr("height", "6px")  
+              .attr("fill", "orange")
+
+             svg.append("text")
+              .attr("x", hint_hor_align)             
+              .attr("y", 90)    
               .attr("class", "legend")
-              .style("fill", "red")         
-              .text("Large cities with >0.5M population (2018").attr("font-size", 12);
-
-           svg.append("text")
-            .attr("x", hint_hor_align)             
-            .attr("y", 90)    
-            .attr("class", "legend")
-            .style("fill", "gray")
-            .text("Hint: Click HERE to hide/show").attr("font-size", 12)
-            .on("click", function(){
-              // Determine if current line is visible
-              var active   = cities.active ? false : true,
-                newOpacity = active ? 0 : 1;
-              // Hide or show the elements
-              d3.select("#cities").style("opacity", newOpacity);
-              // Update whether or not the elements are active
-              cities.active = active;
-            })
-
-          svg.append("circle")
-          .attr("cx", text_hor_align2 - 10).attr("cy", 80)   
-          .attr("r", "6px")  
-          .attr("fill", "orange")
+              .style("fill", "gray")
+              .text("Hint: Click HERE to hide/show").attr("font-size", 12)
+              .on("click", function(){
+                // Determine if current line is visible
+                var active   = cities.active ? false : true,
+                  newOpacity = active ? 0 : 1;
+                // Hide or show the elements
+                d3.select("#cities").style("opacity", newOpacity);
+                // Update whether or not the elements are active
+                cities.active = active;
+              })
 
 
-        });
+          });
+        };
 
 
         var example = svg.append("g")
