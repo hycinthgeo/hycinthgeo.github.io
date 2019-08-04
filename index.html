@@ -517,56 +517,63 @@
 
         var example = svg.append("g").attr("id", "myexample")
         //click to see my story 
-            var bars = svg.append("g")
-            .selectAll("rect").data([0]).enter().append("g")
-            .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", " + (vert_example + vert_text_space * 2).toString() +")";})
-            /*bars.append("rect")
-            .attr("x", 0).attr("y", 0)
-            .attr("width", text_box_width).attr("height", barHeight).attr("fill", "#ccc")      */
-            bars.append("text")
-              .attr("x", 0)             
-              .attr("y", 0)//barHeight/2)    
-              .attr("class", "legend")
-              .style("fill", "black")         
-              .text("Author's Example").attr("font-size", 12);
+        svg.append("rect").attr("x", text_hor_align2).attr("y", vert_example + vert_text_space * 2)
+          .attr("height", "8px").attr("width", "8px").attr("fill", "lightblue")
 
-           svg.append("text")
-            .attr("x", hint_hor_align)             
-            .attr("y", vert_example + vert_text_space * 2)    
-            .attr("class", "legend")
-            .style("fill", "gray")
-            .text("Hint: Click HERE to hide/show").attr("font-size", 12)
-            .on("click", function(){
-              // Determine if current line is visible
-              var active   = myexample.active ? false : true,
-                newOpacity = active ? 1 : 0;
-              // Hide or show the elements
-              d3.select("#myexample").style("opacity", newOpacity);
-              // Update whether or not the elements are active
-              myexample.active = active;
-            });
+        svg.append("text")
+          .attr("x", text_hor_align2)             
+          .attr("y", vert_example + vert_text_space * 2)//barHeight/2)    
+          .attr("class", "legend")
+          .style("fill", "black")         
+          .text("Author's Example").attr("font-size", 12);
 
+        svg.append("text")
+          .attr("x", hint_hor_align)             
+          .attr("y", vert_example + vert_text_space * 2)    
+          .attr("class", "legend")
+          .style("fill", "gray")
+          .text("Hint: Click HERE to hide/show").attr("font-size", 12)
+          .on("click", function(){
+            // Determine if current line is visible
+            var active   = myexample.active ? false : true,
+              newOpacity = active ? 1 : 0;
+            // Hide or show the elements
+            d3.select("#myexample").style("opacity", newOpacity);
+            // Update whether or not the elements are active
+            myexample.active = active;
+          });
 
+        var bars = svg.append("g")
+        .selectAll("rect").data([0]).enter().append("g")
+        .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", " + (vert_example + vert_text_space * 3).toString() +")";})
+        .attr("width", width - text_hor_align2)
+        .attr("height", height - vert_example - vert_text_space * 2);
 
-        example.append("text")
+        bars.append("text")
+          .attr("x", 0)             
+          .attr("y", vert_example + vert_text_space * 3) 
+          .attr("class", "legend")
+          .style("fill", "lightblue")
+
+        svg.append("text")
           .attr("x", text_hor_align2)             
           .attr("y", vert_example + vert_text_space * 3)    
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Historic: M6.0+, 2000-01-01 ~ 2018-12-30").attr("font-size", 12);  
-        example.append("text")
+        svg.append("text")
           .attr("x", text_hor_align2)             
           .attr("y", vert_example + vert_text_space * 4)    
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Recent  : M4.5+, 2019-07-01 ~ 2018-07-31").attr("font-size", 12);  
-        example.append("text")
+        svg.append("text")
           .attr("x", text_hor_align2)             
           .attr("y", vert_example + vert_text_space * 6)    
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Observations  : Large earthquakes in the past 2 decades are more along the Coast, near the famous San Anders Fault Zone\n" + "Recent July earthquakes are much more landward, along a relatively quieter zone\n").attr("font-size", 12);  
-        example.append("text")
+        svg.append("text")
           .attr("x", text_hor_align2)             
           .attr("y", vert_example + vert_text_space * 8)    
           .attr("class", "legend")
