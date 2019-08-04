@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p style="font-size:100%; color:black;"> Historic vs. Recent Earthquakes (California and Nevada)_city29</p>
+  <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)</p>
 
 
   <head>
@@ -46,7 +46,7 @@
   </form>
 
   <form name="myform_recent" onSubmit="return handleClick_recent()">
-      <input name="Submit"  type="submit" value="Recent:   Magnitude Treshold" />
+      <input name="Submit"  type="submit" value="Recent:  Magnitude Treshold" />
       <input type="text" id="recMag" maxlength="" />
 
       <input name="Submit"  type="submit" value="Start Date" />
@@ -165,7 +165,7 @@
           .attr("y", 50)    
           .attr("class", "legend")
           .style("fill", "Black")
-          .text("Click to hide/show more details").attr("font-size", 14).attr("font-weight", "bold");  
+          .text("Base Map legends (Click to hide/show)").attr("font-size", 14).attr("font-weight", "bold");  
 
       //show or hide earthquake 
       d3.json("data_geojson/faults_earthquake_active_v2.geojson", function(json) {
