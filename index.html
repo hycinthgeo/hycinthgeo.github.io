@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<p style="font-size:120%; color:black; font-weight: bold;"> California and Nevada: Historic vs. Recent Earthquakes2</p>
 
   <head>
     <meta charset="utf-8">
@@ -42,7 +42,6 @@
                value="Show earthquake-active faults" 
                onclick="loadFaults()" />
     </div>-->
-    <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)_datumexe</p>
     <form name="myform_historic" onSubmit="return handleClick()">
         <input name="Submit"  type="submit" value="Historic: Magnitude Treshold" />
         <input type="text" id="histMag" maxlength="" />
@@ -178,7 +177,7 @@
           .text("Step 1: Base Map - View Geographic References").attr("font-size", 14).attr("font-weight", "bold");  
 
       //fault legends
-      var lineData = [ { "x": text_hor_align2 - 13,   "y": vert_datum1 - vert_text_space * 0.1},  { "x": text_hor_align2 - 9,  "y": vert_datum1 + vert_text_space * 2.0}];
+      var lineData = [ { "x": text_hor_align2 - 13,   "y": vert_datum1 + vert_text_space * 0.3},  { "x": text_hor_align2 - 9,  "y": vert_datum1 + vert_text_space * 1.2}];
       var lineFunction = d3.svg.line()
                           .x(function(d) { return d.x; })
                           .y(function(d) { return d.y; })
@@ -219,7 +218,7 @@
             .attr("x", hint_hor_align)             
             .attr("y", vert_datum1 + vert_text_space)    
             .attr("class", "legend")
-            .style("fill", "black")
+            .style("fill", "gray")
             .text("Hint: Click HERE to hide/show").attr("font-size", 12)
             .on("click", function(){
               // Determine if current line is visible
@@ -448,6 +447,17 @@
               .attr("x", text_hor_align2 - 15).attr("y", vert_datum1 + vert_text_space * 1.5)   
               .attr("width", "8px").attr("height", "8px")  
               .attr("fill", "orange")
+
+            var annotations = svg.selectAll('text')
+                  .data(json.features)
+                  .enter()
+                  .append('text')
+                 .attr("x", function (d) { return projection(d.geometry.coordinates)[0]; })
+                  .attr("y", function (d) { return projection(d.geometry.coordinates)[1]; })
+                  .text(function(d) { return "Hello"; })
+                  .attr('font-size', 12)
+                  .attr('text-anchor', 'end');
+
 
              svg.append("text")
               .attr("x", hint_hor_align)             
