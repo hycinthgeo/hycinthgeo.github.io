@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<p style="font-size:120%; color:black; font-weight: bold;"> California and Nevada: Historic vs. Recent Earthquakes4</p>
+<p style="font-size:120%; color:black; font-weight: bold;"> California and Nevada: Historic vs. Recent Earthquakes5</p>
 
   <head>
     <meta charset="utf-8">
@@ -152,7 +152,7 @@
       vis_counties(local_path_ca);
       vis_counties(local_path_nv);
 
-      function vis_states(local_path){
+      function vis_states(local_path, state_name){
         d3.json(local_path, function(json) {
           svg.append("g").selectAll("path")
             .data(json.features)
@@ -160,10 +160,20 @@
             .append("path").attr("class", "states")
             .attr("stroke", "gray").attr("fill", "none").attr("stroke-width", "2px")      
             .attr("d", generator)
-        });      
+          var text_or = svg.append("text")
+          .attr("x", 30)
+          .attr("dy", 15);
+
+          text_or.append("textPath")
+              .attr("stroke","black")
+              .attr("xlink:href","#path_or")
+              .text(state_name);
+
+        });   
+
       };
-      vis_states("data_geojson/states2017_ca.geojson");
-      vis_states("data_geojson/states2017_nv.geojson");
+      vis_states("data_geojson/states2017_ca.geojson", "California");
+      vis_states("data_geojson/states2017_nv.geojson", "Nevada");
 
       //visualize earthquake active faults
       //function loadFaults(){
