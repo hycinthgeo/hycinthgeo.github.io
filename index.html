@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p style="font-size:100%; color:black;"> Historic Large (M6+) & July Earthquakes (California and Nevada)_city16</p>
+  <p style="font-size:100%; color:black;"> Historic vs. Recent Earthquakes (California and Nevada)_city16</p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
@@ -249,7 +249,7 @@
       });
 
 
-      d3.json("data_geojson/citypopulation2018_wiki.geojson", function(json) {
+      /*d3.json("data_geojson/citypopulation2018_wiki.geojson", function(json) {
         svg.append("g").selectAll("rect")
           .data(json.properties)
           .enter()
@@ -258,7 +258,7 @@
           .attr("cy", function (d) { return return projection(d.geometry.coordinates)[1]; })
           .attr("r", "20px")
           .attr("fill", "red");
-      });
+      });*/
 
 
     </script>
