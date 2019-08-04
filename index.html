@@ -226,9 +226,9 @@
               .text("Earthquake-active Faults (2018)").attr("font-size", 12);
            
            svg.append("rect")
-            .attr("x", hint_hor_align + 0.5 * vert_text_space)             
-            .attr("y", vert_datum1)    
-            .attr("height", 10).attr("width", 100)
+            .attr("x", hint_hor_align)             
+            .attr("y", vert_datum1  + 0.5 * vert_text_space)    
+            .attr("height", 10).attr("width", 60)
             .style("fill", "lightgray")
             .on("click", function(){
               // Determine if current line is visible
