@@ -508,7 +508,7 @@
 
         svg.append("text")
           .attr("x", text_hor_align1)             
-          .attr("y", vert_example + vert_text_space)    
+          .attr("y", vert_example)    
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Step 4: Make Observations & Author's Story").attr("font-size", 14).attr("font-weight", "bold"); 
@@ -518,19 +518,19 @@
 
         var example = svg.append("g").attr("id", "myexample")
         //click to see my story 
-        svg.append("rect").attr("x", text_hor_align2 - 15).attr("y", vert_example + vert_text_space * 1.5)
+        svg.append("rect").attr("x", text_hor_align2 - 15).attr("y", vert_example + vert_text_space * 0.5)
           .attr("height", "8px").attr("width", "8px").attr("fill", "lightblue")
 
         svg.append("text")
           .attr("x", text_hor_align2)             
-          .attr("y", vert_example + vert_text_space * 2)//barHeight/2)    
+          .attr("y", vert_example + vert_text_space * 1)//barHeight/2)    
           .attr("class", "legend")
           .style("fill", "black")         
           .text("Author's Example").attr("font-size", 12);
 
         svg.append("text")
           .attr("x", hint_hor_align)             
-          .attr("y", vert_example + vert_text_space * 2)    
+          .attr("y", vert_example + vert_text_space * 1)    
           .attr("class", "legend")
           .style("fill", "gray")
           .text("Hint: Click HERE to hide/show").attr("font-size", 12)
@@ -572,8 +572,8 @@
           .text("- Recent  : M4.5+, 2019-07-01 ~ 2018-07-31").attr("font-size", 12);  
         example.append("text")
           .attr("x", text_hor_align2)             
-          .attr("y", vert_example + vert_text_space * 6)   
-          .attr("dy", "1em") 
+          .attr("y", vert_example + vert_text_space * 5)   
+          .attr("dy", "1em") .attr("dx", "1em")
           .attr("class", "legend")
           .style("fill", "Black")
           .text("- Observations  : Large earthquakes in the past 2 decades are more along the Coast, near the famous San Anders Fault Zone; " + "Recent July earthquakes are much more landward, along a previously quieter zone").attr("font-size", 12);  
