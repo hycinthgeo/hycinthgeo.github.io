@@ -284,7 +284,7 @@
           .style("fill", "black")         
           .text("Outlines of a county").attr("font-size", 12);
 
-       svg.append("rect").attr("fill", "lighgreen")
+       svg.append("rect").attr("fill", "orange")
         .attr("x", hint_hor_align).attr("y", vert_datum1 + vert_text_space * 3 - 10)
         .attr("width", 200).attr("height", 10)
        svg.append("text")
@@ -292,7 +292,7 @@
         .attr("y", vert_datum1 + vert_text_space * 3)    
         .attr("class", "legend")
         .style("fill", "gray")
-        .text("Hint: Hover base map for more info").attr("font-size", 12);
+        .text("Hover on basemap for more details").attr("font-size", 10).attr('font-weight', 'bold');
 
 
 
@@ -321,12 +321,16 @@
             .attr("class", "legend")
             .style("fill", "gray")
             .text("Example: 6.0    1988-01-01    2018-12-30").attr("font-size", 12);
+
+       svg.append("rect").attr("fill", "orange")
+        .attr("x", hint_hor_align).attr("y", vert_datum2 + vert_text_space * 3 - 10)
+        .attr("width", 200).attr("height", 10)
       svg.append("text")
             .attr("x", hint_hor_align)             
             .attr("y", vert_datum2 + vert_text_space * 3)    
             .attr("class", "legend")
             .style("fill", "gray")
-            .text("Hint: Hover on points for more details").attr("font-size", 12);
+            .text("Hover on points for more details").attr("font-size", 10).attr('font-weight', 'bold');
 
       svg.append("circle")
           .attr("cx", text_hor_align2 - 10).attr("cy", vert_datum2 + vert_text_space - 5)   
@@ -405,12 +409,16 @@
             .attr("class", "legend")
             .style("fill", "gray")
             .text("Example: 4.5    2019-07-01    2019-07-30").attr("font-size", 12);
+
+       svg.append("rect").attr("fill", "orange")
+        .attr("x", hint_hor_align).attr("y", vert_datum3 + vert_text_space * 3 - 10)
+        .attr("width", 200).attr("height", 10)
       svg.append("text")
             .attr("x", hint_hor_align)             
             .attr("y", vert_datum3 + vert_text_space * 3)    
             .attr("class", "legend")
             .style("fill", "gray")
-            .text("Hint: Hover on points for more details").attr("font-size", 12);
+            .text("Hover on points for more details").attr("font-size", 10).attr('font-weight', 'bold');
 
       svg.append("circle")
           .attr("cx", text_hor_align2 - 10).attr("cy", vert_datum3 + vert_text_space - 5)   
