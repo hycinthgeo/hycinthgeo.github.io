@@ -58,7 +58,11 @@
       const LAT_MIN = 32;
       const LAT_MAX = 42;
       const LONG_MIN = -125;
-      const LONG_MAX = -113;
+      const LONG_MAX = -113.5;
+
+      const text_hor_align1 = 450;
+      const text_hor_align2 = 500;
+      const text_box_width = 180;
 
 
       //basemap of counties and tooltip
@@ -114,7 +118,7 @@
       //function loadFaults(){
 
       svg.append("text")
-          .attr("x", 400)             
+          .attr("x", text_hor_align1)             
           .attr("y", 50)    
           .attr("class", "legend")
           .style("fill", "Black")
@@ -133,7 +137,7 @@
           var barHeight = 20;
           var bars = svg.append("g")
           .selectAll("rect").data([0]).enter().append("g")
-          .attr("transform", function(d, i) { return "translate(420, 65)";})
+          .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", 65)";})
           .on("click", function(){
             // Determine if current line is visible
             var active   = faults.active ? false : true,
@@ -145,7 +149,7 @@
           })
           bars.append("rect")
           .attr("x", 0).attr("y", 0)
-          .attr("width", 150).attr("height", barHeight).attr("fill", "#ccc")      
+          .attr("width", text_box_width).attr("height", barHeight).attr("fill", "#ccc")      
           bars.append("text")
             .attr("x", 0)             
             .attr("y", barHeight/2)    
@@ -156,7 +160,7 @@
 
 
       svg.append("text")
-          .attr("x", 400)             
+          .attr("x", text_hor_align1)             
           .attr("y", 150)    
           .attr("class", "legend")
           .style("fill", "Black")
@@ -204,7 +208,7 @@
 
       //add recent earthquakes 
       svg.append("text")
-          .attr("x", 400)             
+          .attr("x", text_hor_align1)             
           .attr("y", 250)    
           .attr("class", "legend")
           .style("fill", "Black")
