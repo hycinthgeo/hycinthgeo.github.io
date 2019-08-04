@@ -283,12 +283,16 @@
           .attr("class", "legend")
           .style("fill", "black")         
           .text("Outlines of a county").attr("font-size", 12);
+
+       svg.append("rect").attr("fill", "lighgreen")
+        .attr("x", hint_hor_align).attr("y", vert_datum1 + vert_text_space * 3 - 10)
+        .attr("width", 200).attr("height", 10)
        svg.append("text")
         .attr("x", hint_hor_align)             
         .attr("y", vert_datum1 + vert_text_space * 3)    
         .attr("class", "legend")
         .style("fill", "gray")
-        .text("Hint: Hover on the base map for a county name").attr("font-size", 12);
+        .text("Hint: Hover base map for more info").attr("font-size", 12);
 
 
 
@@ -586,6 +590,8 @@
             myexample.active = active;
           });*/
 
+        var hor_pos = hint_hor_align;
+        var vert_pos = vert_example + vert_text_space * 1;
         var icon3 = svg.append("g")
         .on("click", function(){
           // Determine if current line is visible
