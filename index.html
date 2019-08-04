@@ -178,7 +178,7 @@
           .text("Step 1: Base Map - View Geographic References").attr("font-size", 14).attr("font-weight", "bold");  
 
       //fault legends
-      var lineData = [ { "x": text_hor_align2 - 13,   "y": vert_datum1 - vert_text_space * 0.8},  { "x": text_hor_align2 - 9,  "y": vert_datum1 + vert_text_space * 2.0}];
+      var lineData = [ { "x": text_hor_align2 - 13,   "y": vert_datum1 - vert_text_space * 0.1},  { "x": text_hor_align2 - 9,  "y": vert_datum1 + vert_text_space * 2.0}];
       var lineFunction = d3.svg.line()
                           .x(function(d) { return d.x; })
                           .y(function(d) { return d.y; })
@@ -219,7 +219,7 @@
             .attr("x", hint_hor_align)             
             .attr("y", vert_datum1 + vert_text_space)    
             .attr("class", "legend")
-            .style("fill", "blue")
+            .style("fill", "black")
             .text("Hint: Click HERE to hide/show").attr("font-size", 12)
             .on("click", function(){
               // Determine if current line is visible
@@ -255,7 +255,7 @@
         .selectAll("rect").data([0]).enter().append("g")
         .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + "," + (vert_datum1 + vert_text_space * 3).toString() +" )";})
         bars.append("text")
-          .attr("x", bar)             
+          .attr("x", 0)             
           .attr("y", 0)//barHeight/2)    
           .attr("class", "legend")
           .style("fill", "black")         
