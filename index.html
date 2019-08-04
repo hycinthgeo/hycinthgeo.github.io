@@ -180,8 +180,8 @@
           .data(json.features)
           .enter()
           .append("circle")
-          .attr('cx', function(d) {return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];})
-          .attr('cy', function(d) {return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];})
+          .attr('cx', function(d) {return projection(d.geometry.coordinates)[0];})
+          .attr('cy', function(d) {return projection(d.geometry.coordinates)[1];})
           .attr("r", "6px")
           .attr("fill", "green")
       });
