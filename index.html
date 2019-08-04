@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <p style="font-size:100%; color:black;"> Historic Large (M6+) & July Earthquakes (California and Nevada)_city10</p>
+  <p style="font-size:100%; color:black;"> Historic Large (M6+) & July Earthquakes (California and Nevada)_city11</p>
   <head>
     <meta charset="utf-8">
     <title>Mercator projection</title>
@@ -173,11 +173,11 @@
           .style("opacity", 0);
 
 
-      var hist_mag_thre = 3.0
+      var hist_mag_thre = 4.0
       var hist_mag_start = '2010-07-01'
       var hist_mag_end = '2011-07-01'
       //var usgs_url_historic = "https://earthquake.usgs.gov/fdsnws/event/1/query.geojson?starttime=" + "2008-07-01" +"%2000:00:00&endtime=" + "2010-07-31" + "%2023:59:59&maxlatitude=42&minlatitude=32&maxlongitude=-113&minlongitude=-125&minmagnitude=" + hist_mag_thre.toString() + "&orderby=time"
-      var usgs_url_historic = "https://earthquake.usgs.gov/fdsnws/event/1/query.geojson?starttime=2008-07-01%2000:00:00&endtime=2010-07-31%2023:59:59&maxlatitude=42&minlatitude=32&maxlongitude=-113&minlongitude=-125&minmagnitude=" + hist_mag_thre.toString() + "&orderby=time"
+      var usgs_url_historic = "https://earthquake.usgs.gov/fdsnws/event/1/query.geojson?starttime=2019-01-01%2000:00:00&endtime=2019-07-31%2023:59:59&maxlatitude=42&minlatitude=32&maxlongitude=-113&minlongitude=-125&minmagnitude=" + hist_mag_thre.toString() + "&orderby=time"
       //console.log(usgs_url_historic)
       //d3.json("data_geojson/usgs_query_july_m45p.geojson", function(json) {
       d3.json(usgs_url_historic, function(json) {
