@@ -42,7 +42,7 @@
                value="Show earthquake-active faults" 
                onclick="loadFaults()" />
     </div>-->
-    <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)_datum123</p>
+    <p style="font-size:120%; color:black; font-weight: bold;"> Historic vs. Recent Earthquakes (California and Nevada)_datumexe</p>
     <form name="myform_historic" onSubmit="return handleClick()">
         <input name="Submit"  type="submit" value="Historic: Magnitude Treshold" />
         <input type="text" id="histMag" maxlength="" />
@@ -115,6 +115,7 @@
       const vert_datum2 = 150;
       const vert_datum3 = 250;
 
+      const vert_example = 300;
 
       //basemap of counties and tooltip
       var tooltip = d3.select("body").append("div") 
@@ -417,18 +418,18 @@
               .attr("width", text_box_width).attr("height", barHeight).attr("fill", "#ccc")    */  
               bars.append("text")
                 .attr("x", 0)             
-                .attr("y", barHeight/2)    
+                .attr("y", 0)//barHeight/2)    
                 .attr("class", "legend")
                 .style("fill", "red")         
                 .text("Large cities with >0.5M population (2018").attr("font-size", 12);
              svg.append("rect")
               .attr("x", text_hor_align2 - 10).attr("y", vert_datum1 + vert_text_space * 2)   
-              .attr("width", "8px").attr("height", "6px")  
+              .attr("width", "8px").attr("height", "8px")  
               .attr("fill", "orange")
 
              svg.append("text")
               .attr("x", hint_hor_align)             
-              .attr("y", vert_datum1 + vert_text_space * 3)    
+              .attr("y", vert_datum1 + vert_text_space * 2)    
               .attr("class", "legend")
               .style("fill", "gray")
               .text("Hint: Click HERE to hide/show").attr("font-size", 12)
@@ -448,35 +449,35 @@
 
 
         var example = svg.append("g")
-        example.append("rect").attr("x", text_hor_align1).attr("y", 300)
+        example.append("rect").attr("x", text_hor_align1).attr("y", vert_example)
           .attr("width", 1000 - text_hor_align1).attr("height", 120).attr("fill", "lightblue")
         example.append("text")
           .attr("x", text_hor_align1 + 5)             
-          .attr("y", 310)    
+          .attr("y", vert_example + vert_text_space)    
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Example Story").attr("font-size", 14).attr("font-weight", "bold");  
         example.append("text")
           .attr("x", text_hor_align1 + 10)             
-          .attr("y", 320)    
+          .attr("y", vert_example + vert_text_space * 2)    
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Historic: M6.0+, 2000-01-01 ~ 2018-12-30").attr("font-size", 12);  
         example.append("text")
           .attr("x", text_hor_align1 + 10)             
-          .attr("y", 330)    
+          .attr("y", vert_example + vert_text_space * 3)    
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Recent  : M4.5+, 2019-07-01 ~ 2018-07-31").attr("font-size", 12);  
         example.append("text")
           .attr("x", text_hor_align1 + 10)             
-          .attr("y", 350)    
+          .attr("y", vert_example + vert_text_space * 5)    
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Observations  : Large earthquakes in the past 2 decades are more along the Coast, near the famous San Anders Fault Zone\n" + "Recent July earthquakes are much more landward, along a relatively quieter zone\n").attr("font-size", 12);  
         example.append("text")
           .attr("x", text_hor_align1 + 10)             
-          .attr("y", 380)    
+          .attr("y", vert_example + vert_text_space * 8)    
           .attr("class", "legend")
           .style("fill", "Black")
           .text("Your turn: Enjoy your interested comparisons").attr("font-size", 12);  
