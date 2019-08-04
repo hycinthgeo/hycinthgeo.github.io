@@ -180,7 +180,7 @@
             var barHeight = 20;
             var bars = svg.append("g")
             .selectAll("rect").data([0]).enter().append("g")
-            .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", 65)";})
+            .attr("transform", function(d, i) { return "translate(" + text_hor_align2.toString() + ", 60)";})
             .on("click", function(){
               // Determine if current line is visible
               var active   = faults.active ? false : true,
