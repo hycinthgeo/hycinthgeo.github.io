@@ -225,29 +225,33 @@
               .style("fill", "black")         
               .text("Earthquake-active Faults (2018)").attr("font-size", 12);
            
-           var icon1 = svg.append("g")
-            .on("click", function(){
-              // Determine if current line is visible
-              var active   = faults.active ? false : true,
-                newOpacity = active ? 0 : 1;
-              // Hide or show the elements
-              d3.select("#faults").style("opacity", newOpacity);
-              // Update whether or not the elements are active
-              faults.active = active;
-            });
+           function place_hide_show_icon(hor_pos, vert_pos){
+             var icon1 = svg.append("g")
+              .on("click", function(){
+                // Determine if current line is visible
+                var active   = faults.active ? false : true,
+                  newOpacity = active ? 0 : 1;
+                // Hide or show the elements
+                d3.select("#faults").style("opacity", newOpacity);
+                // Update whether or not the elements are active
+                faults.active = active;
+              });
 
-           icon1.append("rect")
-            .attr("x", hint_hor_align)             
-            .attr("y", vert_datum1  + 0.5 * vert_text_space)    
-            .attr("height", 10).attr("width", 70)
-            .style("fill", "lightgray");
+             icon1.append("rect")
+              .attr("x", hor_pos)             
+              .attr("y", vert_pos)    
+              .attr("height", 10).attr("width", 70)
+              .style("fill", "lightgray");
 
-           icon1.append("text")
-            .attr("x", hint_hor_align)             
-            .attr("y", vert_datum1 + vert_text_space)    
-            .attr("class", "legend")
-            .style("fill", "black")
-            .text("Hide / Show").attr("font-size", 12);          
+             icon1.append("text")
+              .attr("x", hor_pos)             
+              .attr("y", vert_pos)    
+              .attr("class", "legend")
+              .style("fill", "black")
+              .text("Hide / Show").attr("font-size", 10).attr("font-weight", "bold");       
+            };
+
+            place_hide_show_icon(hint_hor_align, vert_datum1 + vert_text_space);  
 
            /*svg.append("text")
             .attr("x", hint_hor_align)             
